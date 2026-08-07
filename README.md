@@ -51,14 +51,21 @@ Exemplos resolvidos 1 a 14 da apostila, todos presentes.
 
 Abra `aulas/aula-01-medidas/` pelo site, ou o arquivo diretamente no navegador.
 
+A navegação é **linear**: um único par de teclas percorre os 115 slides, do
+primeiro ao último, sem precisar entrar e sair de assuntos. Isso é o que permite
+apresentar com passador de slides.
+
 | Tecla | Ação |
 |---|---|
-| `→` `←` | assunto seguinte / anterior |
-| `↓` `↑` | slide seguinte / anterior dentro do assunto |
+| `→` `↓` `Page Down` `espaço` | slide seguinte |
+| `←` `↑` `Page Up` | slide anterior |
 | `ESC` | mapa de todos os slides |
 | `S` | janela do apresentador, com as notas |
 | `F` | tela cheia |
 | `B` | tela preta |
+
+Os passadores de slides mais comuns emitem `Page Up`/`Page Down`, e alguns as
+setas — os dois conjuntos estão mapeados para o mesmo avanço linear.
 
 Reveal.js e KaTeX estão no repositório (`vendor/`), sem depender de CDN — a
 apresentação funciona sem internet. As fontes vêm do Google Fonts; sem rede, o

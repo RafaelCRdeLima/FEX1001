@@ -2179,6 +2179,23 @@ V = 2,555×10⁷ mm³
         transitionSpeed: 'fast',
         backgroundTransition: 'none',
         pdfSeparateFragments: false,
+
+        // Navegação linear: → e ← percorrem TODOS os slides, sem exigir ↓ para
+        // entrar em um assunto. É o que um passador de slides consegue fazer.
+        navigationMode: 'linear',
+
+        // Passadores de slides emitem teclas variadas: setas, PageUp/PageDown
+        // ou espaço. Todas mapeadas para o avanço linear.
+        keyboard: {
+          37: 'prev',  // ←
+          38: 'prev',  // ↑
+          33: 'prev',  // Page Up
+          39: 'next',  // →
+          40: 'next',  // ↓
+          34: 'next',  // Page Down
+          32: 'next'   // espaço
+        },
+
         katex: {
           local: '../../vendor/katex',
           delimiters: [
