@@ -1,0 +1,273 @@
+/* ------------------------------------------------------------------ *
+ *  Tema das apresentações da FEX1001                                   *
+ *  Mesma paleta e tipografia do site da disciplina.                    *
+ * ------------------------------------------------------------------ */
+
+:root {
+  --ink: #102333;
+  --muted: #607080;
+  --paper: #f6f3ec;
+  --white: #fffdf8;
+  --navy: #071b2c;
+  --blue: #1e5c83;
+  --cyan: #8dd7dc;
+  --gold: #e6b75c;
+  --line: rgba(16, 35, 51, 0.16);
+  --red: #b9494d;
+  --green: #246444;
+}
+
+.reveal-viewport { background: var(--paper); }
+
+.reveal {
+  color: var(--ink);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* Conteúdo alinhado à esquerda: slides de aula não são pôsteres.
+   A centralização vertical fica por conta do reveal (center: true). */
+.reveal .slides { text-align: left; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  margin: 0 0 0.5em;
+  color: var(--navy);
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: none;
+  text-shadow: none;
+  text-wrap: balance;
+}
+
+.reveal h1 { font-size: 2.1em; font-weight: 500; letter-spacing: -0.045em; }
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.1em; }
+.reveal h4 { font-size: 0.92em; font-family: "Manrope", sans-serif; font-weight: 700; }
+
+/* Título de slide com filete dourado */
+.reveal section > h2:first-child,
+.reveal section > h3:first-child {
+  padding-bottom: 0.28em;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.7em;
+}
+
+.reveal p { margin: 0 0 0.7em; line-height: 1.5; }
+.reveal a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(30, 92, 131, 0.3); }
+.reveal a:hover { color: var(--blue); border-color: var(--blue); }
+
+.reveal ul, .reveal ol { display: block; margin: 0 0 0.7em 1em; line-height: 1.5; }
+.reveal li { margin-bottom: 0.35em; }
+.reveal li li { font-size: 0.92em; color: #37485a; }
+.reveal ul ul, .reveal ol ol, .reveal ul ol, .reveal ol ul { margin-top: 0.3em; margin-bottom: 0.3em; }
+
+.reveal strong, .reveal b { font-weight: 700; color: var(--navy); }
+.reveal em { font-style: italic; }
+
+/* ---------- Etiqueta acima do título ---------- */
+
+.eyebrow {
+  margin: 0 0 0.35em;
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+/* ---------- Capa ----------
+   O fundo escuro vem de data-background-gradient, para sangrar até as bordas
+   mesmo com o slide centralizado verticalmente. */
+
+.reveal .capa { color: #f5fbfa; }
+.reveal .capa h1, .reveal .capa h2 { color: white; }
+.reveal .capa .eyebrow { color: var(--cyan); }
+.reveal .capa .capa-sub { color: rgba(238, 247, 246, 0.72); font-size: 0.85em; }
+.reveal .capa .capa-rodape {
+  margin-top: 1.4em;
+  padding-top: 0.8em;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(238, 247, 246, 0.6);
+  font-family: "DM Mono", monospace;
+  font-size: 0.58em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Divisória de seção ---------- */
+
+.reveal .divisoria { color: #f5fbfa; }
+
+.reveal .divisoria h2 { color: white; font-size: 2em; font-weight: 500; border: 0; }
+.reveal .divisoria .eyebrow { color: var(--cyan); }
+.reveal .divisoria p { color: rgba(238, 247, 246, 0.68); font-size: 0.8em; max-width: 26em; }
+
+/* ---------- Blocos ---------- */
+
+.bloco {
+  margin: 0.6em 0;
+  padding: 0.75em 1em;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+}
+
+.bloco > .bloco-titulo {
+  display: block;
+  margin-bottom: 0.35em;
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.62em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bloco p:last-child, .bloco ul:last-child, .bloco ol:last-child { margin-bottom: 0; }
+
+/* Regra: o enunciado que o aluno precisa levar para a prova */
+.bloco.regra { border-left-color: var(--gold); background: #fdf6e7; }
+.bloco.regra > .bloco-titulo { color: #8a6a1f; }
+
+/* Atenção / erro comum */
+.bloco.atencao { border-left-color: var(--red); background: #fdeeee; }
+.bloco.atencao > .bloco-titulo { color: var(--red); }
+
+/* Exemplo resolvido */
+.bloco.exemplo { border-left-color: #3a9b69; background: #eef7f1; }
+.bloco.exemplo > .bloco-titulo { color: var(--green); }
+
+/* ---------- Algarismo duvidoso ---------- */
+
+.dv {
+  color: #8a5a00;
+  font-weight: 700;
+  border-bottom: 2px solid var(--gold);
+}
+
+.legenda-dv {
+  display: inline-flex;
+  gap: 0.5em;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.6em;
+}
+
+.legenda-dv i { display: inline-block; width: 14px; height: 2px; background: var(--gold); }
+
+/* ---------- Colunas ---------- */
+
+.colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: start; }
+.colunas-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1em; align-items: start; }
+.colunas-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 1.4em; align-items: start; }
+.colunas-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 1.4em; align-items: start; }
+
+/* ---------- Tabelas ---------- */
+
+.reveal table {
+  width: 100%;
+  margin: 0.5em 0;
+  border-collapse: collapse;
+  font-size: 0.78em;
+}
+
+.reveal table th {
+  padding: 0.4em 0.6em;
+  color: var(--blue);
+  background: #e9f0f2;
+  border-bottom: 1px solid var(--line);
+  font-family: "DM Mono", monospace;
+  font-size: 0.86em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.reveal table td {
+  padding: 0.34em 0.6em;
+  border-bottom: 1px solid rgba(16, 35, 51, 0.08);
+  vertical-align: top;
+}
+
+.reveal table tr:last-child td { border-bottom: 0; }
+.reveal table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.reveal table .destaque { background: rgba(230, 183, 92, 0.16); }
+
+.tabela-compacta { font-size: 0.66em !important; }
+
+/* Tabelas de arredondamento: valor → resultado, com a seta em coluna estreita */
+.tabela-arred td:first-child { width: 30%; }
+.tabela-arred td:nth-child(2) { width: 2.2em; color: var(--muted); text-align: center; }
+.tabela-arred td:last-child:not(:nth-child(3)) { color: var(--muted); font-size: 0.92em; }
+
+/* ---------- Cálculo passo a passo ---------- */
+
+.conta {
+  margin: 0.5em 0;
+  padding: 0.7em 1em;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.72em;
+  line-height: 1.75;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.conta .tot { display: inline-block; padding-top: 0.15em; border-top: 1px solid var(--ink); }
+.conta .dv { border-bottom-width: 2px; }
+
+/* Corte do que será desprezado no arredondamento */
+.corte { color: var(--muted); }
+.corte::before { content: "|"; margin: 0 0.05em; color: var(--red); font-weight: 700; }
+
+/* ---------- Figuras ---------- */
+
+.reveal figure { margin: 0.4em 0; text-align: center; }
+.reveal figure img { display: block; margin: 0 auto; max-height: 62vh; background: white; border: 1px solid var(--line); }
+.reveal figcaption { margin-top: 0.4em; color: var(--muted); font-size: 0.6em; text-align: center; }
+.reveal img.limpa { border: 0; background: transparent; }
+
+/* ---------- Matemática ---------- */
+
+.reveal .katex { font-size: 1.02em; }
+.reveal .katex-display { margin: 0.7em 0; }
+
+/* ---------- Rodapé com a seção corrente ---------- */
+
+.rodape-secao {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.52em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Controles do reveal ---------- */
+
+.reveal .controls { color: var(--blue); }
+.reveal .progress { height: 4px; color: var(--gold); background: rgba(16, 35, 51, 0.1); }
+.reveal .slide-number { background: rgba(7, 27, 44, 0.7); font-family: "DM Mono", monospace; }
+
+.reveal .backgrounds .slide-background.present { background-color: transparent; }
+
+/* ---------- Ajustes de escala em telas estreitas ---------- */
+
+@media (max-width: 800px) {
+  .colunas, .colunas-3, .colunas-2-1, .colunas-1-2 { grid-template-columns: 1fr; gap: 0.8em; }
+}
+
+/* ---------- Impressão ---------- */
+
+@media print {
+  .rodape-secao { display: none; }
+  .reveal figure img { max-height: 48vh; }
+}
