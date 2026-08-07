@@ -391,6 +391,9 @@ h2 {
   gap: 1.2rem;
 }
 
+/* Grades com exatamente dois cartões não devem deixar uma coluna órfã */
+.doc-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
 .doc-card {
   display: flex;
   flex-direction: column;
@@ -418,6 +421,53 @@ h2 {
 
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tags span { padding: .28rem .5rem; color: var(--blue); background: #e7f0f2; font-size: .63rem; font-weight: 700; text-transform: uppercase; }
+
+/* ---------- Números da disciplina ---------- */
+
+.fatos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 0 0 1.6rem;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.fatos > div { padding: 1.4rem 1.5rem; background: var(--white); }
+.fatos dt { color: var(--muted); font-family: "DM Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; }
+
+.fatos dd {
+  margin: .55rem 0 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+
+.fatos dd small { display: block; margin-top: .4rem; color: var(--muted); font-family: "Manrope", sans-serif; font-size: .74rem; font-weight: 500; letter-spacing: 0; }
+
+/* ---------- Unidades de aprendizagem ---------- */
+
+.tabela-ua { width: 100%; margin: 0 0 1.6rem; border-collapse: collapse; background: var(--white); border: 1px solid var(--line); }
+
+.tabela-ua th {
+  padding: .8rem 1.1rem;
+  color: var(--blue);
+  background: #e9f0f2;
+  border-bottom: 1px solid var(--line);
+  font-family: "DM Mono", monospace;
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.tabela-ua td { padding: .85rem 1.1rem; border-bottom: 1px solid rgba(16, 35, 51, .08); font-size: .88rem; line-height: 1.5; vertical-align: top; }
+.tabela-ua tr:last-child td { border-bottom: 0; }
+.tabela-ua td:first-child { color: var(--blue); font-family: "DM Mono", monospace; font-size: .74rem; white-space: nowrap; }
+.tabela-ua td:last-child { color: var(--muted); font-size: .82rem; white-space: nowrap; }
 
 .toolbox {
   margin-top: 3rem;
@@ -464,6 +514,7 @@ footer a { color: var(--cyan); text-decoration: none; }
   .section-heading { grid-template-columns: 1fr; gap: 1.2rem; }
   .aula-card { grid-template-columns: 260px 1fr; }
   .aula-info { padding: 2.3rem; }
+  .fatos { grid-template-columns: 1fr 1fr; }
   .toolbox { align-items: flex-start; flex-direction: column; gap: 1.4rem; }
   .tool-list { justify-content: flex-start; }
 }
@@ -489,6 +540,8 @@ footer a { color: var(--cyan); text-decoration: none; }
   .card-actions { align-items: flex-start; flex-direction: column; }
   .pdf-frame { min-height: 430px; }
   .doc-grid { grid-template-columns: 1fr; }
+  .fatos { grid-template-columns: 1fr; }
+  .tabela-ua { display: block; overflow-x: auto; }
   .toolbox { padding: 1.6rem; }
   footer { align-items: flex-start; flex-direction: column; gap: 1.5rem; }
 }

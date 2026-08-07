@@ -22,7 +22,8 @@ aulas/
 Apostilas e Relatorios/
   apostilas/                  Apostila 1 (Medidas) e Apostila 2 (Gráficos)
   Experiencia 1..5            roteiros e modelos de relatório (.docx e .pdf)
-  Cronograma Geral ...        calendário do semestre
+  FEX1001-Plano de ensino ... plano de ensino 2026/02 (.docx e .pdf)
+  Cronograma Geral ...        calendário do semestre 2026/02
 
 vendor/                       reveal.js e KaTeX embutidos (sem CDN)
 ```
