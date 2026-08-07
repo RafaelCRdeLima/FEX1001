@@ -1,0 +1,28 @@
+# -------- LaTeX (arquivos auxiliares) --------
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.bcf
+*.run.xml
+
+# -------- Escritório / sistema --------
+~$*
+.~lock.*
+*.tmp
+.DS_Store
+Thumbs.db
+
+# -------- Dropbox --------
+.dropbox
+.dropbox.attr
+*.dropbox.attr
