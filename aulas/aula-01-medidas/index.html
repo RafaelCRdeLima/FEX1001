@@ -1,0 +1,2196 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aula 1 da FEX1001 — Medidas, algarismos significativos e erros. UDESC/CCT.">
+    <meta name="theme-color" content="#071b2c">
+    <title>Aula 1 · Medidas e Algarismos Significativos · FEX1001</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendor/reveal/dist/reset.css">
+    <link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css">
+    <link rel="stylesheet" href="../deck.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+<!-- =================================================================
+     CAPA
+     ================================================================= -->
+<section class="capa" data-background-gradient="radial-gradient(circle at 78% 25%, rgba(32,116,148,0.30), transparent 28%), linear-gradient(135deg, #061927 0%, #0a2b42 60%, #092236 100%)">
+  <p class="eyebrow">FEX1001 · Aula 1</p>
+  <h1>Medidas e algarismos significativos</h1>
+  <p class="capa-sub">
+    Como ler um instrumento, como escrever o resultado e quanto se pode
+    confiar nele.
+  </p>
+  <p class="capa-rodape">
+    Prof. Rafael de Lima · Departamento de Física · CCT/UDESC
+  </p>
+  <aside class="notes">
+    Base: Apostila 1 — Medidas e Algarismos Significativos (Depto. de Física, CCT/UDESC).
+    Navegação: setas → e ← trocam de assunto; ↓ e ↑ percorrem os slides dentro do assunto.
+  </aside>
+</section>
+
+<!-- =================================================================
+     ROTEIRO
+     ================================================================= -->
+<section>
+  <p class="eyebrow">O caminho de hoje</p>
+  <h2>Roteiro</h2>
+  <div class="colunas">
+    <ol>
+      <li>Por que medir — grandezas e unidades</li>
+      <li>Algarismos significativos</li>
+      <li>Conversão de unidades e notação científica</li>
+      <li>Operações com algarismos significativos</li>
+      <li>Critérios de arredondamento</li>
+    </ol>
+    <ol start="6">
+      <li>Classificação dos erros</li>
+      <li>Tratamento estatístico de séries de medidas</li>
+      <li>Erro relativo percentual</li>
+      <li>Propagação de erros</li>
+      <li>Exercícios</li>
+    </ol>
+  </div>
+  <div class="bloco">
+    <span class="bloco-titulo">Uma ideia atravessa a aula inteira</span>
+    <p>
+      Uma medida não é um número: é um número, uma unidade e uma incerteza.
+      Perder qualquer um dos três é perder a medida.
+    </p>
+  </div>
+</section>
+
+<!-- =================================================================
+     1. POR QUE MEDIR
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 1</p>
+    <h2>Por que medir</h2>
+    <p>Grandezas, unidades e o que de fato acontece quando comparamos algo com um padrão.</p>
+  </section>
+
+  <section>
+    <h2>A Física é uma ciência experimental</h2>
+    <ul>
+      <li>Todo conhecimento físico — leis, princípios, modelos — vem de <strong>medidas</strong>,
+        das partículas elementares às galáxias.</li>
+      <li>Saber medir envolve:
+        <ul>
+          <li>manusear os instrumentos;</li>
+          <li>expressar corretamente a informação extraída deles;</li>
+          <li>operar matematicamente sem inventar precisão;</li>
+          <li>informar o quanto se pode confiar no resultado.</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">O incômodo produtivo</span>
+      <p>
+        Se toda medida tem erro, então a Física não é uma ciência tão exata assim.
+        É exatamente por isso que precisamos ser cuidadosos com o
+        <strong>tratamento dos erros</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Método científico, na prática</h2>
+    <ol>
+      <li>Observação do fenômeno;</li>
+      <li>Formulação de hipóteses explicativas;</li>
+      <li>Teste das hipóteses através de experimentos;</li>
+      <li>Elaboração de uma teoria sobre o fenômeno estudado.</li>
+    </ol>
+    <p>
+      É na fase da experimentação que entram as medidas das grandezas físicas
+      relacionadas ao fenômeno em estudo.
+    </p>
+  </section>
+
+  <section>
+    <h2>Grandezas físicas</h2>
+    <div class="colunas">
+      <div>
+        <div class="bloco">
+          <span class="bloco-titulo">Definição</span>
+          <p>Quantidades que <strong>podem ser medidas</strong>: massa, comprimento,
+            velocidade, força, temperatura…</p>
+        </div>
+      </div>
+      <div>
+        <div class="bloco">
+          <span class="bloco-titulo">Fundamentais × derivadas</span>
+          <p>
+            As <strong>fundamentais</strong> são independentes entre si e formam
+            um sistema — o SI. As <strong>derivadas</strong> se escrevem a partir delas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:.6em">
+      Exemplo: comprimento e tempo são fundamentais; velocidade
+      (\(\mathrm{m/s}\)) é derivada.
+    </p>
+  </section>
+
+  <section>
+    <h2>As sete unidades fundamentais do SI</h2>
+    <figure>
+      <img src="img/7fundamentais.png" alt="Tabela das sete grandezas fundamentais do Sistema Internacional com suas unidades e símbolos.">
+    </figure>
+  </section>
+
+  <section>
+    <h2>Medir é comparar</h2>
+    <p>
+      Medir uma grandeza significa <strong>compará-la com outra da mesma espécie</strong>,
+      definida como unidade, para verificar a relação numérica entre elas.
+    </p>
+    <p>
+      Sendo \(G\) a quantidade da grandeza e \(U\) a unidade convencionada,
+      o valor numérico \(M(G)\) é a razão
+    </p>
+    $$ M(G)=\frac{G}{U} \qquad\Longrightarrow\qquad G = M(G)\,U. $$
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Sem exceção</span>
+      <p>Toda medida de grandeza física apresenta <strong>unidade</strong>.</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 1 — uma massa em uma balança</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        Adotamos \(U = 1\ \mathrm{grama}\). A medição de uma certa massa \(m = G\),
+        comparando-a com essa unidade, fornece \(M(G) = G/U = 101{,}25\).
+      </p>
+    </div>
+    $$ G = M(G)\,U = m = 101{,}25\ \mathrm{g}. $$
+    <p>
+      O número \(101{,}25\) só ganha sentido físico acompanhado do grama. Sozinho,
+      não é uma medida.
+    </p>
+  </section>
+
+  <section>
+    <h2>Toda medida traz um erro provável</h2>
+    <p>
+      Os erros têm origens variadas, e a informação sobre eles
+      <strong>obrigatoriamente</strong> faz parte do resultado:
+    </p>
+    $$ G = \bigl(M(G) \pm \Delta M\bigr)\,U. $$
+    <ul>
+      <li>O sinal \(\pm\) indica que o erro provável tanto pode aumentar
+        quanto diminuir o valor medido.</li>
+      <li>A medida mais provável está na região
+        \(\bigl[(M(G)-\Delta M)\,;\,(M(G)+\Delta M)\bigr]\,U\).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Exemplo 2 — a mesma massa, agora com incerteza</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>Na medição do Exemplo 1, o erro provável foi de \(0{,}04\ \mathrm{g}\).</p>
+    </div>
+    $$ m = (101{,}25 \pm 0{,}04)\ \mathrm{g} $$
+    <p>
+      Ou seja: a massa está entre <strong>101,21 g</strong> e <strong>101,29 g</strong>,
+      dadas as condições em que a medição foi realizada.
+    </p>
+  </section>
+
+  <section>
+    <h2>Múltiplos e submúltiplos</h2>
+    <p>
+      As unidades são apresentadas em múltiplos e submúltiplos conforme a escala
+      da grandeza:
+    </p>
+    <ul>
+      <li>dimensões atômicas → <strong>angstroms</strong> (\(10^{-10}\ \mathrm{m}\));</li>
+      <li>dimensões terrestres → <strong>quilômetros</strong> (\(10^{3}\ \mathrm{m}\));</li>
+      <li>distâncias entre estrelas → <strong>ano-luz</strong> ou <strong>parsec</strong>.</li>
+    </ul>
+    <div class="bloco">
+      <span class="bloco-titulo">Critério</span>
+      <p>Escolha o instrumento — e a unidade — coerentes com o “tamanho” da grandeza observada.</p>
+    </div>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     2. ALGARISMOS SIGNIFICATIVOS
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 2</p>
+    <h2>Algarismos significativos</h2>
+    <p>O que a escrita de um número já conta sobre o instrumento que a produziu.</p>
+  </section>
+
+  <section>
+    <h2>Medida direta e medida indireta</h2>
+    <div class="bloco">
+      <span class="bloco-titulo">Medida direta</span>
+      <p>
+        O valor desconhecido é comparado <strong>diretamente</strong> com o padrão.
+        Ex.: a largura de uma parede, \(L_x = 4{,}3\ \mathrm{m}\).
+      </p>
+    </div>
+    <div class="bloco">
+      <span class="bloco-titulo">Medida indireta</span>
+      <p>
+        Obtida por <strong>operações matemáticas</strong> com medidas diretas.
+        Ex.: com \(H_x = 2{,}6\ \mathrm{m}\),
+      </p>
+      <p style="margin-top:.4em">
+        \(\text{área} = L_x H_x = 4{,}3\ \mathrm{m} \times 2{,}6\ \mathrm{m}
+        = 11{,}18\ \mathrm{m^2} = 11\ \mathrm{m^2}.\)
+      </p>
+    </div>
+    <p>
+      \(L_x\) e \(H_x\) têm erro individualmente — logo a área também tem.
+      Esse erro <strong>propagado</strong> é o assunto da parte final da aula.
+    </p>
+  </section>
+
+  <section>
+    <h2>O que são algarismos significativos</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Definição</span>
+      <p>
+        São todos os algarismos dos quais se tem <strong>plena certeza</strong>,
+        mais <strong>um duvidoso</strong> — o último, estimado a olho.
+      </p>
+    </div>
+    <ul>
+      <li>O algarismo duvidoso <strong>é significativo</strong>.</li>
+      <li>Qualquer algarismo à <strong>direita</strong> do duvidoso não é
+        significativo e não deve aparecer no resultado.</li>
+      <li>O duvidoso é um <strong>indicativo da escala</strong> do instrumento.</li>
+    </ul>
+    <p class="legenda-dv"><i></i> Nesta apresentação, o algarismo duvidoso aparece assim: 11,<span class="dv">3</span> cm</p>
+  </section>
+
+  <section>
+    <h3>Exemplo 3 — a mesma tira de papel, três réguas</h3>
+    <figure>
+      <img src="img/reguas.png" alt="Três réguas sobrepostas medindo a mesma tira de papel: a primeira graduada em decímetros, a segunda em centímetros e a terceira em milímetros.">
+      <figcaption>Figura 1 — réguas decimetrada, centimetrada e milimetrada.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h3>Exemplo 3 — as leituras corretas</h3>
+    <table>
+      <thead>
+        <tr><th>Instrumento</th><th>Leitura de L</th><th class="num">Alg. significativos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>régua decimetrada</td><td>1,<span class="dv">1</span> dm</td><td class="num">2</td></tr>
+        <tr><td>régua centimetrada</td><td>11,<span class="dv">3</span> cm</td><td class="num">3</td></tr>
+        <tr><td>régua milimetrada</td><td>113,<span class="dv">4</span> mm</td><td class="num">4</td></tr>
+      </tbody>
+    </table>
+    <p>
+      A extremidade do objeto cai <strong>entre dois traços</strong>. O experimentador
+      divide mentalmente esse intervalo em décimos e supõe a olho o último dígito.
+    </p>
+    <div class="bloco">
+      <span class="bloco-titulo">E se outra pessoa medisse?</span>
+      <p>
+        1,<span class="dv">2</span> dm, 11,<span class="dv">4</span> cm,
+        113,<span class="dv">3</span> mm também seriam aceitáveis: o último algarismo
+        depende do olho de quem mede.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>E se a extremidade coincidir com um traço?</h2>
+    <p>Fica ainda mais fácil: o algarismo duvidoso é simplesmente o <strong>zero</strong>.</p>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Leituras possíveis nesse caso</span>
+      <p>
+        1,<span class="dv">0</span> dm &nbsp;·&nbsp;
+        10,<span class="dv">0</span> cm &nbsp;·&nbsp;
+        100,<span class="dv">0</span> mm
+      </p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Cuidado com a calculadora</span>
+      <p>
+        Calculadoras descartam zeros à direita da vírgula, por economia. Esses zeros,
+        porém, <strong>são imprescindíveis</strong> e precisam ser escritos.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Zeros: quando contam?</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra dos zeros</span>
+      <p>
+        Todos os algarismos de uma medida são significativos, <strong>exceto os zeros
+        à esquerda</strong> do primeiro algarismo significativo — eles apenas fixam a
+        posição da vírgula.
+      </p>
+    </div>
+    <div class="colunas">
+      <div>
+        <h4>Não significativos</h4>
+        <p>0,00<span style="color:var(--muted)">…</span>187 km → os três zeros só ancoram a vírgula.</p>
+      </div>
+      <div>
+        <h4>Significativos</h4>
+        <p>100,<span class="dv">0</span> mm → o zero final é o duvidoso, logo conta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Precisão do instrumento</h2>
+    <ul>
+      <li>A precisão do instrumento <strong>determina quantos</strong> algarismos
+        significativos se consegue obter.</li>
+      <li>Das três réguas, a milimetrada é a mais precisa: forneceu 4 algarismos.</li>
+      <li>Para obter mais, é preciso um instrumento melhor — um paquímetro com escala
+        em décimos de milímetro, por exemplo.</li>
+    </ul>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Erro comum</span>
+      <p>
+        Com a régua decimetrada, <strong>jamais</strong> se pode escrever 1,15 dm:
+        a escala só permite certeza na casa dos decímetros, e o algarismo dos
+        centímetros já é o duvidoso.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>A escrita denuncia a escala</h2>
+    <p>Quando alguém escreve 11,<span class="dv">3</span> cm, está dizendo que usou
+      uma régua <strong>centimetrada</strong> — porque o duvidoso está na primeira casa decimal.</p>
+    <p>“Mas isso é óbvio pela unidade!” Então mudemos a unidade:</p>
+    $$ 11{,}3\ \mathrm{cm} = 0{,}113\ \mathrm{m} $$
+    <p>
+      A escala passou a ser o metro? Não. O duvidoso — 0,11<span class="dv">3</span> m —
+      continua na <strong>mesma posição física</strong>: a casa dos décimos de centímetro.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra</span>
+      <p>
+        A mudança de unidade <strong>não pode</strong> alterar a quantidade de
+        algarismos significativos — isso seria adulterar a medida.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>“Mas apareceu um algarismo a mais!”</h2>
+    <p>
+      Alguém pode objetar: eram três (11,3 cm) e passaram a ser quatro (0,113 m).
+    </p>
+    <p>
+      Não. O zero <strong>à esquerda</strong> dos demais não é significativo; seu papel
+      é ancorar a vírgula depois da mudança de unidade.
+    </p>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">O caso do zero duvidoso</span>
+      <p>
+        100,<span class="dv">0</span> mm tem quatro algarismos significativos.
+        Em metros, precisa continuar com quatro:
+      </p>
+      <p style="margin-top:.4em">
+        \(100{,}0\ \mathrm{mm} = 0{,}1000\ \mathrm{m}\) &nbsp;— e não 0,1 m.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Quantos algarismos significativos há aqui?</h2>
+    <table class="tabela-compacta">
+      <thead>
+        <tr><th>Medida</th><th class="num">Alg. sign.</th><th>Medida</th><th class="num">Alg. sign.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>\(7\times 10\ \mathrm{km}\)</td><td class="num">um</td>
+            <td>\(0{,}0001540\ \mathrm{K^{-1}}\)</td><td class="num">quatro</td></tr>
+        <tr><td>\(0{,}000005\ \Omega\)</td><td class="num">um</td>
+            <td>\(35{,}40\ \mathrm{g}\)</td><td class="num">quatro</td></tr>
+        <tr><td>\(0{,}0013\ \mathrm{A}\)</td><td class="num">dois</td>
+            <td>\(9{,}8067\ \mathrm{m/s^2}\)</td><td class="num">cinco</td></tr>
+        <tr><td>\(66\times 10^{11}\ \mathrm{anos}\)</td><td class="num">dois</td>
+            <td>\(1{,}9764\times10^{-23}\ \mathrm{átomos}\)</td><td class="num">cinco</td></tr>
+        <tr><td>\(0{,}0450\ \mathrm{mm}\)</td><td class="num">três</td>
+            <td>\(15000\ \mathrm{s}\)</td><td class="num">cinco</td></tr>
+        <tr><td>\(2{,}31\times10^{-1}\ \mathrm{cal/J}\)</td><td class="num">três</td>
+            <td>\(4{,}00000\times10^{-3}\ \mathrm{eV/C}\)</td><td class="num">seis</td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">Conte da esquerda para a direita, começando no primeiro algarismo diferente de zero.</p>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     3. CONVERSÃO E NOTAÇÃO CIENTÍFICA
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 3</p>
+    <h2>Conversão de unidades e notação científica</h2>
+    <p>Como trocar de unidade sem alterar a informação que o instrumento forneceu.</p>
+  </section>
+
+  <section>
+    <h2>Prefixos do SI</h2>
+    <div class="colunas">
+      <table class="tabela-compacta">
+        <thead><tr><th>Fator</th><th>Prefixo</th><th>Símbolo</th></tr></thead>
+        <tbody>
+          <tr><td>\(10^{24}\)</td><td>iota</td><td>Y</td></tr>
+          <tr><td>\(10^{21}\)</td><td>zeta</td><td>Z</td></tr>
+          <tr><td>\(10^{18}\)</td><td>exa</td><td>E</td></tr>
+          <tr><td>\(10^{15}\)</td><td>peta</td><td>P</td></tr>
+          <tr><td>\(10^{12}\)</td><td>tera</td><td>T</td></tr>
+          <tr><td>\(10^{9}\)</td><td>giga</td><td>G</td></tr>
+          <tr><td>\(10^{6}\)</td><td>mega</td><td>M</td></tr>
+          <tr class="destaque"><td>\(10^{3}\)</td><td>quilo</td><td>k</td></tr>
+          <tr><td>\(10^{2}\)</td><td>hecto</td><td>h</td></tr>
+          <tr><td>\(10^{1}\)</td><td>deca</td><td>da</td></tr>
+        </tbody>
+      </table>
+      <table class="tabela-compacta">
+        <thead><tr><th>Fator</th><th>Prefixo</th><th>Símbolo</th></tr></thead>
+        <tbody>
+          <tr><td>\(10^{-1}\)</td><td>deci</td><td>d</td></tr>
+          <tr class="destaque"><td>\(10^{-2}\)</td><td>centi</td><td>c</td></tr>
+          <tr class="destaque"><td>\(10^{-3}\)</td><td>mili</td><td>m</td></tr>
+          <tr><td>\(10^{-6}\)</td><td>micro</td><td>μ</td></tr>
+          <tr><td>\(10^{-9}\)</td><td>nano</td><td>n</td></tr>
+          <tr><td>\(10^{-12}\)</td><td>pico</td><td>p</td></tr>
+          <tr><td>\(10^{-15}\)</td><td>femto</td><td>f</td></tr>
+          <tr><td>\(10^{-18}\)</td><td>ato</td><td>a</td></tr>
+          <tr><td>\(10^{-21}\)</td><td>zepto</td><td>z</td></tr>
+          <tr><td>\(10^{-24}\)</td><td>iocto</td><td>y</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Prefixos — a tabela da apostila</h2>
+    <figure>
+      <img src="img/prefixos.png" alt="Tabela de prefixos do Sistema Internacional, dos fatores 10 elevado a 24 até 10 elevado a menos 24, com nome e símbolo de cada prefixo.">
+    </figure>
+  </section>
+
+  <section>
+    <h2>Convertendo para unidades maiores</h2>
+    <p>Um fio de linha medido com as três réguas:</p>
+    <table class="tabela-compacta">
+      <thead><tr><th>Instrumento</th><th>Comprimento \(l_f\)</th><th class="num">A. S.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>decimetrada</td>
+          <td>18,<span class="dv">7</span> dm = 1,8<span class="dv">7</span> m = 0,18<span class="dv">7</span> dam = 0,018<span class="dv">7</span> hm = 0,0018<span class="dv">7</span> km</td>
+          <td class="num">3</td>
+        </tr>
+        <tr>
+          <td>centimetrada</td>
+          <td>186,<span class="dv">6</span> cm = 1,86<span class="dv">6</span> m = 0,186<span class="dv">6</span> dam = 0,0186<span class="dv">6</span> hm = 0,00186<span class="dv">6</span> km</td>
+          <td class="num">4</td>
+        </tr>
+        <tr>
+          <td>milimetrada</td>
+          <td>1865,<span class="dv">4</span> mm = 1,865<span class="dv">4</span> m = 0,1865<span class="dv">4</span> dam = 0,01865<span class="dv">4</span> hm = 0,001865<span class="dv">4</span> km</td>
+          <td class="num">5</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Os zeros que surgem à esquerda <strong>não são significativos</strong>: apenas
+      fixam a posição da vírgula. A quantidade de algarismos não muda em nenhuma linha.
+    </p>
+  </section>
+
+  <section>
+    <h2>Convertendo para unidades menores</h2>
+    <p>Aqui mora a armadilha. Queremos escrever 18,<span class="dv">7</span> dm em milímetros.</p>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Errado</span>
+      <p>
+        \(18{,}7\ \mathrm{dm} = 1870\ \mathrm{mm}\) — isso transforma três algarismos
+        significativos em quatro, como se a medida tivesse sido feita com uma régua
+        centimetrada. É falso.
+      </p>
+    </div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Correto</span>
+      <p>
+        \(18{,}7\ \mathrm{dm} = 18\underline{7}\times 10\ \mathrm{mm}\)
+      </p>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra</span>
+      <p>
+        Para converter a uma unidade <strong>menor</strong>, multiplique por uma
+        potência de 10 — nunca acrescente zeros à direita.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Convertendo para unidades menores — a tabela completa</h2>
+    <table class="tabela-compacta">
+      <thead><tr><th>Instrumento</th><th>Comprimento \(l_f\)</th><th class="num">A. S.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>decimetrada</td>
+          <td>18,<span class="dv">7</span> dm = 18<span class="dv">7</span> cm = 18<span class="dv">7</span>×10 mm = 18<span class="dv">7</span>×10⁴ μm = 18<span class="dv">7</span>×10⁷ nm = 18<span class="dv">7</span>×10⁸ Å</td>
+          <td class="num">3</td>
+        </tr>
+        <tr>
+          <td>centimetrada</td>
+          <td>186,<span class="dv">6</span> cm = 186<span class="dv">6</span> mm = 186<span class="dv">6</span>×10³ μm = 186<span class="dv">6</span>×10⁶ nm = 186<span class="dv">6</span>×10⁷ Å</td>
+          <td class="num">4</td>
+        </tr>
+        <tr>
+          <td>milimetrada</td>
+          <td>1865,<span class="dv">4</span> mm = 1865<span class="dv">4</span>×10² μm = 1865<span class="dv">4</span>×10⁵ nm = 1865<span class="dv">4</span>×10⁶ Å</td>
+          <td class="num">5</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">1 Å = 10⁻¹⁰ m.</p>
+  </section>
+
+  <section>
+    <h2>Notação científica</h2>
+    <p>Considere: 30 dm, 300 cm e 3000 mm. Mesma dimensão, três medidas diferentes —
+      dois, três e quatro algarismos significativos.</p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Forma padrão</span>
+      <p>
+        Um único algarismo significativo antes da vírgula, o primeiro à esquerda,
+        multiplicado por uma potência de dez:
+      </p>
+    </div>
+    $$ x = a \times 10^{n}, \qquad 1 \le a < 10. $$
+    <p>O expoente \(n\) representa a <strong>ordem de grandeza</strong> da medida.</p>
+  </section>
+
+  <section>
+    <h3>As três medidas, agora em micrometros</h3>
+    <div class="conta">30   dm = 30  ×10⁵ μm = 3,<span class="dv">0</span>    ×10⁶ μm     (2 a.s.)
+300  cm = 300 ×10⁴ μm = 3,0<span class="dv">0</span>   ×10⁶ μm     (3 a.s.)
+3000 mm = 3000×10³ μm = 3,00<span class="dv">0</span>  ×10⁶ μm     (4 a.s.)</div>
+    <div class="bloco">
+      <span class="bloco-titulo">A vantagem</span>
+      <p>
+        Em notação científica <strong>só aparecem os algarismos significativos</strong>.
+        Os zeros de posicionamento simplesmente somem.
+      </p>
+      <p style="margin-top:.4em">
+        \(18{,}7\ \mathrm{dm} = 0{,}00187\ \mathrm{km} = 1{,}87\times10^{-3}\ \mathrm{km}\)
+        — os três algarismos, e nada além deles.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Exemplos em notação científica</h2>
+    <table class="tabela-compacta">
+      <thead><tr><th>Medida</th><th class="num">Alg. significativos</th></tr></thead>
+      <tbody>
+        <tr><td>\(4\ \mathrm{N/m^2} = 4\times10^{0}\ \mathrm{N/m^2}\)</td><td class="num">um</td></tr>
+        <tr><td>\(0{,}0000013\ \mathrm{g} = 1{,}3\times10^{-6}\ \mathrm{g}\)</td><td class="num">dois</td></tr>
+        <tr><td>\(760\ \mathrm{mm\text{-}Hg} = 7{,}60\times10^{2}\ \mathrm{mm\text{-}Hg}\)</td><td class="num">três</td></tr>
+        <tr><td>\(0{,}003671\ \mathrm{K^{-1}} = 3{,}671\times10^{-3}\ \mathrm{K^{-1}}\)</td><td class="num">quatro</td></tr>
+        <tr><td>\(980{,}66\ \mathrm{cm/s^2} = 9{,}8066\times10^{2}\ \mathrm{cm/s^2}\)</td><td class="num">cinco</td></tr>
+        <tr><td>\(299776\ \mathrm{km/s} = 2{,}99776\times10^{5}\ \mathrm{km/s}\)</td><td class="num">seis</td></tr>
+        <tr><td>\(5000000\ \mathrm{eV/C} = 5{,}000000\times10^{6}\ \mathrm{eV/C}\)</td><td class="num">sete</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Conversões resolvidas — áreas e volumes</h2>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Eleve a unidade junto com o número</span>
+    </div>
+    $$ 123{,}89\ \mathrm{km^3} = 123{,}89\,(1\times10^{6}\ \mathrm{mm})^3
+       = 123{,}89\times10^{18}\ \mathrm{mm^3} = 1{,}2389\times10^{20}\ \mathrm{mm^3} $$
+    $$ 1{,}576\ \mathrm{cm^2} = 1{,}576\,(1\times10^{-4}\ \mathrm{hm})^2
+       = 1{,}576\times10^{-8}\ \mathrm{hm^2} $$
+    $$ 984{,}7\ \mathrm{mm^3} = 984{,}7\,(1\times10^{-3}\ \mathrm{m})^3
+       = 984{,}7\times10^{-9}\ \mathrm{m^3} = 9{,}847\times10^{-7}\ \mathrm{m^3} $$
+    <p class="legenda-dv">Em todos os casos, a quantidade de algarismos significativos é preservada.</p>
+  </section>
+
+  <section>
+    <h2>Conversões resolvidas — unidades compostas</h2>
+    $$ 1{,}3\ \mathrm{km/h} = 1{,}3\,\frac{1\times10^{3}\ \mathrm{m}}{3600\ \mathrm{s}}
+       = 0{,}36111\ldots\ \mathrm{m/s} = 3{,}6\times10^{-1}\ \mathrm{m/s} $$
+    $$ 148{,}0\ \frac{\mathrm{N}}{\mathrm{m^2}}
+       = 148{,}0\ \frac{\mathrm{kg}}{\mathrm{m\cdot s^2}}
+       = 148{,}0\ \frac{1\times10^{3}\ \mathrm{g}}{(1\times10^{2}\ \mathrm{cm})\,\mathrm{s^2}}
+       = 1{,}480\times10^{3}\ \mathrm{g\,cm^{-1}s^{-2}} $$
+    <p class="legenda-dv">Repare que a unidade é operada exatamente como o número.</p>
+  </section>
+
+  <section>
+    <h2>Conversões resolvidas — tempo</h2>
+    $$ 1{,}290\ \mathrm{s} = 1{,}290\left(\tfrac{1}{60}\right)\left(\tfrac{1}{60}\right)
+       \left(\tfrac{1}{24}\right)\left(\tfrac{1}{365{,}25}\right)\ \mathrm{ano}
+       = 4{,}088\times10^{-8}\ \mathrm{ano} $$
+    $$ 493{,}70\ \mathrm{anos} = 493{,}70 \times 365{,}25\ \mathrm{dias}
+       \times \tfrac{24\,\mathrm{h}}{1\,\mathrm{dia}}
+       \times \tfrac{60\,\mathrm{min}}{1\,\mathrm{h}}
+       \times \tfrac{60\,\mathrm{s}}{1\,\mathrm{min}}
+       = 1{,}5580\times10^{10}\ \mathrm{s} $$
+    <div class="bloco">
+      <span class="bloco-titulo">Note</span>
+      <p>
+        Os fatores de conversão (60, 24, 365,25) são <strong>números exatos</strong>:
+        não limitam a quantidade de algarismos significativos do resultado.
+      </p>
+    </div>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     4. OPERAÇÕES
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 4</p>
+    <h2>Operações com algarismos significativos</h2>
+    <p>Adição, subtração, multiplicação, divisão — e tudo o mais.</p>
+  </section>
+
+  <section>
+    <h2>O princípio único</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Vale para toda operação</span>
+      <p>
+        O resultado <strong>não pode</strong> ter precisão maior do que a da medida
+        “mais pobre” que entrou na conta.
+      </p>
+    </div>
+    <ul>
+      <li>Efetue a operação <strong>normalmente</strong>;</li>
+      <li>arredonde <strong>apenas no final</strong>, conforme a regra da operação;</li>
+      <li>apresente o resultado em notação científica, com unidade.</li>
+    </ul>
+    <p class="legenda-dv">
+      É natural precisar operar medidas feitas com instrumentos de precisões diferentes —
+      é para isso que servem estas regras.
+    </p>
+  </section>
+
+  <!-- ------------------------- ADIÇÃO ------------------------- -->
+
+  <section>
+    <h3>Exemplo 4 — somando tábuas</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        Com réguas decimetrada, centimetrada e milimetrada mediram-se os comprimentos
+        de algumas tábuas. Qual é o comprimento total?
+      </p>
+    </div>
+    <div class="colunas">
+      <ul>
+        <li>2355,<span class="dv">1</span> mm</li>
+        <li>11,<span class="dv">1</span> dm</li>
+        <li>117,<span class="dv">3</span> cm</li>
+        <li>13,<span class="dv">5</span> mm</li>
+      </ul>
+      <ul>
+        <li>3,<span class="dv">4</span> dm</li>
+        <li>77,<span class="dv">5</span> cm</li>
+        <li>813,<span class="dv">3</span> mm</li>
+      </ul>
+    </div>
+    <p>
+      Primeiro passo: <strong>uma única unidade</strong>. A unidade de maior ordem é o dm,
+      então convertemos para o dm ou para uma unidade superior — o metro.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 4 — conversão para metros</h3>
+    <div class="conta">2355,<span class="dv">1</span> mm  =  2,355<span class="dv">1</span> m
+  11,<span class="dv">1</span> dm  =  1,1<span class="dv">1</span>    m
+ 117,<span class="dv">3</span> cm  =  1,17<span class="dv">3</span>   m
+  13,<span class="dv">5</span> mm  =  0,013<span class="dv">5</span>  m
+   3,<span class="dv">4</span> dm  =  0,3<span class="dv">4</span>    m
+  77,<span class="dv">5</span> cm  =  0,77<span class="dv">5</span>   m
+ 813,<span class="dv">3</span> mm  =  0,813<span class="dv">3</span>  m</div>
+    <p class="legenda-dv"><i></i> O algarismo duvidoso viaja com a medida: mudar de unidade não o move de posição física.</p>
+  </section>
+
+  <section>
+    <h3>Exemplo 4 — a soma</h3>
+    <div class="conta">    2,355<span class="dv">1</span> m
+  + 1,1<span class="dv">1</span>    m
+  + 1,17<span class="dv">3</span>   m
+  + 0,013<span class="dv">5</span>  m
+  + 0,3<span class="dv">4</span>    m
+  + 0,77<span class="dv">5</span>   m
+  + 0,813<span class="dv">3</span>  m
+  ─────────────
+<span class="tot">    6,57<span class="dv">9</span>9  m</span></div>
+    <p>
+      Onde um duvidoso participa da soma, o resultado naquela casa também é duvidoso.
+      Mas o resultado só pode ter <strong>um</strong> duvidoso: o “menos duvidoso de todos”,
+      o primeiro à esquerda — aqui, o <strong>9</strong> da segunda casa decimal.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 4 — o arredondamento</h3>
+    <div class="conta">6,57<span class="dv">9</span><span class="corte">9</span> m   →   6,5<span class="dv">8</span> m</div>
+    <p>
+      Despreza-se tudo o que vem depois do 9. Como a parte desprezada está mais próxima
+      de uma unidade acima, arredonda-se para cima.
+    </p>
+    <div class="bloco">
+      <span class="bloco-titulo">O que o resultado conta</span>
+      <p>
+        6,5<span class="dv">8</span> m tem o duvidoso na casa dos <strong>centímetros</strong> —
+        exatamente a posição do duvidoso da régua decimetrada, a menos precisa das três.
+        A soma não pode ser mais precisa do que a pior parcela.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 4 — por outro caminho</h3>
+    <p>Escrevendo cada medida como <em>parte certa + parte duvidosa</em>:</p>
+    <div class="conta">certas:    2,355 + 1,1 + 1,17 + 0,013 + 0,3 + 0,77 + 0,813  =  6,521 m
+duvidosas: 0,0001 + 0,01 + 0,003 + 0,0005 + 0,04 + 0,005 + 0,0003 = 0,0589 m
+─────────────────────────────────────────────────────────────────
+<span class="tot">total:     6,521 + 0,0589 = 6,5799 m  →  6,5<span class="dv">8</span> m</span></div>
+    <p>
+      A parte duvidosa acumulada (0,0589 m) já é da ordem dos centímetros. Não faz
+      sentido reportar milímetros ou décimos de milímetro no total.
+    </p>
+  </section>
+
+  <section>
+    <h2>Regra da adição</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        O resultado da adição de várias medidas de uma mesma grandeza física
+        <strong>não pode ter maior quantidade de algarismos significativos na sua parte
+        decimal</strong> do que a parte decimal <strong>mais pobre</strong> das parcelas.
+      </p>
+    </div>
+    <p>
+      No Exemplo 4, a parcela mais pobre é 0,3<span class="dv">4</span> m — duas casas
+      decimais. Logo o total tem duas casas decimais: 6,5<span class="dv">8</span> m.
+    </p>
+  </section>
+
+  <section>
+    <h2>Por que não converter para unidade menor</h2>
+    <p>Se adotássemos o milímetro no Exemplo 4, seria preciso introduzir potências de 10:</p>
+    <div class="conta">   2355,<span class="dv">1</span>  mm
+ +  11<span class="dv">1</span>×10 mm
+ +  117<span class="dv">3</span>    mm
+ +    13,<span class="dv">5</span>  mm
+ +   3<span class="dv">4</span>×10  mm
+ +   77<span class="dv">5</span>    mm
+ +  813,<span class="dv">3</span>   mm
+ ──────────────
+        ?????</div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">O problema</span>
+      <p>
+        As potências de 10 <strong>escondem a parte decimal mais pobre</strong> e a regra
+        fica impossível de aplicar. Converta sempre para uma unidade de ordem
+        <strong>superior</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------- ARREDONDAMENTO ------------------- -->
+
+  <section>
+    <h2>Critérios de arredondamento</h2>
+    <p>Arredonda-se no <strong>primeiro algarismo duvidoso à esquerda</strong>, desprezando o resto.</p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">1º caso — parte desprezada MAIOR que 5, 50, 500…</span>
+      <p>O duvidoso anterior é <strong>aumentado</strong> de uma unidade.</p>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">2º caso — parte desprezada MENOR que 5, 50, 500…</span>
+      <p>O duvidoso anterior <strong>não se altera</strong>.</p>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">3º caso — parte desprezada IGUAL a 5, 50, 500…</span>
+      <p>
+        Duvidoso anterior <strong>ímpar</strong> → aumenta.<br>
+        Duvidoso anterior <strong>par</strong> (zero incluso) → permanece.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>1º caso — parte desprezada maior que 5</h3>
+    <table class="tabela-compacta tabela-arred">
+      <tbody>
+        <tr><td>1524,<span class="dv">5</span><span class="corte">500100</span> cm³</td><td>→</td><td>1524,<span class="dv">6</span> cm³ = 1,5246×10³ cm³</td></tr>
+        <tr><td>12,1<span class="dv">2</span><span class="corte">599875</span> g</td><td>→</td><td>12,1<span class="dv">3</span> g = 1,213×10¹ g</td></tr>
+        <tr><td>204,<span class="dv">9</span><span class="corte">6501212</span> N</td><td>→</td><td>205,<span class="dv">0</span> N = 2,050×10² N</td></tr>
+        <tr><td>0,0012<span class="dv">1</span><span class="corte">521111</span> A</td><td>→</td><td>0,0012<span class="dv">2</span> A = 1,22×10⁻³ A</td></tr>
+        <tr><td>0,1<span class="dv">3</span><span class="corte">7298760</span> V</td><td>→</td><td>0,1<span class="dv">4</span> V = 1,4×10⁻¹ V</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>2º caso — parte desprezada menor que 5</h3>
+    <table class="tabela-compacta tabela-arred">
+      <tbody>
+        <tr><td>69<span class="dv">9</span>,<span class="corte">05</span> mm-Hg</td><td>→</td><td>699 mm-Hg = 6,99×10² mm-Hg</td></tr>
+        <tr><td>80,<span class="dv">0</span><span class="corte">32</span> cal/g</td><td>→</td><td>80,0 cal/g = 8,00×10¹ cal/g</td></tr>
+        <tr><td>27,<span class="dv">2</span><span class="corte">4</span> g</td><td>→</td><td>27,2 g = 2,72×10¹ g</td></tr>
+        <tr><td>4,<span class="dv">8</span><span class="corte">205</span> dyn/cm²</td><td>→</td><td>4,8 dyn/cm² = 4,8×10⁰ dyn/cm²</td></tr>
+        <tr><td>0,5<span class="dv">4</span><span class="corte">31</span> N/m</td><td>→</td><td>0,54 N/m = 5,4×10⁻¹ N/m</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>3º caso — parte desprezada exatamente 5</h3>
+    <table class="tabela-compacta tabela-arred">
+      <tbody>
+        <tr><td>1,5<span class="dv">5</span>500 Wb/m²</td><td>→</td><td>1,56 Wb/m²</td><td>ímpar, aumenta</td></tr>
+        <tr><td>0,003<span class="dv">5</span>5 cal/g</td><td>→</td><td>0,0036 cal/g = 3,6×10⁻³ cal/g</td><td>ímpar, aumenta</td></tr>
+        <tr><td>129,<span class="dv">5</span>00 g/s</td><td>→</td><td>130 g/s = 1,30×10² g/s</td><td>ímpar, aumenta</td></tr>
+        <tr><td>1,9<span class="dv">5</span>00 dyn/cm²</td><td>→</td><td>2,0 dyn/cm²</td><td>ímpar, aumenta</td></tr>
+        <tr><td>0,80<span class="dv">5</span> N/m</td><td>→</td><td>0,80 N/m = 8,0×10⁻¹ N/m</td><td>par, permanece</td></tr>
+        <tr><td>25,10<span class="dv">5</span> mm-Hg</td><td>→</td><td>25,10 mm-Hg = 2,510×10¹ mm-Hg</td><td>par, permanece</td></tr>
+        <tr><td>2<span class="dv">6</span>500 m</td><td>→</td><td>2,6×10⁴ m</td><td>par, permanece</td></tr>
+        <tr><td>2<span class="dv">8</span>,500 J</td><td>→</td><td>28 J = 2,8×10¹ J</td><td>par, permanece</td></tr>
+        <tr><td>0,000<span class="dv">4</span>500 N·m</td><td>→</td><td>0,0004 N·m = 4×10⁻⁴ N·m</td><td>par, permanece</td></tr>
+        <tr><td><span class="dv">9</span>,50000 C/g</td><td>→</td><td>1×10¹ C/g</td><td>ímpar, aumenta</td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">A última linha é a mais instrutiva: 9 aumenta para 10, e o resultado muda de ordem de grandeza.</p>
+  </section>
+
+  <section>
+    <h2>Adição — exemplos de aplicação</h2>
+    <div class="conta">5,3 m + 4,38 m                 = 9,68 m     = 9,7 m
+2 m + 22 cm + 2 mm             = 2,222 m    = 2 m
+14,54 s + 408,1 s + 0,333 s    = 422,973 s  = 423,0 s = 4,230×10² s
+1,0 g + 0,015 g                = 1,015 g    = 1,0 g</div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Atenção</span>
+      <p>
+        Embora a adição seja a mais simples das operações, é onde aparecem os erros
+        mais inacreditáveis. Efetue normalmente e arredonde <strong>apenas o resultado</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>A mesma soma, em três unidades</h3>
+    <div class="conta">0,015 cA + 7 cA + 9,1 cA + 5,93 cA        = 22,045 cA  = 22 cA  = 2,2×10⁻¹ A
+0,0015 dA + 0,7 dA + 0,91 dA + 0,593 dA  = 2,2045 dA  = 2,2 dA = 2,2×10⁻¹ A
+0,00015 A + 0,07 A + 0,091 A + 0,0593 A  = 0,22045 A  = 0,22 A = 2,2×10⁻¹ A</div>
+    <p>
+      Três caminhos, o mesmo resultado. É assim que tem de ser: a unidade escolhida
+      para fazer a conta não pode alterar a física.
+    </p>
+  </section>
+
+  <!-- ------------------------ SUBTRAÇÃO ------------------------ -->
+
+  <section>
+    <h2>Subtração</h2>
+    <p>
+      Do ponto de vista matemático, a subtração é idêntica à adição de números
+      relativos — a regra é a mesma.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        O resultado da subtração de várias medidas de uma mesma grandeza física
+        <strong>não pode ter maior quantidade de algarismos significativos na sua parte
+        decimal</strong> do que a parte decimal mais pobre das parcelas.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 5 — cortando uma tábua</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        De uma tábua de 2859,<span class="dv">0</span> mm são cortados pedaços de
+        12,<span class="dv">3</span> dm, 113,<span class="dv">7</span> cm e
+        63,<span class="dv">5</span> mm. Qual é o comprimento final?
+      </p>
+    </div>
+    <div class="conta">    2,859<span class="dv">0</span> m
+  - 1,2<span class="dv">3</span>    m
+  - 1,13<span class="dv">7</span>   m
+  - 0,063<span class="dv">5</span>  m
+  ─────────────
+<span class="tot">    0,4<span class="dv">2</span>85  m</span></div>
+    <p>
+      O primeiro duvidoso à esquerda é o <strong>2</strong>. Despreza-se o
+      <span class="corte">85</span> e arredonda-se: <strong>0,4<span class="dv">3</span> m</strong>.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 5 — leitura do resultado</h3>
+    <p>
+      O duvidoso do resultado, 0,4<span class="dv">3</span> m, está na casa dos
+      <strong>centímetros</strong> — a mesma da régua decimetrada, a menos precisa
+      das três usadas.
+    </p>
+    <div class="bloco">
+      <span class="bloco-titulo">Coerência</span>
+      <p>
+        Assim como na adição, o total não pode ter precisão maior do que a fornecida
+        pelo pior instrumento envolvido.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Contra-exemplo 6 — quando a regra deixa a desejar</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        De uma tábua de 1592,<span class="dv">0</span> mm são cortados pedaços de
+        12,<span class="dv">3</span> dm e 36,<span class="dv">1</span> cm.
+      </p>
+    </div>
+    <div class="conta">    1,592<span class="dv">0</span> m
+  - 1,2<span class="dv">3</span>    m
+  - 0,36<span class="dv">1</span>   m
+  ─────────────
+<span class="tot">    0,0<span class="dv">0</span>10  m   →   0,00 m</span></div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">O que aconteceu</span>
+      <p>
+        As conclusões sobre precisão ficam prejudicadas. Isso <strong>sempre</strong>
+        ocorre quando os valores subtraídos são muito próximos: a subtração destrói
+        algarismos significativos.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Subtração — exemplos de aplicação</h2>
+    <div class="conta">138,94 m - 12,3 m                            = 126,64 m   = 126,6 m = 1,266×10² m
+118,57 s - 58,303 s                          = 60,267 s   = 60,27 s = 6,027×10¹ s
+5,00 g - 2,016 g                             = 2,984 g    = 2,98 g
+0,00015 A + 0,072 A - 0,091 A - 0,0593 A     = -0,07815 A = -0,078 A = -7,8×10⁻² A
+1,0000 m² - 0,633 m² + 0,5 m² - 0,27 m²      = 0,597 m²   = 0,6 m²  = 6×10⁻¹ m²</div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Importante</span>
+      <p>
+        Tanto na adição quanto na subtração, o arredondamento é executado
+        <strong>após a operação</strong>, conforme a medida menos precisa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------------------- MULTIPLICAÇÃO ---------------------- -->
+
+  <section>
+    <h3>Exemplo 7 — a área de um retângulo</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>Os lados \(a\) e \(b\) de um retângulo, medidos com as três réguas:</p>
+    </div>
+    <table>
+      <thead><tr><th>Régua</th><th>Lado a</th><th>Lado b</th></tr></thead>
+      <tbody>
+        <tr><td>decimetrada</td><td>12,<span class="dv">8</span> dm</td><td>1,<span class="dv">2</span> dm</td></tr>
+        <tr><td>centimetrada</td><td>127,<span class="dv">8</span> cm</td><td>11,<span class="dv">7</span> cm</td></tr>
+        <tr><td>milimetrada</td><td>1279,<span class="dv">1</span> mm</td><td>117,<span class="dv">4</span> mm</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Multiplicamos as medidas feitas com a <strong>mesma régua</strong> — assim não
+      é preciso converter nada.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 7 — as três áreas</h3>
+    <table>
+      <thead><tr><th>Régua</th><th>Área = a · b</th></tr></thead>
+      <tbody>
+        <tr><td>decimetrada</td><td>12,8 × 1,2 = 15,36 dm² = <strong>15 dm²</strong></td></tr>
+        <tr><td>centimetrada</td><td>127,8 × 11,7 = 1495,26 cm² = <strong>150×10¹ cm²</strong></td></tr>
+        <tr><td>milimetrada</td><td>1279,1 × 117,4 = 150166,34 mm² = <strong>1502×10² mm²</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">
+      Repare: 2, 3 e 4 algarismos significativos — a quantidade do fator mais pobre em cada linha.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 7 — por que 3 algarismos?</h3>
+    <div class="conta">    1 2 7,<span class="dv">8</span>  cm   ×
+      1 1,<span class="dv">7</span>  cm
+ ──────────────────
+      8 9 4 <span class="dv">6</span>   cm²
+    1 2 7 <span class="dv">8</span>     cm²
+  1 2 7 <span class="dv">8</span>       cm²
+ ──────────────────
+<span class="tot">  1 4 <span class="dv">9</span> 5, 2 6 cm²</span>
+
+  14<span class="dv">9</span><span class="corte">5,26</span> cm²  →  150×10¹ cm² = 1,50×10³ cm²</div>
+    <p>
+      O “menos duvidoso de todos” é o <strong>9</strong>. Tudo à direita dele é
+      desprezado; como a parte desprezada é maior que 5, arredonda-se para cima.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 7 — por certo + duvidoso</h3>
+    <div class="conta">127,8 × 11,7 = (127 + 0,8) × (11 + 0,7)
+
+  = (127×11) + (127×0,7) + (0,8×11) + (0,8×0,7)
+  = 1397     + 88,9      + 8,8      + 0,56
+  = 1397 + 98,26
+<span class="tot">  = 1495,26 cm²  →  1,50×10³ cm²</span></div>
+    <p>
+      A parte duvidosa acumulada (98,26 cm²) já é da ordem da centena de cm². Reportar
+      as casas decimais de 1495,26 seria fingir uma precisão que não existe.
+    </p>
+  </section>
+
+  <section>
+    <h2>Regra da multiplicação</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        O produto de várias medidas <strong>não pode ter maior quantidade de algarismos
+        significativos do que o fator “mais pobre”</strong>.
+      </p>
+    </div>
+    <p>
+      No Exemplo 7: 127,<span class="dv">8</span> cm tem 4 algarismos e
+      11,<span class="dv">7</span> cm tem 3. Logo o produto tem
+      <strong>3 algarismos significativos</strong>.
+    </p>
+    <p class="legenda-dv">
+      Note a diferença em relação à adição: lá contavam-se <em>casas decimais</em>;
+      aqui contam-se <em>algarismos significativos</em>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Multiplicação — exemplos de aplicação</h2>
+    <div class="conta">1,52834 dm × 3,38 cm = 1,52834 dm × 0,338 dm
+                     = 0,51657892 dm² = 0,517 dm² = 5,17×10⁻¹ dm²
+
+832 N/m × 0,25 m²    = 208,00 N·m = 2,0800×10² J = 2,1×10² J
+
+0,315 μA × 5327 mΩ   = 1,678005×10⁻⁶ V = 1,68 μV
+
+(8,3 K)⁴             = 4745,8321 K⁴ = 4,7×10³ K⁴
+
+0,0001 m × 0,0198 m × 0,77 m = 1,5246×10⁻⁶ m³ = 2×10⁻⁶ m³</div>
+    <p class="legenda-dv">
+      No último caso, 0,0001 m tem <strong>um</strong> algarismo significativo — e é ele
+      quem manda no resultado.
+    </p>
+  </section>
+
+  <!-- ------------------------- DIVISÃO ------------------------- -->
+
+  <section>
+    <h2>Divisão</h2>
+    <p>
+      A divisão é idêntica à multiplicação pelo inverso:
+      \(h \div g = h \cdot g^{-1}\). A regra, portanto, é a mesma.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        O quociente de duas medidas <strong>não pode ter maior quantidade de algarismos
+        significativos do que o “mais pobre” dos termos</strong> — dividendo ou divisor.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Divisão — exemplos de aplicação</h2>
+    <div class="conta">57,38 cm / 2,1 s        = 27,32380952 cm/s   = 27 cm/s = 2,7×10¹ cm/s
+
+1,68 V / 5327 Ω         = 3,15374507×10⁻⁴ A  = 3,15×10⁻⁴ A
+
+8,44444 g / 10,76 cm³   = 0,784799256 g/cm³  = 0,7848 g/cm³ = 7,848×10⁻¹ g/cm³
+
+183,965 μm / 2,2000 cm  = 0,0183965 cm / 2,2000 cm
+                        = 8,362045454×10⁻³   = 8,3620×10⁻³</div>
+    <p class="legenda-dv">
+      O último resultado é <strong>adimensional</strong> — cm dividido por cm. Mesmo assim
+      as regras valem: 5 algarismos significativos, ditados por 2,2000 cm.
+    </p>
+  </section>
+
+  <!-- ------------------- OUTRAS OPERAÇÕES ------------------- -->
+
+  <section>
+    <h2>Radiciação, logaritmo, potenciação…</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra</span>
+      <p>
+        Nas demais operações — radiciação, logaritmação, potenciação, exponenciação e
+        funções especiais (trigonométricas, hiperbólicas) — efetue normalmente e
+        arredonde o resultado mantendo <strong>a mesma quantidade de algarismos
+        significativos da medida operada</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Operações em que a unidade também é operada</h3>
+    <div class="conta">∛(351,113 m²)²  = (351,113 m²)^(2/3) = 49,76965226 m^(4/3) = 4,97697×10¹ m^(4/3)
+
+(1,68 V)^(-π)   = 0,1959611664 V^(-π)  = 1,96×10⁻¹ V^(-π)
+
+(444,4 °C)^2,5  = 4163275,259 °C^2,5   = 4,163×10⁶ °C^2,5
+
+(0,0081 g/h)⁻¹  = 123,4567901 (g/h)⁻¹  = 1,2×10² (g/h)⁻¹
+
+(0,006×10⁴ mm)² = 3600,000000 mm²      = 4×10³ mm²</div>
+    <p class="legenda-dv">
+      O último caso: 0,006 tem <strong>um</strong> algarismo significativo, então o
+      resultado também tem um só.
+    </p>
+  </section>
+
+  <section>
+    <h3>Operações cujo resultado é adimensional</h3>
+    <div class="conta">cos(π rad)                        = -1,00000…
+
+sen(0,707 rad)                    = 0,6495557556   = 0,650
+
+tan(181,97°)                      = 0,0343965417   = 3,4397×10⁻²
+
+log(8,362045×10⁻¹³ W/m²)          = -12,07768749   = -1,207769×10¹
+
+ln(3,601×10² K/mm³)               = 5,886381771    = 5,886
+
+e^(-18,1) = exp(-18,1)            = 1,378065555×10⁻⁸ = 1,38×10⁻⁸</div>
+    <p class="legenda-dv">
+      A quantidade de algarismos do resultado acompanha a da medida que entrou na função.
+    </p>
+  </section>
+
+  <!-- --------------- FÓRMULAS COM MEDIDAS DIRETAS --------------- -->
+
+  <section>
+    <h2>Fórmulas com uma única medida direta</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra</span>
+      <p>
+        As constantes e números da fórmula (π, 2, 3…) são operados normalmente. No
+        final, arredonde para a <strong>mesma quantidade de algarismos significativos
+        da medida direta</strong>.
+      </p>
+    </div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Exemplo 8 — volume de uma esfera</span>
+      <p>
+        Com uma régua decimetrada mediu-se o diâmetro de uma esfera:
+        \(d = 40{,}\underline{0}\ \mathrm{dm}\). Qual é o volume?
+      </p>
+    </div>
+    $$ V = \frac{4\pi r^3}{3} = \frac{\pi d^{3}/2}{3}
+       = \frac{\pi\,(40{,}0\ \mathrm{dm})^{3}/2}{3} = 33510{,}321638\ \mathrm{dm^3} $$
+    $$ V = 3{,}35\times10^{4}\ \mathrm{dm^3} = 3{,}35\times10^{1}\ \mathrm{m^3} $$
+    <p class="legenda-dv">Três algarismos significativos — os mesmos de 40,<span class="dv">0</span> dm.</p>
+  </section>
+
+  <section>
+    <h2>Fórmulas com duas ou mais medidas diretas</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Regra</span>
+      <p>
+        O resultado tem a mesma quantidade de algarismos significativos da medida direta
+        <strong>mais pobre</strong>.
+      </p>
+    </div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Exemplo 9 — área de um triângulo</span>
+      <p>
+        Com uma régua centimetrada: \(b = 21{,}\underline{3}\ \mathrm{cm}\) e
+        \(h = 1{,}\underline{5}\ \mathrm{cm}\).
+      </p>
+    </div>
+    $$ A = \frac{b\,h}{2} = \frac{21{,}3\ \mathrm{cm}\times 1{,}5\ \mathrm{cm}}{2}
+       = 15{,}975\ \mathrm{cm^2} = 16\ \mathrm{cm^2} = 1{,}6\times10^{1}\ \mathrm{cm^2} $$
+    <p>
+      A altura tem apenas <strong>dois</strong> algarismos significativos — e é ela quem
+      limita o resultado, mesmo a base tendo três.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 10 — impedância de um circuito RLC</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Dados medidos</span>
+      <p>
+        \(f = 60\ \mathrm{Hz}\) · \(L = 18{,}91\ \mathrm{mH}\) ·
+        \(C = 15{,}42\ \mathrm{\mu F}\) · \(R = 173{,}0\ \Omega\)
+      </p>
+    </div>
+    $$ Z = \sqrt{R^{2} + \left[2\pi f L - \frac{1}{2\pi f C}\right]^{2}} $$
+    <p>
+      A medida direta mais pobre é a frequência, \(f = 60\ \mathrm{Hz}\), com
+      <strong>dois</strong> algarismos significativos. O resultado terá dois.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 10 — arredondando a cada passo</h3>
+    <div class="conta">R²         = (173,0 Ω)²                    = 29929,00 Ω²      = 2,993×10⁴ Ω²
+2πfL       = 2π × 60 Hz × 18,91 mH          = 7,12890204952 Ω  = 7,1 Ω
+2πfC       = 2π × 60 Hz × 15,42 μF          = 0,0058132030 Ω⁻¹ = 5,8×10⁻³ Ω⁻¹
+1/(2πfC)   = 1/(5,8×10⁻³ Ω⁻¹)               = 172,413793 Ω     = 1,7×10² Ω
+
+[2πfL - 1/(2πfC)]² = [7,1 - 1,7×10²]² = [-162,9]² = [-1,6×10²]² = 2,6×10⁴ Ω²
+
+Z = √(2,993×10⁴ + 2,6×10⁴) = √(5,6×10⁴) = 236,64 Ω
+<span class="tot">Z = 2,4×10² Ω</span></div>
+  </section>
+
+  <section>
+    <h3>Exemplo 10 — arredondando só no final</h3>
+    <p>
+      A cada arredondamento intermediário descartamos informação. Uma forma de
+      minimizar isso é operar a fórmula inteira e arredondar apenas o resultado:
+    </p>
+    <div class="conta">Z = √{(173,0)² + [2π·60·18,91×10⁻³ - 1/(2π·60·15,42×10⁻⁶)]²}
+  = 238,9953995597 Ω
+<span class="tot">Z = 2,4×10² Ω</span></div>
+    <div class="bloco">
+      <span class="bloco-titulo">Conclusão</span>
+      <p>
+        Aqui os dois caminhos coincidem. Em geral, a discrepância aparece apenas
+        <strong>no algarismo duvidoso em diante</strong>, o que é aceitável — e arredondar
+        só no final dá muito menos trabalho.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Conversão por fator — exemplos</h2>
+    <div class="conta">143,45 grau × 0,01745329252 rad/grau  = 2,503674811994 rad = 2,5037 rad
+
+1,020 rad × 57,2957795131 grau/rad    = 58,441695103 grau  = 58,44 grau
+
+33,65479 cm × (1 pol / 2,540 cm)      = 13,24991732 pol    = 13,25 pol
+
+218,809765 u × 1,661×10⁻²⁴ g/u        = 3,6344301967×10⁻²² g = 3,634×10⁻²² g
+
+7,841009×10⁻⁶ cal × 4,186 J/cal       = 3,2822463674×10⁻⁵ J  = 3,282×10⁻⁵ J</div>
+    <p class="legenda-dv">
+      O fator de conversão também é uma medida: em três dos casos acima é ele quem
+      limita o resultado.
+    </p>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     5. ERROS
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 5</p>
+    <h2>Erros experimentais</h2>
+    <p>De onde vêm, como se classificam e o que se pode fazer com cada tipo.</p>
+  </section>
+
+  <section>
+    <h2>Por que falar de erros</h2>
+    <ul>
+      <li>Por mais preciso que seja o instrumento, os dados experimentais
+        <strong>sempre</strong> contêm erros.</li>
+      <li>Um número sem avaliação do erro <strong>não tem muito significado</strong>
+        como medida.</li>
+      <li>O valor real do erro permanece desconhecido — a teoria de erros limita-se a
+        <strong>estimar o erro máximo</strong> que a medida pode ter.</li>
+    </ul>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Erro ≠ engano</span>
+      <p>
+        O <strong>engano</strong> (ou erro grosseiro) vem da falta de habilidade de quem
+        mede e é perfeitamente evitável. Quando dizemos “erro”, falamos daqueles que
+        são <strong>inevitáveis</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>a) Erro de escala</h2>
+    <p>É o erro devido ao <strong>limite de precisão do instrumento</strong>.</p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Estimativa usual</span>
+      <p>
+        Metade da menor divisão da escala. Numa régua milimetrada, 0,5 mm;
+        numa centimetrada, 0,5 cm.
+      </p>
+    </div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Exemplo</span>
+      <p>
+        Lendo 583,<span class="dv">4</span> mm numa régua milimetrada, escreve-se
+        \((583{,}4 \pm 0{,}5)\ \mathrm{mm}\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>b) Erro sistemático</h2>
+    <p>
+      Perturba <strong>todas</strong> as medidas sempre da mesma forma, afastando os
+      valores do valor provável <strong>em um sentido definido</strong> — sempre para
+      mais ou sempre para menos.
+    </p>
+    <div class="bloco">
+      <span class="bloco-titulo">A boa notícia</span>
+      <p>
+        Como segue um padrão, é possível <strong>descobrir sua origem e eliminá-lo</strong>.
+      </p>
+    </div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Exemplo</span>
+      <p>
+        Um ponteiro de medidor analógico torto ou descalibrado para a direita indicará
+        sempre leituras maiores do que as corretas.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>c) Erro aleatório (randômico)</h2>
+    <p>
+      Ocorre <strong>totalmente ao acaso</strong>, sem qualquer sentido ou
+      previsibilidade.
+    </p>
+    <ul>
+      <li>É a soma de pequenas perturbações inevitáveis: vibrações, calor, campos
+        externos, oxidações…</li>
+      <li>Está fora do controle — e, na maioria das vezes, do conhecimento — de quem mede.</li>
+      <li>Não pode ser evitado: tem de ser <strong>tratado estatisticamente</strong>.</li>
+    </ul>
+    <p class="legenda-dv">
+      Foi para tratar erros aleatórios que se desenvolveram as teorias estatísticas,
+      inicialmente por Gauss.
+    </p>
+  </section>
+
+  <section>
+    <h2>Erro máximo</h2>
+    <p>O erro máximo na medida, também chamado <strong>desvio da medida</strong>, é a soma de todos:</p>
+    $$ \Delta x = \text{erro}_{\text{escala}} + \text{erro}_{\text{sistemático}}
+       + \text{erro}_{\text{aleatório}} $$
+    <div class="colunas-3">
+      <div class="bloco">
+        <span class="bloco-titulo">Escala</span>
+        <p>Bem conhecido.</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Sistemático</span>
+        <p>Pode ser consertado.</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Aleatório</span>
+        <p>Desconhecido e não consertável.</p>
+      </div>
+    </div>
+    <p>
+      Na prática, o erro máximo costuma ser <strong>dominado por um dos três</strong> —
+      por exemplo, quando o erro de escala é muito maior que os demais.
+    </p>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     6. TRATAMENTO ESTATÍSTICO
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 6</p>
+    <h2>Tratamento estatístico</h2>
+    <p>Se as medidas de uma grandeza não são todas iguais, como comunicar o seu valor?</p>
+  </section>
+
+  <section>
+    <h2>Média — o valor mais provável</h2>
+    <p>
+      Para um número <em>infinito</em> de medidas, a média aritmética é o valor
+      verdadeiro. Na prática fazemos \(n\) medidas, e obtemos uma
+      <strong>estimativa</strong>:
+    </p>
+    $$ \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+       = \frac{x_1 + x_2 + \cdots + x_n}{n} $$
+    <p>
+      \(\bar{x}\) aproxima-se tanto mais do valor verdadeiro \(X\) quanto maior for \(n\).
+      Por isso a média é chamada de <strong>valor mais provável</strong> da grandeza.
+    </p>
+  </section>
+
+  <section>
+    <h2>Desvio de uma medida</h2>
+    <p>É a diferença entre a \(i\)-ésima medida e a média:</p>
+    $$ \Delta x_i = x_i - \bar{x} $$
+    <p>
+      Esse desvio pode ser positivo ou negativo. Para estimar efetivamente o desvio,
+      usa-se o <strong>desvio absoluto</strong>:
+    </p>
+    $$ |\Delta x_i| = |x_i - \bar{x}| $$
+  </section>
+
+  <section>
+    <h2>Desvio médio</h2>
+    <p>É a média aritmética dos módulos dos desvios:</p>
+    $$ \overline{\Delta x} = \frac{1}{n}\sum_{i=1}^{n}|\Delta x_i|
+       = \frac{1}{n}\sum_{i=1}^{n}|x_i - \bar{x}| $$
+    <div class="bloco">
+      <span class="bloco-titulo">Por que o módulo</span>
+      <p>
+        Somando os desvios com seus sinais, eles poderiam se cancelar completamente e
+        resultar em média nula — o que não é a informação correta. O objetivo é sempre
+        estimar o <strong>erro máximo</strong>.
+      </p>
+    </div>
+    <p>Comunica-se então: \(x = \bar{x} \pm \overline{\Delta x}\).</p>
+  </section>
+
+  <section>
+    <h2>Desvio padrão da medida</h2>
+    <p>Dá uma ideia da <strong>dispersão</strong> das medidas em torno do valor médio:</p>
+    $$ \sigma_x = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left(x_i-\bar{x}\right)^{2}} $$
+    <ul>
+      <li>Informa a incerteza com que um dado <strong>conjunto</strong> de medidas foi realizado.</li>
+      <li>Fala sobre a precisão do instrumento e o rigor do processo.</li>
+      <li>Dá a “largura” do valor mais provável.</li>
+    </ul>
+    <p>
+      Adotaremos, daqui em diante, o erro aleatório provável como sendo o próprio
+      desvio padrão: \(\text{erro}_{\text{aleatório}} = \sigma_x\).
+    </p>
+  </section>
+
+  <section>
+    <h2>O procedimento padrão</h2>
+    <ol>
+      <li>Realizar as medidas (determinar os \(x_i\));</li>
+      <li>calcular a média \(\bar{x}\);</li>
+      <li>calcular os desvios de cada medida, \(\Delta x_i\);</li>
+      <li>calcular os \((\Delta x_i)^2\);</li>
+      <li>calcular o desvio padrão \(\sigma_x\);</li>
+      <li>informar o resultado no formato \(x = \bar{x} \pm \sigma_x\).</li>
+    </ol>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Sempre</span>
+      <p>
+        As regras de operação com algarismos significativos e os critérios de
+        arredondamento <strong>continuam valendo</strong>. Apresente o resultado,
+        preferencialmente, em notação científica e com a unidade adequada.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 11 — 50 medidas de um comprimento</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Enunciado</span>
+      <p>
+        Um grupo de alunos mediu o comprimento \(L\) de objetos idênticos com uma
+        <strong>régua centimetrada</strong> e obteve 50 leituras. Vamos organizá-las
+        por frequência \(f\).
+      </p>
+    </div>
+    <table class="tabela-compacta">
+      <thead>
+        <tr><th class="num">f</th><th class="num">Lᵢ (cm)</th><th class="num">ΔLᵢ (cm)</th><th class="num">(ΔLᵢ)² (cm²)</th>
+            <th class="num">f</th><th class="num">Lᵢ (cm)</th><th class="num">ΔLᵢ (cm)</th><th class="num">(ΔLᵢ)² (cm²)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">1</td><td class="num">240,4</td><td class="num">−0,6</td><td class="num">0,36</td>
+            <td class="num">7</td><td class="num">241,0</td><td class="num">0,0</td><td class="num">0,00</td></tr>
+        <tr><td class="num">2</td><td class="num">240,5</td><td class="num">−0,5</td><td class="num">0,25</td>
+            <td class="num">6</td><td class="num">241,1</td><td class="num">0,1</td><td class="num">0,01</td></tr>
+        <tr><td class="num">3</td><td class="num">240,6</td><td class="num">−0,4</td><td class="num">0,16</td>
+            <td class="num">5</td><td class="num">241,2</td><td class="num">0,2</td><td class="num">0,04</td></tr>
+        <tr><td class="num">4</td><td class="num">240,7</td><td class="num">−0,3</td><td class="num">0,09</td>
+            <td class="num">4</td><td class="num">241,3</td><td class="num">0,3</td><td class="num">0,09</td></tr>
+        <tr><td class="num">5</td><td class="num">240,8</td><td class="num">−0,2</td><td class="num">0,04</td>
+            <td class="num">3</td><td class="num">241,4</td><td class="num">0,4</td><td class="num">0,16</td></tr>
+        <tr><td class="num">6</td><td class="num">240,9</td><td class="num">−0,1</td><td class="num">0,01</td>
+            <td class="num">2</td><td class="num">241,5</td><td class="num">0,5</td><td class="num">0,25</td></tr>
+        <tr><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td>
+            <td class="num">1</td><td class="num">241,6</td><td class="num">0,6</td><td class="num">0,36</td></tr>
+        <tr><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td>
+            <td class="num">1</td><td class="num">241,7</td><td class="num">0,7</td><td class="num">0,49</td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">Total: n = 50 medidas.</p>
+  </section>
+
+  <section>
+    <h3>Exemplo 11 — histograma</h3>
+    <figure>
+      <svg viewBox="0 0 720 300" width="100%" style="max-height:52vh" role="img"
+           aria-label="Histograma das 50 leituras: a frequência cresce de 1 em 240,4 cm até 7 em 241,0 cm e decresce simetricamente até 241,7 cm. A faixa entre 240,7 e 241,3 cm concentra 37 das 50 medidas.">
+        <!-- faixa x̄ ± σ = [240,7 ; 241,3] cm -->
+        <rect x="186" y="52" width="298" height="188" fill="#e6b75c" opacity="0.18"/>
+        <!-- grade de frequência -->
+        <g stroke="#102333" stroke-opacity="0.13">
+          <line x1="52" y1="192" x2="668" y2="192"/>
+          <line x1="52" y1="144" x2="668" y2="144"/>
+          <line x1="52" y1="96"  x2="668" y2="96"/>
+        </g>
+        <g fill="#607080" font-family="DM Mono, monospace" font-size="11" text-anchor="end">
+          <text x="44" y="196">2</text>
+          <text x="44" y="148">4</text>
+          <text x="44" y="100">6</text>
+        </g>
+        <line x1="52" y1="60" x2="52" y2="240" stroke="#102333" stroke-width="1.5"/>
+        <g fill="#1e5c83">
+          <rect x="66"  y="216" width="34" height="24"/>
+          <rect x="108" y="192" width="34" height="48"/>
+          <rect x="150" y="168" width="34" height="72"/>
+          <rect x="192" y="144" width="34" height="96"/>
+          <rect x="234" y="120" width="34" height="120"/>
+          <rect x="276" y="96"  width="34" height="144"/>
+          <rect x="318" y="72"  width="34" height="168"/>
+          <rect x="360" y="96"  width="34" height="144"/>
+          <rect x="402" y="120" width="34" height="120"/>
+          <rect x="444" y="144" width="34" height="96"/>
+          <rect x="486" y="168" width="34" height="72"/>
+          <rect x="528" y="192" width="34" height="48"/>
+          <rect x="570" y="216" width="34" height="24"/>
+          <rect x="612" y="216" width="34" height="24"/>
+        </g>
+        <!-- média -->
+        <line x1="335" y1="30" x2="335" y2="248" stroke="#b9494d" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="335" y="22" fill="#b9494d" font-family="DM Mono, monospace" font-size="13" text-anchor="middle">x̄ = 241,0 cm</text>
+        <!-- extremos da faixa x̄ ± σ -->
+        <g fill="#8a6a1f" font-family="DM Mono, monospace" font-size="11">
+          <text x="190" y="66">x̄ − σ</text>
+          <text x="480" y="66" text-anchor="end">x̄ + σ</text>
+        </g>
+        <!-- eixo -->
+        <line x1="52" y1="240" x2="668" y2="240" stroke="#102333" stroke-width="1.5"/>
+        <g fill="#607080" font-family="DM Mono, monospace" font-size="11" text-anchor="middle">
+          <text x="83"  y="258">240,4</text>
+          <text x="167" y="258">240,6</text>
+          <text x="251" y="258">240,8</text>
+          <text x="335" y="258">241,0</text>
+          <text x="419" y="258">241,2</text>
+          <text x="503" y="258">241,4</text>
+          <text x="587" y="258">241,6</text>
+        </g>
+        <text x="360" y="284" fill="#607080" font-family="DM Mono, monospace" font-size="12" text-anchor="middle">L (cm)</text>
+        <text x="24" y="150" fill="#607080" font-family="DM Mono, monospace" font-size="12"
+              transform="rotate(-90 24 150)" text-anchor="middle">frequência f</text>
+      </svg>
+      <figcaption>
+        Figura 2 — as medidas distribuem-se quase simetricamente em torno da média.
+        Na faixa destacada, \(\bar{L} \pm \sigma_L = [240{,}7\,;\,241{,}3]\ \mathrm{cm}\),
+        estão 37 das 50 medidas: 74% do total.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h3>Exemplo 11 — a) valor mais provável</h3>
+    $$ \bar{L} = \frac{1}{50}\sum_{i=1}^{50} L_i
+       = \frac{12050{,}7\ \mathrm{cm}}{50} = 241{,}014\ \mathrm{cm} $$
+    <div class="bloco regra">
+      <span class="bloco-titulo">O corte vem do instrumento</span>
+      <p>
+        Numa régua centimetrada, o duvidoso está na casa dos <strong>décimos de
+        centímetro</strong>. A média não pode ter algarismos significativos além
+        dessa casa:
+      </p>
+    </div>
+    $$ \bar{L} = 241{,}014\ \mathrm{cm} = 241{,}\underline{0}\ \mathrm{cm} $$
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Se ignorássemos isso</span>
+      <p>
+        Com 10 000 medidas alguém poderia anunciar \(\bar{L} = 241{,}0138\ \mathrm{cm}\) —
+        colocando o duvidoso na casa dos micrometros. Com uma régua centimetrada,
+        isso é <strong>falso</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 11 — b) desvio médio</h3>
+    $$ \overline{\Delta L} = \frac{1}{50}\sum_{i=1}^{50}|L_i - \bar{L}|
+       = \frac{11{,}9\ \mathrm{cm}}{50} = 0{,}238\ \mathrm{cm} = 0{,}2\ \mathrm{cm} $$
+    <p>E se usássemos os desvios <em>com sinal</em>?</p>
+    $$ \frac{1}{50}\sum_{i=1}^{50}(L_i - \bar{L}) = \frac{0{,}7\ \mathrm{cm}}{50}
+       = 0{,}014\ \mathrm{cm} = 0{,}0\ \mathrm{cm} $$
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Nada de útil</span>
+      <p>Os desvios se cancelam. É exatamente por isso que se usa o módulo.</p>
+    </div>
+    $$ L = \bar{L} \pm \overline{\Delta L} = (241{,}0 \pm 0{,}2)\ \mathrm{cm} $$
+  </section>
+
+  <section>
+    <h3>Exemplo 11 — c) desvio padrão</h3>
+    $$ \sigma_L = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(\Delta L_i)^2}
+       = \sqrt{\frac{4{,}41\ \mathrm{cm^2}}{49}} = 0{,}300\ \mathrm{cm}
+       = 0{,}3\ \mathrm{cm} $$
+    <p>Como o erro aleatório contribui tanto para mais quanto para menos:</p>
+    $$ L = \bar{L} \pm \sigma_L = (241{,}0 \pm 0{,}3)\ \mathrm{cm} $$
+    <p class="legenda-dv">
+      Note que 37 das 50 medidas (74%) caem no intervalo
+      \([240{,}7\,;\,241{,}3]\ \mathrm{cm}\), isto é, \(\bar{L} \pm \sigma_L\).
+    </p>
+  </section>
+
+  <section>
+    <h2>Mais medidas: o que melhora e o que não melhora</h2>
+    <div class="colunas">
+      <div class="bloco atencao">
+        <span class="bloco-titulo">Não melhora</span>
+        <p>
+          A <strong>precisão</strong> da média. A quantidade de algarismos significativos
+          é ditada pelo instrumento, não por \(n\). Para mais algarismos, troque a régua
+          centimetrada por uma milimetrada ou por um paquímetro.
+        </p>
+      </div>
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Melhora</span>
+        <p>
+          O <strong>erro aleatório</strong>, que diminui com \(n\):
+        </p>
+        <p style="margin-top:.4em">\(\sigma_{\bar{x}} \propto \dfrac{1}{\sqrt{n-1}}\)</p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Em uma frase</span>
+      <p>
+        Para aumentar a <strong>precisão</strong>, use um instrumento melhor.
+        Para diminuir o <strong>erro</strong>, faça mais medidas.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Afinal, o que devo calcular?</h2>
+    <p>No Exemplo 11 obtivemos três respostas defensáveis:</p>
+    <table>
+      <tbody>
+        <tr><td>desvio médio</td><td>\(L = (241{,}0 \pm 0{,}2)\ \mathrm{cm}\)</td></tr>
+        <tr><td>desvio padrão</td><td>\(L = (241{,}0 \pm 0{,}3)\ \mathrm{cm}\)</td></tr>
+        <tr class="destaque"><td>erro de escala (½ da escala)</td><td>\(L = (241{,}0 \pm 0{,}5)\ \mathrm{cm}\)</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Todas colocam o erro na casa do algarismo duvidoso. Como o erro de escala
+      (0,5 cm) é maior que os demais, a rigor bastaria informar a última linha.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Na disciplina</span>
+      <p>
+        Siga o procedimento padrão dos seis passos, sem esquecer arredondamento e
+        unidades. Depois, calcule especificamente o que o exercício ou o professor pedir.
+      </p>
+    </div>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     7. ERRO RELATIVO
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 7</p>
+    <h2>Erro relativo percentual</h2>
+    <p>Por que o erro absoluto, sozinho, pode desinformar.</p>
+  </section>
+
+  <section>
+    <h2>A motivação</h2>
+    <ul>
+      <li>Muitas vezes medimos para <strong>comparar com um valor de referência</strong>
+        — tabelado, esperado ou de especificação.</li>
+      <li>Na indústria de papel, por exemplo, as máquinas precisam produzir folhas com
+        dimensões dentro de uma <strong>tolerância máxima</strong>.</li>
+      <li>O erro absoluto, isolado, pode levar a conclusões enganosas nessa comparação.</li>
+    </ul>
+    $$ \Delta x_{\text{absoluto}} = |x_{\text{lido}} - x_{\text{referência}}| $$
+  </section>
+
+  <section>
+    <h3>Exemplo 12 — controle de qualidade de uma folha</h3>
+    <table>
+      <thead><tr><th>Dimensão</th><th class="num">Referência</th><th class="num">Lida</th><th class="num">Erro absoluto</th></tr></thead>
+      <tbody>
+        <tr><td>largura</td><td class="num">215,900 mm</td><td class="num">215,404 mm</td><td class="num">0,496 mm</td></tr>
+        <tr><td>altura</td><td class="num">279,400 mm</td><td class="num">280,002 mm</td><td class="num">0,602 mm</td></tr>
+        <tr><td>espessura</td><td class="num">0,010 mm</td><td class="num">0,011 mm</td><td class="num">0,001 mm</td></tr>
+      </tbody>
+    </table>
+    <div class="bloco">
+      <span class="bloco-titulo">Olhando só o erro absoluto</span>
+      <p>
+        O maior erro estaria na <strong>altura</strong>, depois na largura, e por último
+        na espessura — que teria, de longe, o menor erro.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Erro relativo percentual</h2>
+    <p>Tomando \(x_{\text{referência}} = 100\%\):</p>
+    $$ \varepsilon\% = \frac{\Delta x_{\text{absoluto}}}{x_{\text{referência}}}\times 100\%
+       = \frac{|x_{\text{lido}} - x_{\text{referência}}|}{x_{\text{referência}}}\times 100\% $$
+    <p>
+      Depois de obter um valor médio, também é útil compará-lo com uma referência:
+    </p>
+    $$ \varepsilon\% = \frac{|\bar{x} - x_{\text{referência}}|}{x_{\text{referência}}}\times 100\% $$
+    <p class="legenda-dv">
+      Como todo erro, o percentual pode ser para cima ou para baixo do valor de referência.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 12 — a reviravolta</h3>
+    <table>
+      <thead><tr><th>Dimensão</th><th class="num">Erro absoluto</th><th class="num">Erro percentual</th></tr></thead>
+      <tbody>
+        <tr><td>largura</td><td class="num">0,496 mm</td><td class="num">0,229736 %</td></tr>
+        <tr><td>altura</td><td class="num">0,602 mm</td><td class="num">0,215462 %</td></tr>
+        <tr class="destaque"><td>espessura</td><td class="num">0,001 mm</td><td class="num">10 %</td></tr>
+      </tbody>
+    </table>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Conclusão invertida</span>
+      <p>
+        O maior erro está na <strong>espessura</strong> — e muito maior. Além disso, o
+        erro percentual da <strong>largura</strong> supera o da altura, ao contrário do
+        que sugeriam os erros absolutos.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      O percentual é adimensional: reduz grandezas diferentes a uma mesma linguagem de comparação.
+    </p>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     8. PROPAGAÇÃO DE ERROS
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 8</p>
+    <h2>Propagação de erros</h2>
+    <p>Cada medida direta traz seu erro. O que acontece quando as combinamos?</p>
+  </section>
+
+  <section>
+    <h2>O problema</h2>
+    <ul>
+      <li>A grandeza de interesse (medida <strong>indireta</strong>) relaciona-se
+        matematicamente com outras, medidas diretamente.</li>
+      <li>Cada medida direta contém erro.</li>
+      <li>Logo, a medida indireta tem um erro que é o resultado da
+        <strong>propagação</strong> dos erros das diretas.</li>
+    </ul>
+    <p>Sendo \(Y\) a medida indireta e \(x_1,\ldots,x_n\) as diretas:</p>
+    $$ Y = f(x_1, x_2, x_3, \ldots, x_n) $$
+  </section>
+
+  <section>
+    <h2>Da diferencial ao desvio</h2>
+    <p>A diferencial da função, em termos das variações de cada variável:</p>
+    $$ dY = \frac{\partial f}{\partial x_1}dx_1 + \frac{\partial f}{\partial x_2}dx_2
+       + \cdots + \frac{\partial f}{\partial x_n}dx_n $$
+    <p>Substituindo as diferenciais pelas respectivas variações (desvios):</p>
+    $$ \Delta Y = \frac{\partial f}{\partial x_1}\Delta x_1
+       + \frac{\partial f}{\partial x_2}\Delta x_2 + \cdots
+       + \frac{\partial f}{\partial x_n}\Delta x_n $$
+    <p class="legenda-dv">
+      \(\partial f/\partial x_i\) é a derivada parcial: deriva-se a função apenas em
+      relação àquela variável, tratando as demais como constantes.
+    </p>
+  </section>
+
+  <section>
+    <h2>Equação do erro indeterminado</h2>
+    <p>
+      As derivadas parciais podem ter qualquer sinal — e \(\Delta Y\) poderia até dar
+      zero por cancelamento. Como o objetivo é o <strong>erro máximo provável</strong>,
+      tomamos todas as contribuições como positivas:
+    </p>
+    $$ \Delta Y = \left|\frac{\partial f}{\partial x_1}\right|\Delta x_1
+       + \left|\frac{\partial f}{\partial x_2}\right|\Delta x_2 + \cdots
+       + \left|\frac{\partial f}{\partial x_n}\right|\Delta x_n $$
+    <div class="bloco regra">
+      <span class="bloco-titulo">Como usar</span>
+      <p>
+        Nas derivadas, substitua cada variável pelo seu <strong>valor médio</strong>; e
+        multiplique cada uma pelo <strong>desvio</strong> da respectiva medida direta.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 13 — volume de uma calota esférica</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Dados</span>
+      <p>
+        \(h = (155{,}3 \pm 0{,}7)\ \mathrm{mm}\) &nbsp;·&nbsp;
+        \(r = (389{,}0 \pm 1{,}9)\ \mathrm{mm}\)
+      </p>
+    </div>
+    $$ V = \frac{1}{3}\pi h^{2}(3r - h) = \frac{1}{3}\pi\left(3rh^{2} - h^{3}\right) $$
+    <p>Aqui \(Y = V\), \(x_1 = r\) e \(x_2 = h\). As derivadas parciais:</p>
+    $$ \frac{\partial V}{\partial h} = \frac{1}{3}\pi\left(6rh - 3h^{2}\right),
+       \qquad \frac{\partial V}{\partial r} = \pi h^{2} $$
+  </section>
+
+  <section>
+    <h3>Exemplo 13 — o desvio propagado</h3>
+    $$ \Delta V = \left|\frac{\partial V}{\partial h}\right|\Delta h
+       + \left|\frac{\partial V}{\partial r}\right|\Delta r
+       = \frac{1}{3}\pi\left(6rh - 3h^{2}\right)\Delta h + \pi h^{2}\,\Delta r $$
+    <div class="conta">ΔV = (1/3)π[6(389,0)(155,3) - 3(155,3)²](0,7) + π(155,3)²(1,9)
+
+   = 212666,084… mm³  +  143961,507… mm³
+<span class="tot">   = 356627,591 mm³</span></div>
+    <p>
+      Falta ainda o próprio volume, para saber em que casa arredondar o desvio.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 13 — o resultado</h3>
+    <div class="conta">V = (1/3)π[3(389,0)(155,3)² - (155,3)³] = 25551904,7 mm³
+
+Pela regra da multiplicação, 4 algarismos significativos:
+V = 2,555×10⁷ mm³
+
+ΔV = 3,56627591×10⁵ mm³ = 0,0356627591×10⁷ mm³ = 0,036×10⁷ mm³</div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Arredonde o desvio na casa do duvidoso</span>
+      <p>
+        O desvio foi arredondado na <strong>mesma casa decimal</strong> do algarismo
+        duvidoso do valor médio.
+      </p>
+    </div>
+    $$ V = \bar{V} \pm \Delta V = (2{,}555 \pm 0{,}036)\times 10^{7}\ \mathrm{mm^3} $$
+  </section>
+
+  <section>
+    <h3>Exemplo 14 — a área do retângulo, geometricamente</h3>
+    <p>Com \(a = \bar{a} \pm \Delta a\) e \(b = \bar{b} \pm \Delta b\):</p>
+    $$ A = (\bar{a} \pm \Delta a)(\bar{b} \pm \Delta b)
+       = \underbrace{\bar{a}\bar{b}}_{(1)} + \underbrace{\bar{a}\,\Delta b}_{(2)}
+       + \underbrace{\bar{b}\,\Delta a}_{(3)} + \underbrace{\Delta a\,\Delta b}_{(4)} $$
+    <div class="colunas-1-2">
+      <figure>
+        <svg viewBox="0 0 200 170" width="100%" style="max-height:26vh" role="img"
+             aria-label="Retângulo dividido em quatro regiões: a área principal a·b, duas faixas finas a·Δb e b·Δa, e um pequeno quadrado Δa·Δb no canto.">
+          <rect x="14" y="40" width="130" height="106" fill="#1e5c83"/>
+          <rect x="144" y="40" width="22" height="106" fill="#8dd7dc"/>
+          <rect x="14" y="18" width="130" height="22" fill="#e6b75c"/>
+          <rect x="144" y="18" width="22" height="22" fill="#b9494d"/>
+          <g font-family="DM Mono, monospace" font-size="13" fill="white">
+            <text x="79" y="98" text-anchor="middle">(1)</text>
+          </g>
+          <g font-family="DM Mono, monospace" font-size="11" fill="#102333">
+            <text x="155" y="96" text-anchor="middle" transform="rotate(-90 155 96)">(2)</text>
+            <text x="79" y="34" text-anchor="middle">(3)</text>
+            <text x="155" y="12" text-anchor="middle">(4)</text>
+          </g>
+        </svg>
+      </figure>
+      <div>
+        <div class="bloco">
+          <span class="bloco-titulo">A área (4) é desprezível</span>
+          <p>
+            O produto \(\Delta a\,\Delta b\) é um número muito pequeno — produto de dois
+            erros — e não contribui significativamente.
+          </p>
+        </div>
+        $$ \Delta A = \pm\left(\bar{a}\,\Delta b + \bar{b}\,\Delta a\right) $$
+      </div>
+    </div>
+    <p class="legenda-dv">
+      Confira: a equação do erro indeterminado dá exatamente esta expressão, já que
+      \(\partial A/\partial a = b\) e \(\partial A/\partial b = a\).
+    </p>
+  </section>
+
+  <section>
+    <h2>Quando usar cada caminho</h2>
+    <div class="colunas">
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Expressões simples</span>
+        <p>
+          O raciocínio geométrico/algébrico direto funciona e é esclarecedor — como no
+          Exemplo 14.
+        </p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Expressões complexas</span>
+        <p>
+          A <strong>equação do erro indeterminado</strong> é o caminho confiável. Vale
+          sempre, e não depende de intuição geométrica.
+        </p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Formato final, sempre</span>
+      <p>
+        \(Y = \bar{Y} \pm \Delta Y\), com o desvio arredondado na casa do algarismo
+        duvidoso do valor médio, em notação científica e com unidade.
+      </p>
+    </div>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     9. EXERCÍCIOS
+     ================================================================= -->
+<section>
+
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 9</p>
+    <h2>Exercícios</h2>
+    <p>Leituras, operações e tratamento estatístico. Enunciados completos na apostila.</p>
+  </section>
+
+  <section>
+    <h3>Exercícios I · 1 — faça a leitura e escreva em notação científica</h3>
+    <figure>
+      <img src="img/intrumentos1.png" alt="Quatro medidores analógicos de ponteiro, itens (a) a (d): voltímetro de 0 a 60 volts, microamperímetro DC de 0 a 50, milivoltímetro de 0 a 50 e microamperímetro DC de 0 a 10.">
+    </figure>
+  </section>
+
+  <section>
+    <h3>Exercícios I · 1 — itens (e) e (f)</h3>
+    <figure>
+      <img src="img/instrumentos2.png" alt="Dois termômetros mergulhados em líquido, itens (e) e (f): o primeiro com escala de 0 a 100 graus Celsius e o segundo de 0 a 50 graus Celsius.">
+    </figure>
+  </section>
+
+  <section>
+    <h3>Exercícios I · 1 — itens (g), (h) e (i)</h3>
+    <figure>
+      <img src="img/Instrumentos3.png" alt="Três réguas medindo tiras de papel de comprimentos diferentes, itens (g), (h) e (i): régua em decímetros, em centímetros e em milímetros.">
+    </figure>
+  </section>
+
+  <section>
+    <h3>Exercícios I · 2 a 6 — questões conceituais</h3>
+    <ol start="2">
+      <li>O que são os algarismos significativos de uma medida?</li>
+      <li>O algarismo duvidoso é significativo?</li>
+      <li>Qual é a diferença entre medida direta e indireta?</li>
+      <li>Os zeros à direita em uma medida são significativos? E à esquerda?
+        Justifique e exemplifique.</li>
+      <li>O que significa dizer que um instrumento de medida é mais preciso do que outro?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h3>Exercícios I · 7 a 10 — leituras, unidades e escalas</h3>
+    <ol start="7">
+      <li>Dentre os conjuntos de medidas feitas com cada régua (decimetrada,
+        centimetrada e milimetrada), indique quais estão <strong>erradas</strong>.</li>
+      <li>Para uma lista de medidas: identifique a unidade do intervalo entre as escalas
+        do instrumento, converta para km, dam, hm, m, dm, cm, mm, μm e nm, transforme
+        para angstroms em notação científica, aponte o algarismo duvidoso, conte os
+        algarismos significativos e diga qual medida foi a mais precisa.</li>
+      <li>Repita a conversão para medidas de <strong>área</strong>.</li>
+      <li>Repita a conversão para medidas de <strong>volume</strong>.</li>
+    </ol>
+    <p class="legenda-dv">As listas completas estão nas páginas 10 a 12 da Apostila 1.</p>
+  </section>
+
+  <section>
+    <h3>Exercícios II — operações e arredondamento</h3>
+    <p>
+      Aplique as regras de operação e os critérios de arredondamento. Apresente o
+      resultado em notação científica, com a unidade adequada.
+    </p>
+    <ol>
+      <li>Altura do álcool em um capilar: \(h = 2\delta/(\mu g r)\).</li>
+      <li>Frequência e período de um sistema massa-mola:
+        \(f = \tfrac{1}{2\pi}\sqrt{K/m}\).</li>
+      <li>Momento de inércia de um cilindro que rola em plano inclinado:
+        \(C = (ght^{2}/2L^{2})^{-1}\).</li>
+      <li>Calor de fusão do gelo em um calorímetro.</li>
+      <li>Coeficiente de dilatação linear:
+        \(\alpha = \pi d\theta/(L_0\,\Delta T\,360^\circ)\).</li>
+      <li>Velocidade de um projétil pelo pêndulo balístico.</li>
+      <li>Nível de intensidade sonora: \(\mathrm{NIS} = 10\log(I/I_0)\).</li>
+      <li>Distribuição de velocidades de Maxwell-Boltzmann para um gás.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h3>Exercícios III — estatística e propagação</h3>
+    <ol>
+      <li>Comprimentos de tiras de papel: média, desvio médio e erro percentual
+        (valor tabelado 13,70 cm).</li>
+      <li>Período de um pêndulo simples: valor mais provável e desvio médio.</li>
+      <li>Temperatura de equilíbrio: média, desvio médio e erro percentual.</li>
+      <li>Comprimento de canetas (régua milimetrada): média, desvio padrão, erro
+        aleatório provável e resultado no formato adequado.</li>
+      <li>Temperatura de equilíbrio de uma solução: idem.</li>
+      <li>Tempo de volta de um carro de corrida: idem.</li>
+      <li>Erro propagado para adição, subtração, multiplicação, divisão, potenciação,
+        \(\log\), \(\ln\), \(e^x\), \(\cos\), \(\mathrm{sen}\) e \(\tan\).</li>
+      <li>Expressão do erro indeterminado para áreas e volumes de figuras geométricas
+        e para \(V = NRT/P\).</li>
+      <li>Cálculo numérico dessas áreas e volumes com os respectivos desvios.</li>
+      <li>Da 10 à 18: velocidade média, aceleração, capilaridade, massa-mola, momento
+        de inércia, NIS, descarga de capacitor, pressão atmosférica e processo adiabático
+        — todos com propagação de erros.</li>
+    </ol>
+  </section>
+
+</section>
+
+<!-- =================================================================
+     FECHAMENTO
+     ================================================================= -->
+<section>
+
+  <section>
+    <h2>Resumo</h2>
+    <div class="colunas">
+      <div>
+        <h4>Escrevendo uma medida</h4>
+        <ul>
+          <li>Número + <strong>unidade</strong> + <strong>incerteza</strong>.</li>
+          <li>Algarismos significativos = certos + <strong>um</strong> duvidoso.</li>
+          <li>Zeros à esquerda não contam; à direita, podem contar.</li>
+          <li>Mudar de unidade não altera a quantidade de algarismos.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Operando</h4>
+        <ul>
+          <li>Adição e subtração: manda a <strong>casa decimal</strong> mais pobre.</li>
+          <li>Multiplicação e divisão: manda a <strong>quantidade de algarismos</strong>
+            mais pobre.</li>
+          <li>Arredonde <strong>no final</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="colunas">
+      <div>
+        <h4>Erros</h4>
+        <ul>
+          <li>Escala, sistemático, aleatório.</li>
+          <li>Erro percentual para comparar com referências.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Séries de medidas</h4>
+        <ul>
+          <li>\(\bar{x}\), \(\overline{\Delta x}\), \(\sigma_x\).</li>
+          <li>Medidas indiretas: equação do erro indeterminado.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="capa" data-background-gradient="radial-gradient(circle at 78% 25%, rgba(32,116,148,0.30), transparent 28%), linear-gradient(135deg, #061927 0%, #0a2b42 60%, #092236 100%)">
+    <p class="eyebrow">Para levar da aula</p>
+    <h1>Uma medida sem incerteza<br>não é uma medida.</h1>
+    <p class="capa-sub">
+      Apostila 1 e material completo da disciplina em
+      <strong>github.com/RafaelCRdeLima/FEX1001</strong>
+    </p>
+    <p class="capa-rodape">
+      FEX1001 · Física Experimental I · Prof. Rafael de Lima · CCT/UDESC
+    </p>
+  </section>
+
+</section>
+
+      </div>
+    </div>
+
+    <script src="../../vendor/reveal/dist/reveal.js"></script>
+    <script src="../../vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="../../vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="../../vendor/reveal/plugin/math/math.js"></script>
+    <script>
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.055,
+        minScale: 0.2,
+        maxScale: 1.6,
+        hash: true,
+        slideNumber: 'c/t',
+        transition: 'fade',
+        transitionSpeed: 'fast',
+        backgroundTransition: 'none',
+        pdfSeparateFragments: false,
+        katex: {
+          local: '../../vendor/katex',
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          throwOnError: false
+        },
+        plugins: [RevealNotes, RevealZoom, RevealMath.KaTeX]
+      });
+    </script>
+  </body>
+</html>
