@@ -25,7 +25,6 @@ Apostilas e Relatorios/
   Cronograma Geral ...        calendário do semestre
 
 vendor/                       reveal.js e KaTeX embutidos (sem CDN)
-.github/workflows/pages.yml   publicação automática no GitHub Pages
 ```
 
 ## Aula 1 — Medidas e Algarismos Significativos
@@ -81,5 +80,6 @@ pdflatex main.tex && pdflatex main.tex
 
 ## Publicação
 
-Todo push em `main` dispara o workflow que monta e publica o site no GitHub Pages.
-Para ativar, em **Settings → Pages**, selecione **Source: GitHub Actions**.
+O GitHub Pages publica direto do branch `main`, a partir da raiz do repositório —
+o site é estático e não precisa de etapa de build. Todo push em `main` republica
+automaticamente. O arquivo `.nojekyll` impede o Jekyll de processar o conteúdo.
