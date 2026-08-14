@@ -22,6 +22,14 @@
 .DS_Store
 Thumbs.db
 
+# -------- Arquivos de trabalho que não vão para o site --------
+# Rascunhos e exportações soltos na raiz não devem ir para o repositório
+# público por engano. Mova para dentro de uma pasta versionada se quiser
+# publicá-los.
+/Digita*.pdf
+/Plano_de_Ensino_*
+*.zip
+
 # -------- Dropbox --------
 .dropbox
 .dropbox.attr

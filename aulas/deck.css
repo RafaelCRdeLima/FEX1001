@@ -159,6 +159,11 @@
 
 .legenda-dv i { display: inline-block; width: 14px; height: 2px; background: var(--gold); }
 
+/* Slides com duas colunas de texto denso: reduz tudo proporcionalmente para
+   caber nos 720 px de altura sem cortar o rodapé. */
+.reveal section.denso { font-size: 0.84em; }
+.reveal section.denso figure img { max-height: 46vh; }
+
 /* ---------- Colunas ---------- */
 
 .colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: start; }
@@ -231,6 +236,10 @@
 .reveal figure { margin: 0.4em 0; text-align: center; }
 .reveal figure img { display: block; margin: 0 auto; max-height: 62vh; background: white; border: 1px solid var(--line); }
 .reveal figcaption { margin-top: 0.4em; color: var(--muted); font-size: 0.6em; text-align: center; }
+
+/* Crédito de imagem de terceiros */
+.credito { margin-top: 0.3em; color: var(--muted); font-family: "DM Mono", monospace; font-size: 0.5em; letter-spacing: 0.04em; text-align: center; }
+.credito.esq { text-align: left; }
 .reveal img.limpa { border: 0; background: transparent; }
 
 /* ---------- Matemática ---------- */
