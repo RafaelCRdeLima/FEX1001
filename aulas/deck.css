@@ -247,6 +247,70 @@
 .reveal .katex { font-size: 1.02em; }
 .reveal .katex-display { margin: 0.7em 0; }
 
+/* ---------- Tábua de Galton (simulação) ---------- */
+
+.galton-painel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.6em;
+  margin-bottom: 0.5em;
+}
+
+.galton-grupo { display: flex; flex-direction: column; gap: 0.3em; }
+
+.galton-rot {
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.galton-botoes { display: flex; gap: 0.3em; }
+
+.galton-bt {
+  padding: 0.32em 0.75em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.62em;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.galton-bt:hover { border-color: var(--blue); }
+.galton-bt.ativo { color: white; background: var(--blue); border-color: var(--blue); }
+.galton-bt-forte { color: var(--navy); background: var(--gold); border-color: var(--gold); font-weight: 500; }
+.galton-bt-forte:hover { background: #f1c76f; }
+
+.galton-numeros { display: flex; gap: 1.5em; margin: 0 0 0 auto; }
+.galton-numeros > div { display: grid; gap: 0.1em; }
+
+.galton-numeros dt {
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.48em;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.galton-numeros dd {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.galton-tela { display: block; width: 100%; height: auto; }
+
+.galton-nota { margin: 0.1em 0 0; color: var(--muted); font-size: 0.55em; line-height: 1.5; }
+.galton-mono { font-family: "DM Mono", monospace; color: var(--ink); }
+
 /* ---------- Rodapé com a seção corrente ---------- */
 
 .rodape-secao {
