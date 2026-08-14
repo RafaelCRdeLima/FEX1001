@@ -39,7 +39,7 @@ inteiro:
 4. Operações — adição, subtração, multiplicação, divisão, potências, logaritmos,
    funções trigonométricas; fórmulas com uma ou mais medidas diretas
 5. Critérios de arredondamento (três casos)
-6. Erros experimentais — escala, sistemático, aleatório
+6. Erros experimentais — escala, sistemático, aleatório, com o caso do Hubble
 7. Tratamento estatístico — média, desvio médio, desvio padrão, Exemplo 11 completo
 8. Erro relativo percentual
 9. Propagação de erros — equação do erro indeterminado
@@ -85,6 +85,20 @@ estatístico completo do Exemplo 11). Está mantida apenas como registro.
 cd "aulas/aula-01-medidas/beamer"
 pdflatex main.tex && pdflatex main.tex
 ```
+
+## Créditos das imagens
+
+As figuras de instrumentos, réguas e prefixos vêm da Apostila 1 do DFIS/UDESC.
+As imagens do Hubble são de uso livre para fins educacionais, com atribuição:
+
+| Arquivo | Crédito | Fonte |
+|---|---|---|
+| `hubble-orbita.jpg` | NASA (STS-125, 19/05/2009) | [science.nasa.gov](https://science.nasa.gov/image-detail/hubble-space-telescope-hst-7/) |
+| `hubble-m100-antes-depois.jpg` | NASA / ESA | [science.nasa.gov](https://science.nasa.gov/image-detail/gpn-2002-000064-crop_hubble_images_of_m100_before_and_after_repair_0-1/) |
+| `hubble-estrela-costar.jpg` | NASA, ESA e equipe do COSTAR | [esahubble.org](https://esahubble.org/images/opo9408a/) |
+
+Imagens da NASA são de domínio público; as da ESA/Hubble estão sob
+[CC BY 4.0](https://esahubble.org/copyright/).
 
 ## Publicação
 
