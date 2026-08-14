@@ -31,7 +31,7 @@ vendor/                       reveal.js e KaTeX embutidos (sem CDN)
 
 ## Aula 1 — Medidas e Algarismos Significativos
 
-Apresentação em HTML (reveal.js + KaTeX), 129 slides, cobrindo a Apostila 1 por
+Apresentação em HTML (reveal.js + KaTeX), 132 slides, cobrindo a Apostila 1 por
 inteiro:
 
 1. Por que medir — grandezas, unidades do SI, \(M(G)=G/U\)
@@ -41,7 +41,8 @@ inteiro:
    funções trigonométricas; fórmulas com uma ou mais medidas diretas
 5. Critérios de arredondamento (três casos)
 6. Erros experimentais — escala (com o paradoxo da costa), sistemático
-   (com o caso do Hubble), aleatório
+   (com o caso do Hubble), aleatório (com Einstein, Perrin e o movimento
+   browniano)
 7. Tratamento estatístico — média, desvio médio, desvio padrão, a história da
    distribuição normal, a tábua de Galton interativa, Exemplo 11 completo
 8. Erro relativo percentual
@@ -54,7 +55,7 @@ Exemplos resolvidos 1 a 14 da apostila, todos presentes.
 
 Abra `aulas/aula-01-medidas/` pelo site, ou o arquivo diretamente no navegador.
 
-A navegação é **linear**: um único par de teclas percorre os 129 slides, do
+A navegação é **linear**: um único par de teclas percorre os 132 slides, do
 primeiro ao último, sem precisar entrar e sair de assuntos. Isso é o que permite
 apresentar com passador de slides.
 
@@ -102,6 +103,7 @@ As imagens do Hubble são de uso livre para fins educacionais, com atribuição:
 | `gauss-retrato.jpg` | C. A. Jensen, 1840 — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss_1840_by_Jensen.jpg) |
 | `richardson-retrato.jpg` | NOAA — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lewis_Fry_Richardson.png) |
 | `costa-fiordes.jpg` | NASA/USGS — ASTER, *Earth as Art II* | [NASA Earth Observatory](https://earthobservatory.nasa.gov/images/4605/fjords-norway) |
+| `perrin-trajetorias.svg` | J. B. Perrin, 1913 — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:PerrinPlot2.svg) |
 
 Imagens da NASA são de domínio público; as da ESA/Hubble estão sob
 [CC BY 4.0](https://esahubble.org/copyright/).
