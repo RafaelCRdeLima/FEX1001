@@ -62,7 +62,7 @@
   const elMedia = raiz.querySelector('#g-media');
   const elSigma = raiz.querySelector('#g-sigma');
 
-  const QUANTIDADES = [100, 500, 2000];
+  const QUANTIDADES = [10, 100, 500, 2000];
   let quantidade = 500;
 
   const caixaQuant = raiz.querySelector('#g-quant');
@@ -87,11 +87,13 @@
   let porSoltar = 0;        // ainda não lançadas
   let somaBins = 0, somaBins2 = 0, totalCaidas = 0;
   let rodando = false, anim = null, ultimo = 0;
+  let taxaSpawn = 0, acumulaSpawn = 0;   // bolinhas por segundo a lançar
 
   function limpar() {
     contagem = new Array(CACAPAS).fill(0);
     voando = [];
     porSoltar = 0;
+    acumulaSpawn = 0;
     somaBins = somaBins2 = totalCaidas = 0;
     atualizarNumeros();
     desenhar();
@@ -99,6 +101,10 @@
 
   function soltar() {
     porSoltar += quantidade;
+    // Espalha o lançamento no tempo: com poucas bolinhas dá para acompanhar cada
+    // uma; com muitas, o lote inteiro cai em alguns segundos.
+    const duracao = Math.min(6, Math.max(3, quantidade * 0.3));
+    taxaSpawn = quantidade / duracao;
     if (!rodando) laco();
   }
 
@@ -156,15 +162,16 @@
     return pyFileira(FILEIRAS - 1) + t * (Y_BASE - 10 - pyFileira(FILEIRAS - 1));
   }
 
-  const VEL = 7.5;              // fileiras por segundo
+  const VEL = 5;                // fileiras por segundo
 
   function passo(dt) {
-    // lança as que faltam, distribuídas no tempo
-    const porFrame = Math.max(1, Math.ceil(quantidade / 260));
-    for (let i = 0; i < porFrame && porSoltar > 0; i++) {
+    acumulaSpawn += taxaSpawn * dt;
+    while (acumulaSpawn >= 1 && porSoltar > 0) {
       voando.push(novaBolinha());
       porSoltar--;
+      acumulaSpawn -= 1;
     }
+    if (porSoltar === 0) acumulaSpawn = 0;
     const restantes = [];
     for (const b of voando) {
       b.s += VEL * dt;
