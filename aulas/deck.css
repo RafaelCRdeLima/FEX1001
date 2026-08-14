@@ -149,15 +149,23 @@
   border-bottom: 2px solid var(--gold);
 }
 
+/* Texto corrido. Era inline-flex, o que transformava cada <em>, <strong> ou
+   fórmula dentro dela em uma coluna separada, com buracos no meio da frase. */
 .legenda-dv {
-  display: inline-flex;
-  gap: 0.5em;
-  align-items: center;
+  display: block;
   color: var(--muted);
   font-size: 0.6em;
+  line-height: 1.5;
 }
 
-.legenda-dv i { display: inline-block; width: 14px; height: 2px; background: var(--gold); }
+.legenda-dv i {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  background: var(--gold);
+}
 
 /* Slides com duas colunas de texto denso: reduz tudo proporcionalmente para
    caber nos 720 px de altura sem cortar o rodapé. */
