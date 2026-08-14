@@ -19,6 +19,14 @@
   const MEDIA_TEORICA = FILEIRAS / 2;
   const SIGMA_TEORICO = Math.sqrt(FILEIRAS) / 2;
 
+  // Probabilidade do balde central, C(12,6)/2^12 — serve para prever a altura
+  // do histograma antes de soltar as bolinhas.
+  const P_CENTRAL = (() => {
+    let c = 1;
+    for (let i = 0; i < FILEIRAS / 2; i++) c = c * (FILEIRAS - i) / (i + 1);
+    return c / Math.pow(2, FILEIRAS);
+  })();
+
   // Vírgula decimal: é uma aula em português, e sobre algarismos significativos.
   const num = n => n.toFixed(2).replace('.', ',');
 
@@ -88,12 +96,14 @@
   let somaBins = 0, somaBins2 = 0, totalCaidas = 0;
   let rodando = false, anim = null, ultimo = 0;
   let taxaSpawn = 0, acumulaSpawn = 0;   // bolinhas por segundo a lançar
+  let escalaMax = 4;                     // topo do histograma, em contagem
 
   function limpar() {
     contagem = new Array(CACAPAS).fill(0);
     voando = [];
     porSoltar = 0;
     acumulaSpawn = 0;
+    escalaMax = 4;
     somaBins = somaBins2 = totalCaidas = 0;
     atualizarNumeros();
     desenhar();
@@ -105,7 +115,18 @@
     // uma; com muitas, o lote inteiro cai em alguns segundos.
     const duracao = Math.min(6, Math.max(3, quantidade * 0.3));
     taxaSpawn = quantidade / duracao;
+    fixarEscala();
     if (!rodando) laco();
+  }
+
+  // A escala vertical é decidida no momento de soltar, a partir do total já
+  // comprometido: assim as barras só crescem durante a queda, em vez de dançar
+  // a cada quadro por causa da renormalização pelo maior balde.
+  function fixarEscala() {
+    const comprometidas = totalCaidas + voando.length + porSoltar;
+    const esperado = P_CENTRAL * comprometidas;
+    const desvio = Math.sqrt(comprometidas * P_CENTRAL * (1 - P_CENTRAL));
+    escalaMax = Math.max(4, Math.ceil(esperado + 2.1 * desvio));
   }
 
   raiz.querySelector('#g-soltar').addEventListener('click', e => { soltar(); e.currentTarget.blur(); });
@@ -194,12 +215,14 @@
     ctx.clearRect(0, 0, L, A);
 
     const lc = larguraCacapa();
-    const maior = Math.max(1, ...contagem);
     const alturaMax = ALTURA_MAX_BARRA;
+    // salvaguarda para o caso raro de um balde passar do previsto
+    const maiorReal = Math.max(...contagem);
+    if (maiorReal > escalaMax) escalaMax = maiorReal;
 
     // caçapas: barras do histograma
     for (let i = 0; i < CACAPAS; i++) {
-      const h = (contagem[i] / maior) * alturaMax;
+      const h = (contagem[i] / escalaMax) * alturaMax;
       if (h > 0.5) {
         ctx.fillStyle = COR.azul;
         ctx.fillRect(px(i) - lc * 0.42, Y_BASE - h, lc * 0.84, h);
@@ -208,13 +231,14 @@
 
     // curva normal teórica, escalada ao maior balde
     if (totalCaidas > 0) {
-      const pico = Math.exp(0) / (SIGMA_TEORICO * Math.sqrt(2 * Math.PI));
+      // A curva mostra a contagem *esperada* em cada balde para o número de
+      // bolinhas que já caiu — por isso ela cresce junto com o histograma.
       ctx.beginPath();
       for (let i = 0; i <= 240; i++) {
         const u = (i / 240) * FILEIRAS;
         const z = (u - MEDIA_TEORICA) / SIGMA_TEORICO;
         const dens = Math.exp(-z * z / 2) / (SIGMA_TEORICO * Math.sqrt(2 * Math.PI));
-        const y = Y_BASE - (dens / pico) * alturaMax;
+        const y = Y_BASE - (totalCaidas * dens / escalaMax) * alturaMax;
         i ? ctx.lineTo(px(u), y) : ctx.moveTo(px(u), y);
       }
       ctx.strokeStyle = COR.vermelho;
