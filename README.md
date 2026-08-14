@@ -14,6 +14,7 @@ favicon.svg
 
 aulas/
   deck.css                    tema das apresentações
+  galton.js                   simulação da tábua de Galton (slide 93)
   aula-01-medidas/
     index.html                apresentação (reveal.js) — versão corrente
     img/                      figuras, compartilhadas com o LaTeX
@@ -30,7 +31,7 @@ vendor/                       reveal.js e KaTeX embutidos (sem CDN)
 
 ## Aula 1 — Medidas e Algarismos Significativos
 
-Apresentação em HTML (reveal.js + KaTeX), 124 slides, cobrindo a Apostila 1 por
+Apresentação em HTML (reveal.js + KaTeX), 125 slides, cobrindo a Apostila 1 por
 inteiro:
 
 1. Por que medir — grandezas, unidades do SI, \(M(G)=G/U\)
@@ -41,7 +42,7 @@ inteiro:
 5. Critérios de arredondamento (três casos)
 6. Erros experimentais — escala, sistemático, aleatório, com o caso do Hubble
 7. Tratamento estatístico — média, desvio médio, desvio padrão, a história da
-   distribuição normal, Exemplo 11 completo
+   distribuição normal, a tábua de Galton interativa, Exemplo 11 completo
 8. Erro relativo percentual
 9. Propagação de erros — equação do erro indeterminado
 10. Exercícios I, II e III
@@ -52,7 +53,7 @@ Exemplos resolvidos 1 a 14 da apostila, todos presentes.
 
 Abra `aulas/aula-01-medidas/` pelo site, ou o arquivo diretamente no navegador.
 
-A navegação é **linear**: um único par de teclas percorre os 124 slides, do
+A navegação é **linear**: um único par de teclas percorre os 125 slides, do
 primeiro ao último, sem precisar entrar e sair de assuntos. Isso é o que permite
 apresentar com passador de slides.
 
