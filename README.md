@@ -30,7 +30,7 @@ vendor/                       reveal.js e KaTeX embutidos (sem CDN)
 
 ## Aula 1 — Medidas e Algarismos Significativos
 
-Apresentação em HTML (reveal.js + KaTeX), 115 slides, cobrindo a Apostila 1 por
+Apresentação em HTML (reveal.js + KaTeX), 124 slides, cobrindo a Apostila 1 por
 inteiro:
 
 1. Por que medir — grandezas, unidades do SI, \(M(G)=G/U\)
@@ -40,7 +40,8 @@ inteiro:
    funções trigonométricas; fórmulas com uma ou mais medidas diretas
 5. Critérios de arredondamento (três casos)
 6. Erros experimentais — escala, sistemático, aleatório, com o caso do Hubble
-7. Tratamento estatístico — média, desvio médio, desvio padrão, Exemplo 11 completo
+7. Tratamento estatístico — média, desvio médio, desvio padrão, a história da
+   distribuição normal, Exemplo 11 completo
 8. Erro relativo percentual
 9. Propagação de erros — equação do erro indeterminado
 10. Exercícios I, II e III
@@ -51,7 +52,7 @@ Exemplos resolvidos 1 a 14 da apostila, todos presentes.
 
 Abra `aulas/aula-01-medidas/` pelo site, ou o arquivo diretamente no navegador.
 
-A navegação é **linear**: um único par de teclas percorre os 115 slides, do
+A navegação é **linear**: um único par de teclas percorre os 124 slides, do
 primeiro ao último, sem precisar entrar e sair de assuntos. Isso é o que permite
 apresentar com passador de slides.
 
@@ -96,6 +97,7 @@ As imagens do Hubble são de uso livre para fins educacionais, com atribuição:
 | `hubble-orbita.jpg` | NASA (STS-125, 19/05/2009) | [science.nasa.gov](https://science.nasa.gov/image-detail/hubble-space-telescope-hst-7/) |
 | `hubble-m100-antes-depois.jpg` | NASA / ESA | [science.nasa.gov](https://science.nasa.gov/image-detail/gpn-2002-000064-crop_hubble_images_of_m100_before_and_after_repair_0-1/) |
 | `hubble-estrela-costar.jpg` | NASA, ESA e equipe do COSTAR | [esahubble.org](https://esahubble.org/images/opo9408a/) |
+| `gauss-retrato.jpg` | C. A. Jensen, 1840 — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss_1840_by_Jensen.jpg) |
 
 Imagens da NASA são de domínio público; as da ESA/Hubble estão sob
 [CC BY 4.0](https://esahubble.org/copyright/).
