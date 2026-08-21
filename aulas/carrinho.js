@@ -210,8 +210,15 @@
     let classe, texto;
     if (fora > 0) {
       classe = 'ruim';
-      texto = `<strong>Não cabe.</strong> ${fora} de ${dados.length} pontos ficaram fora,
-               em vermelho. Aumente o número antes de “: 1 mm”.`;
+      // dizer QUAL eixo estourou e por quanto: sem isso a mensagem não ajuda a corrigir
+      const estouros = [];
+      if (usoT > folhaL) estouros.push(`o eixo t precisa de ${num(usoT, 0)} mm e a folha tem ${folhaL}`);
+      if (usoX > folhaA) estouros.push(`o eixo x precisa de ${num(usoX, 0)} mm e a folha tem ${folhaA}`);
+      const sobra = Math.max(usoT - folhaL, usoX - folhaA);
+      texto = `<strong>Não cabe:</strong> ${estouros.join('; ')}. ` + (sobra < 8
+        ? 'Faltou pouco — é o que acontece quando se usa o quociente exato: o último ponto '
+          + 'cai bem na borda. Arredonde a escala <em>para cima</em>, até um valor limpo.'
+        : 'Aumente o número antes de “: 1 mm” nesse eixo, ou recue o início.');
     } else if (ocT < 0.5 || ocX < 0.5) {
       classe = 'meio';
       texto = `<strong>Cabe, mas sobra papel.</strong> ${num(100 * ocT, 0)}% da largura e
