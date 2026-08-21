@@ -406,6 +406,79 @@
 .pap-veredito.meio { color: #8a6a1f; }
 .pap-veredito.ruim { color: var(--red); }
 
+/* ---------- Ajuste nos dois espaços (Aula 2) ---------- */
+
+.aj-topo { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.2em; margin-bottom: 0.4em; }
+.aj-grupo { display: flex; flex-direction: column; gap: 0.28em; }
+
+.aj-rot {
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.46em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.aj-botoes { display: flex; gap: 0.26em; }
+
+.aj-bt {
+  padding: 0.3em 0.7em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.56em;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.aj-bt:hover { border-color: var(--blue); }
+.aj-bt.ativo { color: white; background: var(--blue); border-color: var(--blue); }
+.aj-bt-forte { color: var(--navy); background: var(--gold); border-color: var(--gold); font-weight: 500; }
+.aj-bt-forte:hover { background: #f1c76f; }
+
+.aj-eq { margin-left: auto; color: var(--muted); font-size: 0.6em; }
+
+.aj-controles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; margin-bottom: 0.4em; }
+
+.aj-slider { display: flex; align-items: center; gap: 0.7em; }
+.aj-slider > span { min-width: 5.4em; color: var(--ink); font-family: "DM Mono", monospace; font-size: 0.58em; }
+.aj-slider > span b { color: var(--blue); }
+
+.aj-slider input[type="range"] {
+  flex: 1;
+  height: 4px;
+  appearance: none;
+  background: rgba(16, 35, 51, 0.16);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.aj-slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--blue);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.aj-slider input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: var(--blue);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.aj-tela { display: block; width: 100%; height: auto; }
+
+.aj-veredito { margin: 0.3em 0 0; color: var(--muted); font-size: 0.55em; line-height: 1.5; }
+.aj-veredito.ok { color: var(--green); }
+
 /* ---------- Rodapé com a seção corrente ---------- */
 
 .rodape-secao {
