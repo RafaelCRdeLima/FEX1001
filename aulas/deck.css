@@ -488,6 +488,93 @@
 .aj-veredito { margin: 0.3em 0 0; color: var(--muted); font-size: 0.55em; line-height: 1.5; }
 .aj-veredito.ok { color: var(--green); }
 
+/* ---------- Do tabelamento ao papel (Aula 2) ---------- */
+
+.ca-corpo { display: grid; grid-template-columns: 336px 1fr; gap: 1em; align-items: start; }
+.ca-lado { min-width: 0; }
+.ca-vista { min-width: 0; }
+
+.reveal .ca-tabela { width: 100%; margin: 0 0 0.6em; border-collapse: collapse; font-size: 0.4em; }
+.reveal .ca-tabela th {
+  padding: 0.28em 0.6em;
+  color: var(--blue);
+  background: #e9f0f2;
+  border-bottom: 1px solid var(--line);
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  text-align: right;
+  /* símbolo de unidade é sensível a caixa: cm não pode virar CM */
+  text-transform: none;
+  letter-spacing: 0;
+}
+.reveal .ca-tabela td {
+  padding: 0.16em 0.6em;
+  border-bottom: 1px solid rgba(16, 35, 51, 0.08);
+  font-family: "DM Mono", monospace;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.reveal .ca-tabela tr:last-child td { border-bottom: 0; }
+
+.ca-controles { display: flex; flex-direction: column; gap: 0.42em; }
+.ca-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4em; }
+
+.ca-rot {
+  min-width: 3.1em;
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.46em;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.ca-linha label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32em;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.5em;
+}
+
+.ca-linha input[type="text"] {
+  width: 3.4em;
+  padding: 0.24em 0.3em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 1em;
+  text-align: right;
+}
+
+.ca-linha input[type="text"]:focus { outline: none; border-color: var(--blue); }
+
+.ca-botoes { display: flex; gap: 0.25em; }
+
+.ca-bt {
+  padding: 0.26em 0.6em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.5em;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.ca-bt:hover { border-color: var(--blue); }
+.ca-bt.ativo { color: white; background: var(--blue); border-color: var(--blue); }
+
+.ca-tela { display: block; width: 100%; height: auto; }
+
+.ca-veredito { margin: 0.3em 0 0; font-size: 0.52em; line-height: 1.5; }
+.ca-veredito.bom { color: var(--green); }
+.ca-veredito.meio { color: #8a6a1f; }
+.ca-veredito.ruim { color: var(--red); }
+
 /* ---------- Rodapé com a seção corrente ---------- */
 
 .rodape-secao {
