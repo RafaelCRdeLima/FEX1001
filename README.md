@@ -14,11 +14,16 @@ favicon.svg
 
 aulas/
   deck.css                    tema das apresentações
-  galton.js                   simulação da tábua de Galton (slide 93)
+  galton.js                   simulação da tábua de Galton (Aula 1)
+  linearizacao.js             simulação de linearização (Aula 2)
   aula-01-medidas/
     index.html                apresentação (reveal.js) — versão corrente
-    img/                      figuras, compartilhadas com o LaTeX
+    img/                      figuras
     beamer/main.tex           versão Beamer original (não atualizada)
+  aula-02-graficos/
+    index.html                apresentação (reveal.js) — versão corrente
+    img/                      figuras da Apostila 2
+    beamer/main.tex           rascunho Beamer do Prof. Rafael (não atualizado)
 
 Apostilas e Relatorios/
   apostilas/                  Apostila 1 (Medidas) e Apostila 2 (Gráficos)
@@ -90,10 +95,35 @@ cd "aulas/aula-01-medidas/beamer"
 pdflatex main.tex && pdflatex main.tex
 ```
 
+## Aula 2 — Construção e Análise de Gráficos
+
+Apresentação em HTML, 61 slides, cobrindo a Apostila 2 por inteiro:
+
+1. Por que gráficos — o que se enxerga no gráfico e não na tabela
+2. O sistema de coordenadas cartesianas
+3. Construção em papel milimetrado — os sete passos, com o Exemplo 15
+4. Gráfico linear — coeficientes angular e linear (Exemplo 16)
+5. Linearização — Exemplo 17 e o catálogo de transformações
+6. Papel mono-log — Exemplo 18
+7. Papel di-log — Exemplo 19
+8. Um caso histórico — o diagrama de Hubble (1929)
+9. Simulação: escolher a transformação e ver se endireita
+10. Exercícios IV
+
+Exemplos resolvidos 15 a 19 da apostila, todos presentes.
+
+### Sobre a numeração
+
+A Apostila 2 é a de gráficos, então esta é a **Aula 2**. O projeto Overleaf do
+professor usa outra numeração — lá, *Aula 2* é sobre erros e *Aula 3* sobre
+gráficos. O conteúdo de erros já está dentro da Aula 1, porque a Apostila 1
+o cobre na seção II.
+
 ## Créditos das imagens
 
-As figuras de instrumentos, réguas e prefixos vêm da Apostila 1 do DFIS/UDESC.
-As imagens do Hubble são de uso livre para fins educacionais, com atribuição:
+As figuras de instrumentos, réguas e prefixos vêm da Apostila 1, e as figuras
+III.1 a III.12 da Apostila 2 — ambas do DFIS/UDESC. As demais são de uso livre
+para fins educacionais, com atribuição:
 
 | Arquivo | Crédito | Fonte |
 |---|---|---|
@@ -104,6 +134,7 @@ As imagens do Hubble são de uso livre para fins educacionais, com atribuição:
 | `richardson-retrato.jpg` | NOAA — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lewis_Fry_Richardson.png) |
 | `costa-fiordes.jpg` | NASA/USGS — ASTER, *Earth as Art II* | [NASA Earth Observatory](https://earthobservatory.nasa.gov/images/4605/fjords-norway) |
 | `perrin-trajetorias.svg` | J. B. Perrin, 1913 — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:PerrinPlot2.svg) |
+| `hubble-1929.jpg` | E. Hubble, PNAS 15, 168 (1929) — domínio público | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hubble's_law_original_1929.png) |
 
 Imagens da NASA são de domínio público; as da ESA/Hubble estão sob
 [CC BY 4.0](https://esahubble.org/copyright/).

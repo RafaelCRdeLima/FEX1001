@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aula 2 da FEX1001 — Construção de gráficos, linearização e papéis logarítmicos. UDESC/CCT.">
+    <meta name="theme-color" content="#071b2c">
+    <title>Aula 2 · Construção e Análise de Gráficos · FEX1001</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendor/reveal/dist/reset.css">
+    <link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css">
+    <link rel="stylesheet" href="../deck.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+<section class="capa" data-background-gradient="radial-gradient(circle at 78% 25%, rgba(32,116,148,0.30), transparent 28%), linear-gradient(135deg, #061927 0%, #0a2b42 60%, #092236 100%)">
+  <p class="eyebrow">FEX1001 · Aula 2</p>
+  <h1>Construção e análise de gráficos</h1>
+  <p class="capa-sub">
+    Do papel milimetrado à linearização: como fazer um gráfico dizer o que a
+    tabela esconde.
+  </p>
+  <p class="capa-rodape">Prof. Rafael de Lima · Departamento de Física · CCT/UDESC</p>
+  <aside class="notes">
+    Base: Apostila 2 — Construção de Gráficos (DFIS, CCT/UDESC). Navegação linear:
+    seta para a direita avança por todos os slides.
+  </aside>
+</section>
+
+<section>
+  <p class="eyebrow">O caminho de hoje</p>
+  <h2>Roteiro</h2>
+  <div class="colunas">
+    <ol>
+      <li>Por que gráficos</li>
+      <li>O sistema de coordenadas cartesianas</li>
+      <li>Construção em papel milimetrado — os sete passos</li>
+      <li>Gráfico linear: coeficientes angular e linear</li>
+      <li>Linearização</li>
+    </ol>
+    <ol start="6">
+      <li>Papel mono-log</li>
+      <li>Papel di-log</li>
+      <li>Um caso histórico</li>
+      <li>Simulação: linearizar ao vivo</li>
+      <li>Exercícios IV</li>
+    </ol>
+  </div>
+  <div class="bloco regra">
+    <span class="bloco-titulo">A ideia que atravessa a aula</span>
+    <p>
+      Uma <strong>reta</strong> é a única curva cujos parâmetros se leem direto do
+      gráfico. Todo o resto da aula é sobre <strong>transformar o que você mediu
+      em uma reta</strong> — e ler a física no coeficiente angular e no linear.
+    </p>
+  </div>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 1</p>
+    <h2>Por que gráficos</h2>
+    <p>O que se enxerga num gráfico e não se enxerga numa tabela.</p>
+  </section>
+
+  <section>
+    <h2>A tabela guarda; o gráfico mostra</h2>
+    <p>
+      Em vez de olhar para uma tabela de medidas, o cientista olha para o gráfico
+      traçado a partir dela e <strong>percebe o comportamento</strong> das grandezas
+      envolvidas.
+    </p>
+    <div class="bloco">
+      <span class="bloco-titulo">Onde você já lê gráficos sem perceber</span>
+      <p>
+        A evolução do salário mínimo, o número de acidentes de trânsito, a ocupação
+        do disco rígido em “pizza”, o <strong>eletrocardiograma</strong> — a medicina
+        moderna é cheia de aparelhos cujo resultado é um gráfico.
+      </p>
+    </div>
+    <p>
+      O uso de gráficos na Física é tão importante quanto o conceito de função na
+      Matemática: é a representação visual de como uma grandeza varia em relação
+      a outra.
+    </p>
+  </section>
+
+  <section>
+    <h2>Duas grandezas, uma dependente da outra</h2>
+    <p>
+      Nesta disciplina trabalhamos sempre com <strong>duas</strong> grandezas: uma
+      <strong>independente</strong> e outra que <strong>depende</strong> dela.
+    </p>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Exemplo</span>
+      <p>
+        O tempo flui independentemente de como a velocidade varia; a velocidade é que
+        varia em função de como o tempo flui. Logo \(v = v(t)\), e nunca o contrário.
+      </p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">O aviso da apostila</span>
+      <p>
+        “Todos os estudantes têm dificuldades no aprendizado da construção de gráficos,
+        e principalmente no uso da técnica da linearização.” E a receita que funciona é
+        uma só: <strong>construir muitos gráficos</strong>.
+      </p>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 2</p>
+    <h2>O sistema de coordenadas cartesianas</h2>
+    <p>Quem vai em cada eixo, e por quê.</p>
+  </section>
+
+  <section class="denso">
+    <h2>Abscissas e ordenadas</h2>
+    <div class="colunas">
+      <div>
+        <p>
+          Seja uma grandeza dependente \(u\) que varia como função de uma independente
+          \(z\), isto é, \(u = f(z)\).
+        </p>
+        <div class="bloco regra">
+          <span class="bloco-titulo">A regra</span>
+          <p>
+            Eixo <strong>x</strong> (abscissas): a variável <strong>independente</strong>.<br>
+            Eixo <strong>y</strong> (ordenadas): a variável <strong>dependente</strong>.
+          </p>
+        </div>
+        <p>
+          A cada par ordenado \((x_i\,;\,y_i)\) corresponde um ponto \(P_i\); o conjunto
+          deles é a <strong>curva</strong> da função. Os eixos admitem valores negativos,
+          mas em geral se usa apenas o quadrante em que ambas são positivas.
+        </p>
+      </div>
+      <figure>
+        <img src="img/III-1.jpg" alt="Sistema de coordenadas cartesianas com os quatro quadrantes, eixo x horizontal das abscissas e eixo y vertical das ordenadas.">
+        <figcaption>Figura III.1 — o plano cartesiano.</figcaption>
+      </figure>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 3</p>
+    <h2>Construção em papel milimetrado</h2>
+    <p>Sete passos, na ordem. O Exemplo 15 do começo ao fim.</p>
+  </section>
+
+  <section>
+    <h3>Exemplo 15 — dilatação volumétrica de uma esfera</h3>
+    <p>Mediu-se o volume \(V\) de uma esfera para várias temperaturas \(T\):</p>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>V (10⁻⁹ m³)</th><td class="num">64,1</td><td class="num">80,7</td><td class="num">97,8</td><td class="num">114,9</td><td class="num">138,0</td><td class="num">162,5</td><td class="num">195,0</td><td class="num">223,3</td><td class="num">260,0</td></tr>
+        <tr><th>T (°C)</th><td class="num">60,00</td><td class="num">65,00</td><td class="num">70,00</td><td class="num">75,00</td><td class="num">80,00</td><td class="num">85,00</td><td class="num">90,00</td><td class="num">95,00</td><td class="num">100,00</td></tr>
+        <tr><th>i</th><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num">5</td><td class="num">6</td><td class="num">7</td><td class="num">8</td><td class="num">9</td></tr>
+      </tbody>
+    </table>
+    <div class="bloco">
+      <span class="bloco-titulo">O que a tabela já diz</span>
+      <p>
+        À medida que a temperatura aumenta, o volume dilata. O gráfico será
+        <strong>V versus T</strong>, porque o volume é que depende da temperatura.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Passo 1 — seleção do papel</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Por enquanto: milimetrado</span>
+      <p>
+        Em princípio, <strong>qualquer</strong> função de uma variável pode ser traçada
+        em papel milimetrado. Não há restrições.
+      </p>
+    </div>
+    <p>
+      Mais adiante veremos que, para funções exponenciais e de potência, existem papéis
+      que poupam trabalho — o mono-log e o di-log.
+    </p>
+  </section>
+
+  <section>
+    <h2>Passo 2 — definição dos eixos</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Causa e efeito</span>
+      <p>
+        A <strong>causa</strong> no eixo horizontal (x, independente).
+        O <strong>efeito</strong> no eixo vertical (y, dependente).
+      </p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Por que a ordem importa</span>
+      <p>
+        Ao medir a distância \(d\) percorrida em um intervalo \(t\), a distância varia
+        conforme o tempo. Dizer que “o tempo varia de acordo com a distância” é um
+        <strong>absurdo</strong>. Logo: \(d\) versus \(t\), nunca \(t\) versus \(d\).
+      </p>
+    </div>
+    <p>No Exemplo 15, portanto: <strong>V versus T</strong>.</p>
+  </section>
+
+  <section class="denso">
+    <h2>Passo 3 — registro dos eixos</h2>
+    <div class="colunas">
+      <div>
+        <ul>
+          <li>Na parte <strong>inferior direita</strong> do eixo horizontal: a variável
+            independente, com a unidade entre parênteses.</li>
+          <li>Na parte <strong>superior esquerda</strong> do eixo vertical: a variável
+            dependente, com a unidade entre parênteses.</li>
+          <li>Preferencialmente <strong>fora</strong> da região quadriculada.</li>
+        </ul>
+        <div class="bloco regra">
+          <span class="bloco-titulo">A potência faz parte da unidade</span>
+          <p>
+            No Exemplo 15 o volume está em \(10^{-9}\ \mathrm{m^3}\) — e é assim que deve
+            aparecer no eixo, com a potência inclusa.
+          </p>
+        </div>
+      </div>
+      <figure>
+        <img src="img/III-3.jpg" alt="Detalhe do eixo vertical rotulado com V entre parênteses dez elevado a menos nove metros cúbicos.">
+        <figcaption>Figura III.3 — a unidade com a potência de 10.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Passo 4 — escalas e posição do papel</h2>
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">O papel</span>
+        <p>
+          Uma folha milimetrada tem <strong>280 mm</strong> num sentido e
+          <strong>180 mm</strong> no outro. Escolha entre <strong>retrato</strong> e
+          <strong>paisagem</strong>.
+        </p>
+      </div>
+      <div class="bloco atencao">
+        <span class="bloco-titulo">Ocupar bem ≠ preencher tudo</span>
+        <p>
+          A escala que preenche a folha inteira quase nunca é a melhor. Prefira uma
+          <strong>escala limpa e fácil de ler</strong>, mesmo sobrando papel.
+        </p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">O teste decisivo</span>
+      <p>
+        Se você precisa <strong>fazer contas</strong> para localizar um ponto no gráfico,
+        a escala está inadequada.
+      </p>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Passo 4 — o volume, quatro possibilidades</h3>
+    <p>A grandeza varia de 64,1 a 260,0. Ignorando a unidade por um momento:</p>
+    <table class="tabela-compacta">
+      <thead><tr><th>Posição</th><th>Início</th><th>Conta</th><th>Escala</th><th>Veredito</th></tr></thead>
+      <tbody>
+        <tr class="destaque"><td>retrato (280 mm)</td><td>do zero</td><td>260,0 unid.</td><td>1,0 unid. : 1 mm</td><td>260 mm — cabe bem</td></tr>
+        <tr><td>retrato (280 mm)</td><td>em 60,0</td><td>200,0/280 = 0,714</td><td>1,4 mm por unidade</td><td>complicado</td></tr>
+        <tr><td>paisagem (180 mm)</td><td>do zero</td><td>260,0/180 = 1,444</td><td>2,0 unid. : 1 mm</td><td>130 mm — sobra muito</td></tr>
+        <tr><td>paisagem (180 mm)</td><td>em 60,0</td><td>200,0/180 = 1,11</td><td>2,0 unid. : 1 mm</td><td>100 mm — sobra muito</td></tr>
+      </tbody>
+    </table>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Fuja dos múltiplos de 3</span>
+      <p>
+        A escala “mais próxima” de 1,444 seria 1,5 — e todo múltiplo ou submúltiplo de 3
+        leva a dízima periódica. Evite 0,375; 0,75; 1,5; 3; 6; 9; 12…
+      </p>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Passo 4 — a temperatura</h3>
+    <p>
+      Varia de 60,00 a 100,00 °C. E vale a regra que muita gente esquece:
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Independência</span>
+      <p>A escala de um eixo é <strong>totalmente independente</strong> da do outro.</p>
+    </div>
+    <table class="tabela-compacta">
+      <thead><tr><th>Posição</th><th>Início</th><th>Escala</th><th>Ocupa</th></tr></thead>
+      <tbody>
+        <tr><td>paisagem (280 mm)</td><td>do zero</td><td>1,00 : 2 mm</td><td>200 mm</td></tr>
+        <tr><td>paisagem (280 mm)</td><td>em 60,00</td><td>1,00 : 5 mm</td><td>200 mm</td></tr>
+        <tr><td>retrato (180 mm)</td><td>do zero</td><td>1,00 : 1 mm</td><td>100 mm — sobra muito</td></tr>
+        <tr class="destaque"><td>retrato (180 mm)</td><td>em 60,00</td><td>1,00 : 4 mm</td><td>160 mm — ocupa bem</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>Passo 4 — conclusão das conclusões</h3>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">A melhor combinação para o Exemplo 15</span>
+      <p>
+        <strong>Posição do papel: retrato.</strong>
+      </p>
+      <p style="margin-top:.5em">
+        <strong>Eixo vertical</strong> — volume \(V\) — escala
+        <strong>1,0 unidade : 1 mm</strong>, começando do <strong>zero</strong>.
+      </p>
+      <p style="margin-top:.35em">
+        <strong>Eixo horizontal</strong> — temperatura \(T\) — escala
+        <strong>1,0 unidade : 4 mm</strong>, começando em <strong>60,00</strong>.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      Repare que os dois eixos usam escalas diferentes e pontos de partida diferentes —
+      e está tudo certo.
+    </p>
+  </section>
+
+  <section>
+    <h2>Passo 5 — indicação de valores nos eixos</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Use múltiplos amigáveis</span>
+      <p>Preferencialmente 2, 5, 10, 20, 50, 100…</p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Nunca</span>
+      <p>
+        Múltiplos ou submúltiplos de primos e fracionários: 3, 7, 9, 11, 13, 17;
+        2,5; 3,3; 7,5; 8,25; 12,5…
+      </p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Nunca, de novo</span>
+      <p>
+        <strong>Jamais indique nos eixos os valores dos pontos experimentais.</strong>
+        Os valores dos eixos são referências da escala, não os seus dados.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      E os valores indicados devem ter a <strong>mesma quantidade de algarismos
+      significativos</strong> das medidas: 50,0; 100,0; 150,0 — e não 50; 100; 150.
+    </p>
+  </section>
+
+  <section class="denso">
+    <h2>Passo 6 — marcação dos pontos experimentais</h2>
+    <div class="colunas">
+      <div>
+        <p>
+          O ponto precisa ser marcado por um sinal que <strong>não deixe dúvida</strong>
+          sobre sua localização.
+        </p>
+        <div class="bloco atencao">
+          <span class="bloco-titulo">Depois de marcar, pare</span>
+          <p>
+            Nada de tracejados do ponto até os eixos. Identifique <strong>apenas</strong>
+            os pontos experimentais.
+          </p>
+        </div>
+      </div>
+      <figure>
+        <svg viewBox="0 0 300 120" width="100%" style="max-height:26vh" role="img"
+             aria-label="Quatro marcadores aceitáveis para pontos experimentais: círculo com ponto central, cruz, quadrado com ponto central e triângulo com ponto central.">
+          <g stroke="#102333" stroke-width="1.6" fill="none">
+            <circle cx="40" cy="50" r="13"/><circle cx="120" cy="50" r="13"/>
+            <rect x="187" y="37" width="26" height="26"/>
+            <path d="M 260,36 L 274,62 L 246,62 Z"/>
+            <path d="M 111,41 L 129,59 M 129,41 L 111,59"/>
+          </g>
+          <g fill="#b9494d">
+            <circle cx="40" cy="50" r="2.6"/><circle cx="200" cy="50" r="2.6"/><circle cx="260" cy="53" r="2.6"/>
+          </g>
+          <g fill="#607080" font-family="DM Mono, monospace" font-size="11" text-anchor="middle">
+            <text x="40" y="88">⊙</text><text x="120" y="88">⊗</text>
+            <text x="200" y="88">▫</text><text x="260" y="88">△</text>
+            <text x="150" y="110">o ponto marcado deve ser inconfundível</text>
+          </g>
+        </svg>
+        <figcaption>Figura III.4 — marcadores aceitáveis.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Passo 7 — traçado da curva</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Suave e contínua</span>
+      <p>
+        O traçado deve ajustar-se <strong>o melhor possível</strong> aos pontos — não
+        precisa passar por todos.
+      </p>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">O erro mais comum de todos</span>
+      <p>
+        <strong>Nunca una os pontos experimentais por segmentos de reta.</strong> Isso
+        afirmaria que a relação entre as grandezas é <strong>descontínua</strong>, o que
+        dificilmente é verdade.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      No gráfico final, o primeiro valor do eixo horizontal foi deslocado levemente para
+      a direita: senão o primeiro ponto cairia em cima do eixo vertical.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 15 — o gráfico pronto</h3>
+    <figure>
+      <img src="img/III-5.jpg" alt="Gráfico de V versus T em papel milimetrado, com nove pontos experimentais marcados e uma curva suave crescente passando entre eles.">
+      <figcaption>Figura III.5 — sete passos depois.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Os sete passos, de uma vez</h2>
+    <div class="colunas">
+      <ol>
+        <li>Selecionar o papel</li>
+        <li>Definir os eixos — causa em x, efeito em y</li>
+        <li>Registrar os eixos com unidade e potência</li>
+        <li>Determinar escalas e posição da folha</li>
+      </ol>
+      <ol start="5">
+        <li>Indicar valores de referência nos eixos</li>
+        <li>Marcar os pontos experimentais</li>
+        <li>Traçar a curva suave</li>
+      </ol>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Os quatro erros que mais custam nota</span>
+      <p>
+        Ligar os pontos por retas · escrever os valores experimentais nos eixos ·
+        escala em múltiplos de 3 · esquecer a unidade (com a potência) no eixo.
+      </p>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 4</p>
+    <h2>Gráfico linear</h2>
+    <p>Quando a curva é uma reta, os dois coeficientes carregam a física.</p>
+  </section>
+
+  <section>
+    <h3>Exemplo 16 — bloco descendo um plano inclinado</h3>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>v (10⁻³ m/s)</th><td class="num">105,0</td><td class="num">150,0</td><td class="num">240,0</td><td class="num">290,0</td><td class="num">340,0</td><td class="num">430,0</td><td class="num">500,0</td></tr>
+        <tr><th>t (10⁻² s)</th><td class="num">1,00</td><td class="num">2,50</td><td class="num">6,00</td><td class="num">8,00</td><td class="num">10,00</td><td class="num">13,50</td><td class="num">16,00</td></tr>
+      </tbody>
+    </table>
+    <p>
+      A velocidade é função do tempo, então o gráfico é <strong>v versus t</strong>.
+      Seguindo os sete passos, a curva traçada é <strong>uma reta</strong>.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">A regra que vale daqui em diante</span>
+      <p>
+        Sempre que obtiver uma reta num gráfico, <strong>calcule os dois
+        coeficientes</strong> — e descubra a que grandeza física cada um corresponde.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 16 — o gráfico</h3>
+    <figure>
+      <img src="img/III-6.jpg" alt="Gráfico de v versus t em papel milimetrado: sete pontos experimentais alinhados e uma reta traçada entre eles, com os pontos auxiliares P1, P2 e P3 marcados de forma distinta.">
+      <figcaption>Figura III.6 — a curva é uma reta.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>A equação da reta</h2>
+    $$ y(x) = a\,x + b $$
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">a — coeficiente angular</span>
+        <p>A inclinação. Tem unidade de \([y]/[x]\).</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">b — coeficiente linear</span>
+        <p>O valor de \(y\) quando \(x = 0\). Tem a unidade de \([y]\).</p>
+      </div>
+    </div>
+    <p>
+      A partir do gráfico determinamos esses dois números e os
+      <strong>associamos a grandezas físicas</strong> que não estavam evidentes na
+      tabela. É assim que se extrai informação de um gráfico.
+    </p>
+  </section>
+
+  <section>
+    <h2>Coeficiente angular</h2>
+    $$ a = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1} $$
+    <div class="bloco atencao">
+      <span class="bloco-titulo">A regra que quase todo mundo erra</span>
+      <p>
+        \((x_1,y_1)\) e \((x_2,y_2)\) são dois pontos <strong>quaisquer da reta</strong> —
+        e <strong>não podem ser pontos experimentais</strong>. Marque-os no gráfico com
+        uma notação diferente da dos dados.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      Por quê? Porque a reta é o <em>ajuste</em> aos dados. Usar um ponto experimental
+      seria dar a ele um peso que ele não tem — e ele pode nem estar sobre a reta.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 16 — calculando a inclinação</h3>
+    <div class="conta">P₂ = (t₂ , v₂) = (14,50×10⁻² s ; 460,0×10⁻³ m/s)
+P₁ = (t₁ , v₁) = ( 5,00×10⁻² s ; 210,0×10⁻³ m/s)
+
+      Δv     (460,0 − 210,0)×10⁻³ m/s
+a  =  ── =  ───────────────────────────  =  2,6315789 m/s²
+      Δt      (14,50 − 5,00)×10⁻² s
+
+<span class="tot">a = 2,63 m/s²</span></div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">Leitura física</span>
+      <p>
+        A unidade saiu \(\mathrm{m/s^2}\): o coeficiente angular é a
+        <strong>aceleração</strong> do bloco.
+      </p>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Exemplo 16 — coeficiente linear, dois caminhos</h3>
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">1 · calculado</span>
+        <p>
+          Toma-se um terceiro ponto não experimental da reta,
+          \(P_3 = (3{,}50\times10^{-2}\,\mathrm{s}\,;\,170{,}0\times10^{-3}\,\mathrm{m/s})\),
+          e usa-se \(b = y_3 - a x_3\):
+        </p>
+        <p style="margin-top:.4em">
+          \(b = 170{,}0\times10^{-3} - (2{,}63)(3{,}50\times10^{-2}) = 78{,}0\times10^{-3}\ \mathrm{m/s}\)
+        </p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">2 · lido</span>
+        <p>
+          Quando dá para prolongar a reta até cortar o eixo \(y\) (extrapolação), basta
+          <strong>ler</strong> o valor em \(x = 0\):
+        </p>
+        <p style="margin-top:.4em">
+          \(b = v(t=0) = 79{,}0\times10^{-3}\ \mathrm{m/s}\)
+        </p>
+      </div>
+    </div>
+    <div class="bloco">
+      <span class="bloco-titulo">E a pequena diferença?</span>
+      <p>
+        78,0 contra 79,0 — resultado dos arredondamentos. <strong>Os dois são
+        aceitos</strong>: a diferença está dentro da margem de erro.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 16 — a equação do movimento</h3>
+    <p>Em um gráfico linear de \(v\) versus \(t\):</p>
+    <div class="colunas">
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Coeficiente angular</span>
+        <p>\(a = \alpha = 2{,}63\ \mathrm{m/s^2}\) — a <strong>aceleração</strong></p>
+      </div>
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Coeficiente linear</span>
+        <p>\(b = v_0 = 79{,}0\times10^{-3}\ \mathrm{m/s}\) — a <strong>velocidade inicial</strong></p>
+      </div>
+    </div>
+    $$ v(t) = (2{,}63\ \mathrm{m/s^2})\,t + (79{,}0\times10^{-3}\ \mathrm{m/s}) $$
+    <p class="legenda-dv">
+      A tabela tinha catorze números. O gráfico entregou <strong>duas grandezas
+      físicas</strong> e uma equação.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 5</p>
+    <h2>Linearização</h2>
+    <p>Desentortar a curva para poder ler os coeficientes.</p>
+  </section>
+
+  <section>
+    <h2>A ideia</h2>
+    <p>
+      Só sabemos extrair coeficientes de uma <strong>reta</strong>. Então, diante de uma
+      curva qualquer, a estratégia é transformá-la em reta.
+    </p>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Linearização (ou anamorfose)</span>
+      <p>
+        Trocar a variável do eixo horizontal por uma <strong>função dela</strong>, de modo
+        que a curva “desentorte” e vire reta.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      É o conteúdo em que os alunos mais tropeçam — e o que mais aparece nos relatórios
+      das experiências.
+    </p>
+  </section>
+
+  <section>
+    <h3>Exemplo 17 — movimento retilíneo</h3>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>x (m)</th><td class="num">58,0</td><td class="num">84,0</td><td class="num">105,0</td><td class="num">150,0</td><td class="num">188,0</td><td class="num">240,0</td></tr>
+        <tr><th>t (s)</th><td class="num">5,25</td><td class="num">7,00</td><td class="num">8,00</td><td class="num">10,00</td><td class="num">11,50</td><td class="num">13,00</td></tr>
+      </tbody>
+    </table>
+    <div class="colunas">
+      <figure>
+        <img src="img/III-7.jpg" alt="Gráfico de x versus t em papel milimetrado: os pontos formam uma curva encurvada para cima, uma parábola, e não uma reta.">
+        <figcaption>Figura III.7 — não é reta.</figcaption>
+      </figure>
+      <div>
+        <p>A curva é uma <strong>parábola</strong>, do tipo</p>
+        $$ x(t) = \varepsilon t^{2} + \gamma $$
+        <div class="bloco atencao">
+          <span class="bloco-titulo">A pergunta</span>
+          <p>Como determinar graficamente \(\varepsilon\) e \(\gamma\)?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Passo 1 — comparar com a equação da reta</h3>
+    <p>
+      Escrevemos a reta com um super-índice “linha”, para não confundir com a outra
+      equação: \(y'(x') = a'x' + b'\). Comparando termo a termo:
+    </p>
+    <div class="conta">   x(t) = ε t² + γ
+   y'(x') = a' x' + b'
+   ───────────────────────────────
+   x(t) = y'(x')      ε = a'      t² = x'      γ = b'</div>
+    <div class="bloco exemplo">
+      <span class="bloco-titulo">A conclusão</span>
+      <p>
+        Se \(y'\) versus \(x'\) é reta, então <strong>\(x\) versus \(t^2\)</strong> é reta.
+      </p>
+      <p style="margin-top:.4em">
+        \(x\) versus \(t\) → não linear &nbsp;·&nbsp;
+        \(x\) versus \(t^2\) → <strong>linear</strong>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Passo 2 — calcular a nova tabela</h3>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>x (m)</th><td class="num">58,0</td><td class="num">84,0</td><td class="num">105,0</td><td class="num">150,0</td><td class="num">188,0</td><td class="num">240,0</td></tr>
+        <tr><th>t (s)</th><td class="num">5,25</td><td class="num">7,00</td><td class="num">8,00</td><td class="num">10,00</td><td class="num">11,50</td><td class="num">13,00</td></tr>
+        <tr class="destaque"><th>t² (s²)</th><td class="num">27,6</td><td class="num">49,0</td><td class="num">64,0</td><td class="num">100,0</td><td class="num">132,2</td><td class="num">169,0</td></tr>
+      </tbody>
+    </table>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Duas coisas para não esquecer</span>
+      <p>
+        Respeite os <strong>algarismos significativos</strong> ao elevar ao quadrado —
+        e a <strong>unidade nova</strong>: \(t^2\) está em \(\mathrm{s^2}\), não em s.
+      </p>
+    </div>
+    <p class="legenda-dv">
+      \(5{,}25^2 = 27{,}5625\), com três algarismos significativos → 27,6.
+    </p>
+  </section>
+
+  <section class="denso">
+    <h3>Passos 3 a 5 — o gráfico linearizado</h3>
+    <div class="colunas">
+      <figure>
+        <img src="img/III-8.jpg" alt="Gráfico de x versus t ao quadrado em papel milimetrado: agora os pontos estão alinhados e a curva traçada é uma reta.">
+        <figcaption>Figura III.8 — a mesma medida, agora reta.</figcaption>
+      </figure>
+      <div>
+        <div class="conta">P₂ = (165,0 s² ; 230,0 m)
+P₁ = ( 85,0 s² ; 130,0 m)
+
+      (230,0 − 130,0) m
+a' = ──────────────────── = 1,25 m/s²
+      (165,0 − 85,0) s²</div>
+        <div class="conta">P₃ = (125,0 s² ; 180,0 m)
+
+b' = 180,0 − (1,25)(125,0) = 23,8 m   (calculado)
+b' = x(t² = 0)             = 24,0 m   (lido)</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 17 — o resultado</h3>
+    <div class="colunas">
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Coeficiente angular</span>
+        <p>\(\varepsilon = 1{,}25\ \mathrm{m/s^2}\)</p>
+      </div>
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Coeficiente linear</span>
+        <p>\(\gamma = x_0 = 24{,}0\ \mathrm{m}\) — a <strong>posição inicial</strong></p>
+      </div>
+    </div>
+    $$ x(t) = (1{,}25\ \mathrm{m/s^2})\,t^{2} + 24{,}0\ \mathrm{m} $$
+    <div class="bloco regra">
+      <span class="bloco-titulo">Cuidado com a interpretação</span>
+      <p>
+        Para este movimento, \(x(t) = x_0 + v_0 t + \tfrac{1}{2}\alpha t^2\). Como
+        \(v_0 = 0\) e \(\tfrac{1}{2}\alpha = \varepsilon\), a aceleração é
+        \(\alpha = 2\varepsilon = \mathbf{2{,}50\ \mathrm{m/s^2}}\) — e <strong>não</strong>
+        1,25. O coeficiente angular nem sempre é a grandeza que você procura:
+        às vezes é um múltiplo dela.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>O catálogo da linearização</h2>
+    <table class="tabela-compacta">
+      <thead><tr><th>Equação do fenômeno</th><th>Gráfico não linear</th><th>Gráfico linearizado</th></tr></thead>
+      <tbody>
+        <tr><td>\(Y = CX^{2} + D\)</td><td>Y versus X</td><td>Y versus \(X^{2}\)</td></tr>
+        <tr><td>\(Y = CX^{1/2} + D\)</td><td>Y versus X</td><td>Y versus \(X^{1/2}\)</td></tr>
+        <tr><td>\(Y = CX^{-1} + D\)</td><td>Y versus X</td><td>Y versus \(X^{-1}\)</td></tr>
+        <tr><td>\(Y = CX^{3} + D\)</td><td>Y versus X</td><td>Y versus \(X^{3}\)</td></tr>
+        <tr><td>\(Y = C\cos X + D\)</td><td>Y versus X</td><td>Y versus \(\cos X\)</td></tr>
+        <tr><td>\(Y = C\ln X + D\)</td><td>Y versus X</td><td>Y versus \(\ln X\)</td></tr>
+        <tr><td>\(Y = Ce^{X} + D\)</td><td>Y versus X</td><td>Y versus \(e^{X}\)</td></tr>
+        <tr class="destaque"><td>\(Y = CX^{n} + D\)</td><td>Y versus X</td><td>Y versus \(X^{n}\)</td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">
+      Em todos: \(C = a'\) (coeficiente angular) e \(D = b'\) (coeficiente linear).
+      O padrão é sempre o mesmo — troque o eixo x pela função que aparece na equação.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 6</p>
+    <h2>Papel mono-log</h2>
+    <p>Para \(y = A e^{Bx}\), o papel já faz o logaritmo por você.</p>
+  </section>
+
+  <section>
+    <h2>Duas funções merecem papel próprio</h2>
+    <p>
+      Toda curva pode ser graficada em milimetrado, e a linearização resolve o caso
+      geral. Mas duas famílias de funções variam <strong>muito rápido</strong> e aparecem
+      o tempo todo em Física: a <strong>exponencial</strong> e a <strong>potência</strong>.
+    </p>
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">Mono-log</span>
+        <p>Um eixo linear, outro logarítmico. Lineariza \(y = Ae^{Bx}\).</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Di-log</span>
+        <p>Os dois eixos logarítmicos. Lineariza \(y = kx^{n}\).</p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">A economia</span>
+      <p>
+        Nesses papéis <strong>não é preciso calcular a nova tabela</strong> de logaritmos:
+        marcam-se os valores medidos diretamente.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 18 — carga de um capacitor</h3>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>V (μV)</th><td class="num">3,60</td><td class="num">8,00</td><td class="num">14,00</td><td class="num">31,00</td><td class="num">80,00</td><td class="num">180,00</td><td class="num">270,00</td></tr>
+        <tr><th>t (ms)</th><td class="num">5,00</td><td class="num">15,00</td><td class="num">20,00</td><td class="num">30,00</td><td class="num">41,50</td><td class="num">50,00</td><td class="num">55,00</td></tr>
+      </tbody>
+    </table>
+    <p>Sabe-se que o fenômeno obedece a \(V(t) = A e^{Bt}\). Como achar \(A\) e \(B\)?</p>
+    <div class="conta">ln[V(t)] = ln[A e^{Bt}] = ln[A] + B·t·ln[e] = ln[A] + B·t
+
+comparando com   y'(x') = a' x' + b' :
+
+   ln[V(t)] = y'(x')     B = a'     t = x'     ln[A] = b'</div>
+    <p class="legenda-dv">
+      Logo <strong>ln V versus t</strong> é reta — e é isso que o papel mono-log desenha
+      sozinho.
+    </p>
+  </section>
+
+  <section class="denso">
+    <h2>O papel mono-log</h2>
+    <div class="colunas-1-2">
+      <figure>
+        <img src="img/III-9.jpg" alt="Folha de papel mono-log em branco: eixo horizontal com escala linear de 0 a 120 e eixo vertical com escala logarítmica de 1 a 1000, dividido em três décadas.">
+        <figcaption>Figura III.9</figcaption>
+      </figure>
+      <div>
+        <ul>
+          <li>Abscissas: escala <strong>linear</strong>, em geral 120 unidades.</li>
+          <li>Ordenadas: escala <strong>logarítmica</strong> de base 10, dividida em
+            <strong>décadas</strong>.</li>
+          <li>Cada década multiplica por 10 a anterior: 1 → 10 → 100 → 1000.</li>
+        </ul>
+        <div class="bloco atencao">
+          <span class="bloco-titulo">Nunca comece do zero</span>
+          <p>
+            O logaritmo não é definido em zero. A escala começa em qualquer potência de
+            dez: … 0,01; 0,1; 1; 10; 100; 1000 …
+          </p>
+        </div>
+        <p class="legenda-dv">
+          No eixo logarítmico não estão representados os valores, mas os
+          <strong>logaritmos</strong> deles.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Exemplo 18 — o gráfico e as constantes</h3>
+    <div class="colunas">
+      <figure>
+        <img src="img/III-10.jpg" alt="Gráfico de V versus t em papel mono-log: os pontos experimentais ficam alinhados numa reta ascendente, com os pontos auxiliares P1, P2 e P3 marcados.">
+        <figcaption>Figura III.10 — reta no mono-log.</figcaption>
+      </figure>
+      <div>
+        <div class="bloco atencao">
+          <span class="bloco-titulo">A diferença que se anota</span>
+          <p>
+            No milimetrado o ponto é \([t_1,\,(\ln V)_1]\); no mono-log é
+            \([t_1,\,\ln(V_1)]\) — lê-se \(V\) direto e o logaritmo entra na conta.
+          </p>
+        </div>
+        <div class="conta">P₂ = (45,00 ms ; 110,00 μV)
+P₁ = (25,00 ms ; 20,00 μV)
+
+     ln(V₂/V₁)     ln(110,00/20,00)     1,70474809
+B =  ───────── =  ────────────────── =  ──────────
+     (t₂ − t₁)    (45,00−25,00)×10⁻³ s   20,00×10⁻³
+
+<span class="tot">B = 85,24 s⁻¹</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 18 — a constante A</h3>
+    <p>Como \(V(t) = Ae^{Bt}\), então \(V(0) = A\): basta ler onde a reta corta \(t = 0\).</p>
+    <div class="colunas">
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Lido</span>
+        <p>\(A = 2{,}35\ \mathrm{\mu V}\)</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Calculado</span>
+        <p>
+          Com \(P_3 = (33{,}00\ \mathrm{ms}\,;\,40{,}00\ \mathrm{\mu V})\):
+        </p>
+        <p style="margin-top:.35em">
+          \(A = \dfrac{V_3}{e^{Bt_3}} = \dfrac{40{,}00}{e^{(85{,}24)(0{,}033)}} = 2{,}40\ \mathrm{\mu V}\)
+        </p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">A unidade de B</span>
+      <p>
+        O argumento da exponencial é <strong>adimensional</strong>. Então a unidade da
+        constante dentro dela é sempre a <strong>inversa</strong> da unidade de \(x\) —
+        aqui, \(\mathrm{s^{-1}}\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mono-log, em resumo</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Quando \(y(x) = Ae^{Bx}\)</span>
+      <p>O gráfico \(y\) versus \(x\) em papel mono-log é uma <strong>reta</strong>.</p>
+    </div>
+    $$ B = \frac{\ln(y_2) - \ln(y_1)}{x_2 - x_1} = \frac{\ln(y_2/y_1)}{x_2 - x_1} $$
+    $$ A = \frac{y_3}{e^{Bx_3}}\ \text{(calculado)} \qquad\text{ou}\qquad A = y(x=0)\ \text{(lido)} $$
+    <p class="legenda-dv">
+      Os valores obtidos no mono-log devem concordar com os do gráfico \(\ln y\) versus
+      \(x\) feito em milimetrado. Se não concordarem, algo está errado em um dos dois.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 7</p>
+    <h2>Papel di-log</h2>
+    <p>Para \(y = kx^{n}\), quando nem o expoente se conhece.</p>
+  </section>
+
+  <section>
+    <h2>Duas situações, dois caminhos</h2>
+    <p>Muitos fenômenos obedecem a \(y(x) = kx^{n}\). Para linearizar:</p>
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">Se \(n\) é conhecido</span>
+        <p>
+          Faça \(x' = x^{n}\) e trace \(y\) versus \(x^{n}\) em milimetrado. Reta, e
+          calcula-se \(k\) pelo procedimento de sempre.
+        </p>
+      </div>
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Se \(n\) é desconhecido</span>
+        <p>
+          É o caso comum. Use o <strong>papel di-log</strong> — nele o próprio expoente
+          aparece como coeficiente angular.
+        </p>
+      </div>
+    </div>
+    <div class="conta">log[I(V)] = log[C·Vʷ] = log[C] + w·log[V]
+
+comparando com   y'(x') = a' x' + b' :
+
+   log[I] = y'(x')     w = a'     log[V] = x'     log[C] = b'</div>
+  </section>
+
+  <section class="denso">
+    <h3>Exemplo 19 — corrente numa lâmpada</h3>
+    <table class="tabela-compacta">
+      <tbody>
+        <tr><th>I (mA)</th><td class="num">22,0</td><td class="num">60,0</td><td class="num">91,0</td><td class="num">180,0</td><td class="num">330,0</td><td class="num">520,0</td></tr>
+        <tr><th>V (V)</th><td class="num">0,600</td><td class="num">2,500</td><td class="num">4,000</td><td class="num">11,500</td><td class="num">26,000</td><td class="num">49,000</td></tr>
+      </tbody>
+    </table>
+    <p>
+      O filamento incandescente não é ôhmico: \(I(V) = C V^{w}\), com \(C\) e \(w\)
+      desconhecidos.
+    </p>
+    <div class="colunas">
+      <figure>
+        <img src="img/III-11.jpg" alt="Folha de papel di-log em branco: os dois eixos com escala logarítmica de base 10, divididos em décadas.">
+        <figcaption>Figura III.11 — papel di-log.</figcaption>
+      </figure>
+      <div class="bloco atencao">
+        <span class="bloco-titulo">Também aqui</span>
+        <p>
+          Os dois eixos são logarítmicos, divididos em décadas.
+          <strong>Nenhum deles pode começar do zero.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="denso">
+    <h3>Exemplo 19 — lendo o expoente no gráfico</h3>
+    <div class="colunas">
+      <figure>
+        <img src="img/III-12.jpg" alt="Gráfico de I versus V em papel di-log: os pontos experimentais alinhados numa reta ascendente, com os pontos auxiliares marcados.">
+        <figcaption>Figura III.12 — reta no di-log.</figcaption>
+      </figure>
+      <div>
+        <div class="conta">P₂ = (20,000 V ; 280,0 mA)
+P₁ = ( 1,000 V ;  30,0 mA)
+
+     log(I₂/I₁)     log(280,0/30,0)     0,97003678
+w =  ────────── =  ───────────────── = ───────────
+     log(V₂/V₁)     log(20,00/1,000)     1,3010300
+
+<span class="tot">w = 0,746</span></div>
+        <div class="bloco">
+          <span class="bloco-titulo">w é um número puro</span>
+          <p>
+            O resultado de um logaritmo é adimensional — como tem de ser, já que \(w\)
+            é um <strong>expoente</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo 19 — a constante C</h3>
+    <p>
+      Como \(I(V) = CV^{w}\), em \(V = 1\) temos \(I = C\cdot 1^{w} = C\). Basta ler onde
+      a reta cruza a vertical de \(V = 1\).
+    </p>
+    <div class="colunas">
+      <div class="bloco exemplo">
+        <span class="bloco-titulo">Lido</span>
+        <p>\(C = 30{,}0\ \mathrm{mA\cdot V^{-0{,}746}}\)</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Calculado</span>
+        <p>Com \(P_3 = (5{,}000\ \mathrm{V}\,;\,100{,}0\ \mathrm{mA})\):</p>
+        <p style="margin-top:.35em">
+          \(C = \dfrac{I_3}{V_3^{\,w}} = \dfrac{100{,}0}{5{,}000^{0{,}746}} = 30{,}1\ \mathrm{mA\cdot V^{-0{,}746}}\)
+        </p>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">A unidade de k, no caso geral</span>
+      <p>
+        De \(y = kx^{n}\) segue \([y] = [k]\,[x]^{n}\), logo
+        \([k] = [y]\,[x]^{-n}\). É por isso que a unidade de \(C\) tem um expoente
+        quebrado — e está correto.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Di-log, em resumo</h2>
+    <div class="bloco regra">
+      <span class="bloco-titulo">Quando \(y(x) = kx^{n}\)</span>
+      <p>O gráfico \(y\) versus \(x\) em papel di-log é uma <strong>reta</strong>.</p>
+    </div>
+    $$ n = \frac{\log(y_2) - \log(y_1)}{\log(x_2) - \log(x_1)} $$
+    $$ k = \frac{y_3}{(x_3)^{n}}\ \text{(calculado)} \qquad\text{ou}\qquad k = y(x=1)\ \text{(lido)} $$
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">Mono-log</span>
+        <p>lê-se \(A\) em \(x = 0\)</p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">Di-log</span>
+        <p>lê-se \(k\) em \(x = 1\)</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Qual papel usar?</h2>
+    <table>
+      <thead><tr><th>A equação é…</th><th>Papel</th><th>O que a reta entrega</th></tr></thead>
+      <tbody>
+        <tr><td>\(y = ax + b\)</td><td>milimetrado</td><td>\(a\) e \(b\) direto</td></tr>
+        <tr><td>\(y = Cx^{n} + D\), com \(n\) conhecido</td><td>milimetrado, \(y\) versus \(x^{n}\)</td><td>\(C\) e \(D\)</td></tr>
+        <tr class="destaque"><td>\(y = Ae^{Bx}\)</td><td>mono-log</td><td>\(B\) na inclinação, \(A\) em \(x=0\)</td></tr>
+        <tr class="destaque"><td>\(y = kx^{n}\), com \(n\) desconhecido</td><td>di-log</td><td>\(n\) na inclinação, \(k\) em \(x=1\)</td></tr>
+      </tbody>
+    </table>
+    <p class="legenda-dv">
+      Note a diferença entre as duas últimas linhas: a exponencial tem o \(x\) no
+      <em>expoente</em>; a potência tem o \(x\) na <em>base</em>. Trocar uma pela outra é
+      o engano mais comum na hora de escolher o papel.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 8</p>
+    <h2>Um caso histórico</h2>
+    <p>Quando a inclinação de uma reta mudou a ideia que se tinha do universo.</p>
+  </section>
+
+  <section class="denso">
+    <p class="eyebrow">1929 · Edwin Hubble</p>
+    <h2>A inclinação era a expansão do universo</h2>
+    <div class="colunas">
+      <figure>
+        <img src="img/hubble-1929.jpg" alt="Gráfico original de Hubble de 1929: velocidade radial em quilômetros por segundo no eixo vertical contra distância em parsecs no eixo horizontal, com pontos bastante dispersos e duas retas ajustadas.">
+        <p class="credito">E. Hubble, PNAS 15, 168 (1929) · domínio público</p>
+      </figure>
+      <div>
+        <p>
+          Hubble marcou a <strong>velocidade radial</strong> de galáxias contra a
+          <strong>distância</strong> delas. Vinte e poucos pontos, bem espalhados.
+        </p>
+        <div class="bloco exemplo">
+          <span class="bloco-titulo">O que a reta entregou</span>
+          <p>
+            O coeficiente angular dizia que quanto mais longe a galáxia, mais rápido ela
+            se afasta — e <strong>proporcionalmente</strong> à distância. Era a assinatura
+            de um universo em <strong>expansão</strong>.
+          </p>
+        </div>
+        <p class="legenda-dv">
+          O gráfico tem exatamente a estrutura que estudamos hoje: pontos experimentais,
+          uma reta ajustada, e um coeficiente angular que <em>é</em> uma grandeza física —
+          hoje chamada de constante de Hubble.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que esse gráfico ensina para o seu relatório</h2>
+    <div class="colunas">
+      <div class="bloco">
+        <span class="bloco-titulo">A dispersão é honesta</span>
+        <p>
+          Os pontos de Hubble estão longe da reta. Ele não os “ajeitou”: traçou a reta que
+          melhor os representa e deixou a dispersão à vista.
+        </p>
+      </div>
+      <div class="bloco">
+        <span class="bloco-titulo">A reta não passa pelos pontos</span>
+        <p>
+          Ela passa <em>entre</em> eles. É por isso que os pontos usados para calcular os
+          coeficientes <strong>não podem ser experimentais</strong>.
+        </p>
+      </div>
+    </div>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">E um detalhe que envelheceu mal</span>
+      <p>
+        A inclinação que Hubble obteve dava uma idade para o universo <strong>menor que a
+        idade da Terra</strong> — o eixo das distâncias estava sistematicamente errado.
+        A forma do gráfico estava certa; a calibração do eixo, não. Um
+        <strong>erro sistemático</strong>, como os da Aula 1.
+      </p>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 9</p>
+    <h2>Linearizar ao vivo</h2>
+    <p>Escolha o fenômeno, escolha a transformação, veja se endireita.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Simulação</p>
+    <h2>Qual transformação endireita esta curva?</h2>
+    <div id="linearizacao"></div>
+    <aside class="notes">
+      Comece pelo primeiro fenômeno com os eixos em x e y: a curva está torta e o r² é
+      baixo. Peça para a turma adivinhar a transformação antes de clicar. Depois mostre
+      que a transformação errada também "quase" endireita em alguns casos — e que é o r²
+      que decide. No caso da exponencial contra a potência, mostre que trocar ln y por
+      log y não muda a forma, só a escala: as duas endireitam, e a diferença está no
+      significado do coeficiente angular.
+    </aside>
+  </section>
+</section>
+
+<section>
+  <section class="divisoria" data-background-gradient="linear-gradient(145deg, #0a3854, #071b2c)">
+    <p class="eyebrow">Parte 10</p>
+    <h2>Exercícios IV</h2>
+    <p>Enunciados completos nas páginas 30 e 31 da Apostila 2.</p>
+  </section>
+
+  <section class="denso">
+    <h3>Exercícios 1 a 3</h3>
+    <ol>
+      <li>
+        <strong>MRUV.</strong> Dados de \(x\) e \(t\). Faça \(x\) versus \(t\), observe a
+        curva; linearize com \(x\) versus \(t^2\); calcule os dois coeficientes; escreva
+        \(x(t)\).
+      </li>
+      <li>
+        <strong>\(y = ax^{n}\).</strong> Faça \(y\) versus \(x\) em milimetrado (não é
+        linear); depois \(\log y\) versus \(\log x\) em milimetrado; calcule os
+        coeficientes; refaça em <strong>papel di-log</strong> e compare os resultados
+        obtidos nos dois papéis.
+      </li>
+      <li>
+        <strong>\(y = ae^{bx}\).</strong> Mesmo roteiro: milimetrado, depois \(\ln y\)
+        versus \(x\), depois <strong>mono-log</strong>, e compare.
+      </li>
+    </ol>
+    <p class="legenda-dv">
+      Os exercícios 2 e 3 pedem deliberadamente os dois caminhos — o trabalhoso e o do
+      papel especial — para você conferir que dão o mesmo resultado.
+    </p>
+  </section>
+
+  <section class="denso">
+    <h3>Exercícios 4 a 6</h3>
+    <ol start="4">
+      <li>
+        <strong>Constante elástica pelo método dinâmico.</strong> Com
+        \(T = 2\pi\sqrt{m/k}\) e uma tabela de \(T\) e \(m\), determine \(k\) a partir de
+        um gráfico linear em papel milimetrado.
+      </li>
+      <li>
+        <strong>Pressão de vapor.</strong> Com \(P(T) = P_0 e^{-\lambda/RT}\) e
+        \(R = 8{,}314\ \mathrm{J/(mol\,K)}\), escolha o papel adequado, faça o gráfico
+        linear e calcule \(P_0\) e \(\lambda\), com unidades.
+      </li>
+      <li>
+        <strong>Onda eletromagnética.</strong> Com \(S(E) = AE^{B}\), escolha o papel
+        adequado e determine \(A\) e \(B\), com unidades.
+      </li>
+    </ol>
+    <div class="bloco atencao">
+      <span class="bloco-titulo">Repare no exercício 5</span>
+      <p>
+        O expoente é \(-\lambda/RT\), com o \(T\) no <strong>denominador</strong>. A
+        linearização não é \(\ln P\) versus \(T\), e sim \(\ln P\) versus
+        <strong>\(1/T\)</strong>. Ler a equação com atenção antes de escolher o eixo vale
+        mais que qualquer regra decorada.
+      </p>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section class="denso">
+    <h2>Resumo</h2>
+    <div class="colunas">
+      <div>
+        <h4>Construir</h4>
+        <ul>
+          <li>Causa em x, efeito em y.</li>
+          <li>Unidade — com a potência — nos dois eixos.</li>
+          <li>Escala limpa; nada de múltiplos de 3.</li>
+          <li>Nunca os valores experimentais nos eixos.</li>
+          <li>Curva suave; jamais ligar pontos por retas.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Extrair</h4>
+        <ul>
+          <li>Achou reta, calcule \(a\) e \(b\).</li>
+          <li>Pontos do cálculo <strong>nunca</strong> são experimentais.</li>
+          <li>Não é reta? Linearize.</li>
+          <li>Exponencial → mono-log; potência → di-log.</li>
+          <li>Confira a unidade que sai de cada coeficiente.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bloco regra">
+      <span class="bloco-titulo">A pergunta que resolve quase tudo</span>
+      <p>
+        Olhando a equação do fenômeno, <strong>o que precisa ir no eixo x para que ela
+        vire \(y = ax + b\)?</strong> A resposta é a linearização.
+      </p>
+    </div>
+  </section>
+
+  <section class="capa" data-background-gradient="radial-gradient(circle at 78% 25%, rgba(32,116,148,0.30), transparent 28%), linear-gradient(135deg, #061927 0%, #0a2b42 60%, #092236 100%)">
+    <p class="eyebrow">Para levar da aula</p>
+    <h1>A reta é a única curva<br>que se deixa ler.</h1>
+    <p class="capa-sub">
+      Apostila 2 e material completo em
+      <strong>github.com/RafaelCRdeLima/FEX1001</strong>
+    </p>
+    <p class="capa-rodape">
+      FEX1001 · Física Experimental I · Prof. Rafael de Lima · CCT/UDESC
+    </p>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+    <script src="../../vendor/reveal/dist/reveal.js"></script>
+    <script src="../../vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="../../vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="../../vendor/reveal/plugin/math/math.js"></script>
+    <script>
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.055,
+        minScale: 0.2,
+        maxScale: 1.6,
+        hash: true,
+        slideNumber: 'c/t',
+        transition: 'fade',
+        transitionSpeed: 'fast',
+        backgroundTransition: 'none',
+        pdfSeparateFragments: false,
+
+        // Navegação linear: → e ← percorrem TODOS os slides, para funcionar
+        // com passador de slides. Mesma configuração da Aula 1.
+        navigationMode: 'linear',
+        keyboard: {
+          37: 'prev', 38: 'prev', 33: 'prev',
+          39: 'next', 40: 'next', 34: 'next', 32: 'next'
+        },
+
+        katex: {
+          local: '../../vendor/katex',
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          throwOnError: false
+        },
+        plugins: [RevealNotes, RevealZoom, RevealMath.KaTeX]
+      });
+    </script>
+    <script src="../linearizacao.js"></script>
+  </body>
+</html>
