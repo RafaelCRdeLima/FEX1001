@@ -438,6 +438,15 @@
 .aj-bt-forte { color: var(--navy); background: var(--gold); border-color: var(--gold); font-weight: 500; }
 .aj-bt-forte:hover { background: #f1c76f; }
 
+.aj-nivel {
+  align-self: center;
+  min-width: 3.6em;
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.56em;
+  text-align: center;
+}
+
 .aj-eq { margin-left: auto; color: var(--muted); font-size: 0.6em; }
 
 .aj-controles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; margin-bottom: 0.4em; }
