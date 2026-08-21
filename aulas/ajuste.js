@@ -71,6 +71,12 @@
     }
   ];
 
+  // Escada de erro. Guardamos o sorteio padronizado de cada ponto, de modo que
+  // mudar o nível redimensiona o MESMO padrão de dispersão em vez de sortear
+  // outro — assim dá para ver os pontos abrindo e fechando sobre a curva.
+  const NIVEIS = [0, 0.010, 0.020, 0.035, 0.060, 0.100];
+  let nivel = 3;
+
   let cj = CONJUNTOS[0];
   let p1 = cj.p1.ini, p2 = cj.p2.ini;
   let dados = [];
@@ -78,14 +84,23 @@
   function gerar() {
     const [a, b] = cj.dom;
     dados = [];
-    // amplitude do ruído: uma fração da variação de y no intervalo
-    const y0 = cj.f(a, cj.p1.real, cj.p2.real), y1 = cj.f(b, cj.p1.real, cj.p2.real);
-    const faixa = Math.abs(y1 - y0);
     for (let i = 0; i < cj.n; i++) {
       const x = a + (b - a) * i / (cj.n - 1);
-      const y = cj.f(x, cj.p1.real, cj.p2.real);
-      dados.push({ x, y: cj.relativo ? y * (1 + cj.ruido * gauss()) : y + faixa * cj.ruido * gauss() });
+      dados.push({ x, base: cj.f(x, cj.p1.real, cj.p2.real), z: gauss(), y: 0 });
     }
+    aplicarRuido();
+  }
+
+  function aplicarRuido() {
+    const [a, b] = cj.dom;
+    // amplitude do ruído aditivo: uma fração da variação de y no intervalo
+    const faixa = Math.abs(cj.f(b, cj.p1.real, cj.p2.real) - cj.f(a, cj.p1.real, cj.p2.real));
+    const amp = NIVEIS[nivel];
+    dados.forEach(d => {
+      d.y = cj.relativo ? d.base * (1 + amp * d.z) : d.base + faixa * amp * d.z;
+    });
+    const el = raiz.querySelector('#a-nivel');
+    if (el) el.textContent = amp === 0 ? 'sem erro' : num(amp * 100, 1) + '%';
   }
 
   // ---------------------------------------------------------------- DOM
@@ -96,6 +111,9 @@
       <div class="aj-grupo"><span class="aj-rot">&nbsp;</span><div class="aj-botoes">
         <button type="button" id="a-melhor" class="aj-bt aj-bt-forte">Melhor ajuste</button>
         <button type="button" id="a-novo" class="aj-bt">Novos dados</button>
+        <button type="button" id="a-menos" class="aj-bt" title="diminuir o erro dos pontos">− erro</button>
+        <span class="aj-nivel" id="a-nivel"></span>
+        <button type="button" id="a-mais" class="aj-bt" title="aumentar o erro dos pontos">+ erro</button>
       </div></div>
       <div class="aj-eq" id="a-eq"></div>
     </div>
@@ -169,6 +187,14 @@
   }
 
   raiz.querySelector('#a-novo').addEventListener('click', e => { gerar(); desenhar(); e.currentTarget.blur(); });
+
+  const mudarNivel = d => e => {
+    nivel = Math.min(NIVEIS.length - 1, Math.max(0, nivel + d));
+    aplicarRuido(); desenhar();
+    e.currentTarget.blur();
+  };
+  raiz.querySelector('#a-menos').addEventListener('click', mudarNivel(-1));
+  raiz.querySelector('#a-mais').addEventListener('click', mudarNivel(+1));
   raiz.querySelector('#a-melhor').addEventListener('click', e => {
     const { a, b } = minimosQuadrados();
     const [v1, v2] = cj.dosCoef(a, b);
@@ -268,7 +294,11 @@
     // o piso do resíduo é o dos mínimos quadrados: comparar com ele é honesto,
     // porque com ruído o melhor ajuste não cai exatamente nos valores geradores
     const piso = minimosQuadrados().ssr;
-    const bom = ssr <= piso * 1.08 + 1e-9;
+    // sem erro o piso é ~0; sem uma tolerância absoluta nenhum ajuste passaria,
+    // porque os controles são discretos
+    const mv = tr.reduce((s, p) => s + p[1], 0) / (tr.length || 1);
+    const syy = tr.reduce((s, p) => s + (p[1] - mv) ** 2, 0);
+    const bom = ssr <= piso * 1.08 + syy * 2e-4;
     const fmt = v => (v < 100 ? num(v, 3) : num(v, 0));
     elVer.className = 'aj-veredito ' + (bom ? 'ok' : 'nao');
     elVer.innerHTML = bom
