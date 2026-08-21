@@ -364,6 +364,48 @@
 .lin-veredito.ok { color: var(--green); }
 .lin-veredito.nao { color: var(--red); }
 
+/* ---------- Escolha de escala e papel (Aula 2) ---------- */
+
+/* Controles empilhados à esquerda, folha grande à direita: assim a folha usa
+   toda a altura disponível do slide. */
+.pap-corpo { display: grid; grid-template-columns: 286px 1fr; gap: 1.1em; align-items: start; }
+.pap-painel { display: flex; flex-direction: column; gap: 0.7em; }
+.pap-vista { min-width: 0; }
+.pap-duplo { flex-wrap: wrap; max-width: 276px; }
+.pap-grupo { display: flex; flex-direction: column; gap: 0.28em; }
+
+.pap-rot {
+  color: var(--blue);
+  font-family: "DM Mono", monospace;
+  font-size: 0.46em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pap-botoes { display: flex; gap: 0.25em; }
+
+.pap-bt {
+  padding: 0.28em 0.62em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.55em;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.pap-bt:hover { border-color: var(--blue); }
+.pap-bt.ativo { color: white; background: var(--blue); border-color: var(--blue); }
+
+.pap-tela { display: block; width: 100%; height: auto; }
+
+.pap-veredito { margin: 0.3em 0 0; font-size: 0.55em; line-height: 1.5; }
+.pap-veredito.bom { color: var(--green); }
+.pap-veredito.meio { color: #8a6a1f; }
+.pap-veredito.ruim { color: var(--red); }
+
 /* ---------- Rodapé com a seção corrente ---------- */
 
 .rodape-secao {
