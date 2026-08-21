@@ -237,6 +237,8 @@
 
   // ------------------------------------------------- integração com o reveal
 
+  gerar();                    // dados antes de qualquer desenho
+
   const slide = raiz.closest('section');
   function quandoPronto(fn) {
     if (!window.Reveal) return;
@@ -248,6 +250,5 @@
     Reveal.on('resize', redimensionar);
   }
   window.addEventListener('resize', redimensionar);
-  gerar();
   redimensionar();
 })();

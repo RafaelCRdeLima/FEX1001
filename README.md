@@ -19,6 +19,7 @@ aulas/
   papel.js                    painel de escala e posição do papel (Aula 2)
   ajuste.js                   painel de ajuste nos dois espaços (Aula 2)
   carrinho.js                 painel de tabela e escala livre (Aula 2)
+  gas.js                      painel de faixa estreita, longe do zero (Aula 2)
   aula-01-medidas/
     index.html                apresentação (reveal.js) — versão corrente
     img/                      figuras
@@ -100,13 +101,14 @@ pdflatex main.tex && pdflatex main.tex
 
 ## Aula 2 — Construção e Análise de Gráficos
 
-Apresentação em HTML, 64 slides, cobrindo a Apostila 2 por inteiro:
+Apresentação em HTML, 65 slides, cobrindo a Apostila 2 por inteiro:
 
 1. Por que gráficos — o que se enxerga no gráfico e não na tabela
 2. O sistema de coordenadas cartesianas
 3. Construção em papel milimetrado — os sete passos, com o Exemplo 15
    e dois painéis: um com escalas prontas para escolher, outro em que o aluno
-   digita início e escala de cada eixo sobre dados de um carrinho acelerado
+   digita início e escala de cada eixo, sobre dados de um carrinho acelerado
+   e sobre a lei de Gay-Lussac, em que a faixa é estreita e longe do zero
 4. Gráfico linear — coeficientes angular e linear (Exemplo 16)
 5. Linearização — Exemplo 17, o catálogo de transformações e um painel que
    mostra o mesmo conjunto nos dois espaços, com o ajuste ao vivo
