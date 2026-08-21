@@ -16,6 +16,7 @@ aulas/
   deck.css                    tema das apresentações
   galton.js                   simulação da tábua de Galton (Aula 1)
   linearizacao.js             simulação de linearização (Aula 2)
+  papel.js                    painel de escala e posição do papel (Aula 2)
   aula-01-medidas/
     index.html                apresentação (reveal.js) — versão corrente
     img/                      figuras
@@ -97,11 +98,12 @@ pdflatex main.tex && pdflatex main.tex
 
 ## Aula 2 — Construção e Análise de Gráficos
 
-Apresentação em HTML, 61 slides, cobrindo a Apostila 2 por inteiro:
+Apresentação em HTML, 62 slides, cobrindo a Apostila 2 por inteiro:
 
 1. Por que gráficos — o que se enxerga no gráfico e não na tabela
 2. O sistema de coordenadas cartesianas
 3. Construção em papel milimetrado — os sete passos, com o Exemplo 15
+   e um painel para escolher posição do papel, início e escala de cada eixo
 4. Gráfico linear — coeficientes angular e linear (Exemplo 16)
 5. Linearização — Exemplo 17 e o catálogo de transformações
 6. Papel mono-log — Exemplo 18
