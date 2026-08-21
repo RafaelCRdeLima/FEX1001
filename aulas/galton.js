@@ -136,12 +136,12 @@
 
   // Dimensões lógicas: o slide tem 720 px de altura e já gasta ~190 px com
   // título, controles e nota — o canvas precisa caber nos ~450 px restantes.
-  let L = 1000, A = 390, dpr = 1;
+  let L = 1000, A = 360, dpr = 1;
   const MARGEM = 46;
   const Y_PINO_TOPO = 24;
-  const Y_PINO_BASE = 168;
-  const Y_BASE = 330;               // linha do chão das caçapas
-  const ALTURA_MAX_BARRA = 150;
+  const Y_PINO_BASE = 148;
+  const Y_BASE = 302;               // linha do chão das caçapas
+  const ALTURA_MAX_BARRA = 142;
 
   const larguraCacapa = () => (L - 2 * MARGEM) / CACAPAS;
   // x em unidades de caçapa (0..R) → pixel
@@ -151,7 +151,7 @@
   function redimensionar() {
     const larguraCss = tela.clientWidth || 1000;
     L = 1000;
-    A = 390;
+    A = 360;
     dpr = Math.min(3, (window.devicePixelRatio || 1) * (larguraCss / L) * 1.4);
     tela.width = Math.round(L * dpr);
     tela.height = Math.round(A * dpr);
@@ -288,8 +288,8 @@
     ctx.fillStyle = COR.apagado;
     ctx.font = '13px "DM Mono", ui-monospace, monospace';
     ctx.textAlign = 'center';
-    for (let i = 0; i < CACAPAS; i++) ctx.fillText(String(i), px(i), Y_BASE + 19);
-    ctx.fillText('desvios para a direita', L / 2, Y_BASE + 40);
+    for (let i = 0; i < CACAPAS; i++) ctx.fillText(String(i), px(i), Y_BASE + 18);
+    ctx.fillText('desvios para a direita', L / 2, Y_BASE + 38);
   }
 
   function atualizarNumeros() {
