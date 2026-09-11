@@ -12,7 +12,8 @@ prontos para compilar no Overleaf.
 | `lab.js` | motor comum: estatística, ajuste de reta, gráfico, escrita de LaTeX/CSV, gravação do pacote e persistência |
 | `experiencia-N/index.html` | as tabelas e campos daquela experiência |
 | `experiencia-N/lab-experiencia-N.js` | a física daquela experiência: o que se calcula e o que vai para o relatório |
-| `../template_relatorio/main.tex` | o modelo do relatório, comum a todas |
+| `../template_relatorio/main.tex` | modelo do relatório das Experiências 2 a 5 |
+| `../template_relatorio/main_experiencia1.tex` | modelo próprio da Experiência 1 |
 
 O motor não conhece nenhuma experiência em particular. Para acrescentar uma
 nova, basta um `index.html` com as tabelas e um script que descreva os cálculos
@@ -64,9 +65,35 @@ ao lado do ajuste, como conferência independente.
 Na Experiência 5, a massa da régua sai da razão b′/a′, que cancela L e x₁: o
 resultado não depende da geometria medida.
 
+## A Experiência 1 é diferente
+
+Ela não lineariza nada e não tem gráfico de reta: o objeto de estudo é a medida
+em si. Por isso tem estrutura própria, e um modelo LaTeX só dela, sem as seções
+de linearização e gráfico linear que não lhe cabem.
+
+O mesmo objeto é medido com as quatro escalas da régua. A página converte
+unidades, calcula perímetro e área em cada escala (inclusive as linhas que
+combinam escalas diferentes de propósito), faz a estatística entre as cinco
+equipes e propaga o erro até a área por ΔA = L̄·ΔC + C̄·ΔL.
+
+Duas decisões de projeto que valem registro:
+
+- **Os valores digitados nunca são reformatados.** Uma medida de "2" metros não
+  vira "2,000". O número de algarismos é o conteúdo da experiência.
+- **Os valores calculados saem com cinco algarismos significativos**, e a página
+  diz isso ao aluno: arredondar para o número correto continua sendo tarefa
+  dele. Imprimir um desvio padrão com seis algarismos numa disciplina sobre
+  algarismos significativos seria dar o exemplo errado.
+
+A incerteza que entra na propagação é escolhida por menu — a maior entre erro de
+escala e desvio padrão, ou qualquer uma das três isoladamente — porque a
+convenção é da disciplina, não do programa. A escolha fica registrada no texto
+do relatório.
+
+O gráfico é a comparação da mesma área obtida nas quatro escalas, com a barra de
+incerteza de cada uma e a linha de referência: mostra de uma vez que as escalas
+concordam, e que o que muda entre elas é o erro, não o valor.
+
 ## Estado
 
-- **Experiências 2, 3, 4 e 5** — completas.
-- **Experiência 1** — a fazer. É a única que foge da estrutura de dez tarefas:
-  mede em quatro escalas, converte unidades e propaga erro, com tabelas
-  compartilhadas entre as cinco equipes.
+As cinco experiências estão completas.

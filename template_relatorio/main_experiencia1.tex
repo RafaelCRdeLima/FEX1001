@@ -1,20 +1,21 @@
 %=========================================================================
 %  FEX1001 -- Física Experimental I -- UDESC/CCT
-%  Modelo de relatório de laboratório.
+%  Modelo de relatório da Experiência 1.
 %
-%  Este arquivo é preenchido automaticamente pela página do laboratório.
-%  Os comandos marcados abaixo são substituídos na geração; o restante é
-%  seu para editar livremente.
+%  A Experiência 1 não constrói gráfico linear nem faz linearização: o seu
+%  objeto é a medida em si -- algarismos significativos, conversão de
+%  unidades, erro de escala, dispersão entre equipes e propagação de erro.
+%  Por isso tem estrutura própria, distinta do modelo das Experiências 2 a 5.
 %
-%  Compila com pdflatex em qualquer distribuição TeX (inclusive Overleaf):
-%  usa apenas a classe article e pacotes padrão.
+%  Preenchido automaticamente pela página do laboratório.
+%  Compila com pdflatex em qualquer distribuição TeX, inclusive no Overleaf.
 %=========================================================================
 \documentclass[a4paper,11pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=2.3cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -24,19 +25,22 @@
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 
+% group-digits=integer é essencial: sem isso o siunitx agrupa também as
+% casas decimais e um valor como 9.79061 sai impresso como "9,790.61".
 \sisetup{output-decimal-marker={,}, group-separator={\,}, group-digits=integer}
 % Separador de milhar: espaço fino, como prescreve o SI. Ponto e vírgula
 % são marcadores decimais conforme a região e não devem agrupar dígitos.
 % group-digits=integer impede que o agrupamento alcance as casas decimais,
 % que faria 9.79061 sair impresso como "9,790.61".
-% group-digits=integer é essencial: sem isso o siunitx agrupa também as
-% casas decimais e 9.79061 sai impresso como "9,790.61".
 \captionsetup{font=small,labelfont=bf}
+
+% As tabelas desta experiência são largas (quatro escalas x duas grandezas).
+\newcommand{\tabelalarga}{\footnotesize\setlength{\tabcolsep}{4pt}}
 
 %-------------------------------------------------------------------------
 % DADOS DO RELATÓRIO -- preenchidos pela página do laboratório
 %-------------------------------------------------------------------------
-\newcommand{\experimento}{Experiência}
+\newcommand{\experimento}{Experiência 1}
 \newcommand{\subtitulo}{Física Experimental I}
 \newcommand{\equipe}{Bancada}
 \newcommand{\integrantes}{Nomes da equipe}
@@ -69,40 +73,32 @@ Centro de Ciências Tecnológicas, Joinville/SC}
 \input{secoes/objetivo}
 
 %=========================================================================
-\section{Observações}
-\input{secoes/observacoes}
-
-%=========================================================================
-\section{Experimentos}
-\input{secoes/experimentos}
+\section{Medidas diretas}
+\input{secoes/medidas_diretas}
 
 \input{tabelas/tabela1_medidas}
 
-%=========================================================================
-\section{Teoria}
-\input{secoes/teoria}
+\input{tabelas/tabela1_conversoes}
 
 %=========================================================================
-\section{Identificação das variáveis}
-\input{tabelas/tabela2_variaveis}
+\section{Medidas indiretas}
+\input{secoes/medidas_indiretas}
+
+\input{tabelas/tabela2_perimetro}
+
+\input{tabelas/tabela2_area}
 
 %=========================================================================
-\section{Linearização}
-\input{secoes/linearizacao}
+\section{Teoria de erros e incertezas}
+\input{secoes/teoria_erros}
 
-%=========================================================================
-\section{Análise estatística}
 \input{tabelas/tabela3_estatistica}
 
-%=========================================================================
-\section{Gráfico linear}
-\input{tabelas/tabela4_linearizada}
-
-\input{secoes/grafico}
+\input{tabelas/tabela3_areas}
 
 %=========================================================================
-\section{Resultados}
-\input{secoes/resultados}
+\section{Análise dos resultados}
+\input{secoes/analise}
 
 %=========================================================================
 \section{Conclusões}
@@ -113,8 +109,7 @@ Centro de Ciências Tecnológicas, Joinville/SC}
 \bibitem{halliday} HALLIDAY, D.; RESNICK, R.; WALKER, J.
   \emph{Fundamentos de Física} -- Volume 1: Mecânica.
   8.~ed. Rio de Janeiro: LTC.
-\bibitem{gravidade} Aceleração da gravidade local em Joinville/SC.
-  Disponível em: \url{https://www.wolframalpha.com}.
+\bibitem{apostila} Apostila 1 -- Medidas e algarismos significativos. FEX1001, UDESC/CCT.
 \end{thebibliography}
 
 \end{document}

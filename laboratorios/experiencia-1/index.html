@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Roteiro/Relatório da Experiência 1 da FEX1001: algarismos significativos, teoria de erros e incertezas. Preencha os dados online e baixe o relatório em LaTeX.">
+<meta name="theme-color" content="#071b2c">
+<title>Experiência 1 · Algarismos significativos e incertezas · FEX1001</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lab.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="lab-header">
+  <a class="brand" href="../../">
+    <span class="brand-mark"><span class="mark-value">11,<b>3</b></span></span>
+    <span>FEX1001</span>
+  </a>
+  <nav>
+    <a href="../../#experiencias">Experiências</a>
+    <a href="../../Apostilas%20e%20Relatorios/Experiencia%201.pdf">Roteiro em PDF ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<section class="lab-hero">
+  <p class="eyebrow">Roteiro/Relatório · Experiência 1</p>
+  <h1>Algarismos significativos, teoria de erros e incertezas</h1>
+  <p class="lead">
+    Medir o mesmo objeto com quatro escalas da mesma régua e acompanhar o que
+    acontece com o número de algarismos significativos, com a conversão de
+    unidades e com o erro que se propaga até a área.
+  </p>
+  <div class="hero-note">
+    <p>
+      Esta é a única experiência da disciplina sem gráfico linear: o objeto de
+      estudo é a medida em si. A página converte as unidades, calcula perímetro
+      e área em cada escala, faz a estatística entre as cinco equipes e propaga
+      o erro — mas <b>preserva exatamente os algarismos que você digitar</b>,
+      porque é sobre eles que a experiência trata.
+    </p>
+    <p class="autosave">O preenchimento fica salvo neste navegador.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">Identificação</span></h2>
+  <div class="grid-2">
+    <label>Equipe (número da bancada)
+      <input type="text" id="equipe" placeholder="Ex.: 3" data-save>
+    </label>
+    <label>Data da experiência
+      <input type="date" id="dataExp" data-save>
+    </label>
+  </div>
+  <label>Nomes dos integrantes
+    <textarea id="integrantes" rows="2" placeholder="Um nome por linha, ou separados por vírgula" data-save></textarea>
+  </label>
+  <div class="grid-2">
+    <label>Objeto medido
+      <input type="text" id="objeto" placeholder="Ex.: bancada da experiência" data-save>
+    </label>
+    <label class="inline-field">Sua equipe é a de número
+      <select id="minhaEquipe" data-save>
+        <option value="1">1</option><option value="2">2</option>
+        <option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<!-- ======================== 1. MEDIDAS DIRETAS ======================== -->
+<section class="card">
+  <h2><span class="tag">1</span> Medidas diretas <span class="pts">[2,5]</span></h2>
+  <p class="task">
+    a) Meça o comprimento C e a largura L do objeto com as quatro escalas da
+    régua, cada uma <b>na sua própria unidade</b>. Preencha a linha da sua
+    equipe e complete com os valores compartilhados pelas demais. Onde houver
+    divergência no número de algarismos significativos, revise com a equipe
+    correspondente até chegar a um consenso.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela1" class="data-table">
+      <caption>Tabela 1a — Medidas diretas de cada equipe, nas unidades de cada escala</caption>
+      <thead>
+        <tr class="group">
+          <th class="spacer"></th>
+          <th colspan="2">metro [m]</th>
+          <th colspan="2">decímetro [dm]</th>
+          <th colspan="2">centímetro [cm]</th>
+          <th colspan="2">milímetro [mm]</th>
+        </tr>
+        <tr>
+          <th>Equipe</th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="hint">
+    Cada escala tem uma resolução diferente: com a escala em metros sobra um
+    algarismo duvidoso logo na primeira casa; com a escala em milímetros
+    sobram vários certos. É essa diferença que a experiência quer evidenciar.
+  </p>
+
+  <p class="task" style="margin-top:1.6rem">
+    b–e) Converta as medidas <b>da sua equipe</b> para cada uma das unidades
+    indicadas.
+  </p>
+  <p class="hint" style="margin-top:-.6rem;margin-bottom:.8rem">
+    Os valores calculados aparecem com cinco algarismos significativos. O
+    arredondamento para o número <i>correto</i> de algarismos, segundo a medida
+    que os originou, continua sendo tarefa sua — é justamente o que se avalia
+    aqui.
+  </p>
+  <div class="table-wrap">
+    <table id="tabelaConv" class="data-table computed">
+      <caption>Tabela 1b–e — Medidas da sua equipe convertidas <span class="auto">calculadas automaticamente</span></caption>
+      <thead>
+        <tr class="group">
+          <th class="spacer"></th>
+          <th colspan="2">medido em m</th>
+          <th colspan="2">medido em dm</th>
+          <th colspan="2">medido em cm</th>
+          <th colspan="2">medido em mm</th>
+        </tr>
+        <tr>
+          <th>Expresso em</th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================= 2. MEDIDAS INDIRETAS ======================= -->
+<section class="card">
+  <h2><span class="tag">2</span> Medidas indiretas <span class="pts">[2,5]</span></h2>
+  <p class="task">
+    a) Perímetro P = C + C + L + L, calculado com as medidas da sua equipe nas
+    escalas indicadas e expresso em cada unidade. A última linha combina
+    escalas diferentes de propósito.
+  </p>
+  <div class="table-wrap">
+    <table id="tabelaPerimetro" class="data-table computed">
+      <caption>Tabela 2a — Perímetro <span class="auto">calculada automaticamente</span></caption>
+      <thead><tr><th>Cálculo</th><th>(m)</th><th>(dm)</th><th>(cm)</th><th>(mm)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="task" style="margin-top:1.4rem">
+    b) Área A = C × L, nas mesmas condições.
+  </p>
+  <div class="table-wrap">
+    <table id="tabelaArea" class="data-table computed">
+      <caption>Tabela 2b — Área <span class="auto">calculada automaticamente</span></caption>
+      <thead><tr><th>Cálculo</th><th>(m²)</th><th>(dm²)</th><th>(cm²)</th><th>(mm²)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== 3. TEORIA DE ERROS =========================== -->
+<section class="card">
+  <h2><span class="tag">3</span> Teoria de erros e incertezas <span class="pts">[5,0]</span></h2>
+
+  <p class="task">
+    a) Determine o erro de escala ΔE<sub>Esc</sub> de cada uma das quatro
+    escalas, na unidade da própria escala.
+  </p>
+  <div class="constants">
+    <div class="constant editable">
+      <span class="k">ΔE<sub>Esc</sub> · metro [m]</span>
+      <input type="text" id="errEsc_m" placeholder="0,5" data-save>
+    </div>
+    <div class="constant editable">
+      <span class="k">ΔE<sub>Esc</sub> · decímetro [dm]</span>
+      <input type="text" id="errEsc_dm" placeholder="0,5" data-save>
+    </div>
+    <div class="constant editable">
+      <span class="k">ΔE<sub>Esc</sub> · centímetro [cm]</span>
+      <input type="text" id="errEsc_cm" placeholder="0,5" data-save>
+    </div>
+    <div class="constant editable">
+      <span class="k">ΔE<sub>Esc</sub> · milímetro [mm]</span>
+      <input type="text" id="errEsc_mm" placeholder="0,5" data-save>
+    </div>
+  </div>
+  <p class="hint" style="margin-top:-.4rem">
+    O valor é seu para decidir e justificar — a convenção adotada na disciplina
+    define se é a menor divisão ou a metade dela. O mesmo erro vale para C e L
+    numa dada escala.
+  </p>
+
+  <p class="task" style="margin-top:1.4rem">
+    b–d) Média, desvio médio e desvio padrão de C e L, calculados sobre as
+    medidas das cinco equipes na Tabela 1a.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela3" class="data-table computed">
+      <caption>Tabela 3 (a–d) — Erro de escala e estatística entre equipes <span class="auto">calculada automaticamente</span></caption>
+      <thead>
+        <tr class="group">
+          <th class="spacer"></th>
+          <th colspan="2">metro [m]</th>
+          <th colspan="2">decímetro [dm]</th>
+          <th colspan="2">centímetro [cm]</th>
+          <th colspan="2">milímetro [mm]</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+          <th>C</th><th>L</th><th>C</th><th>L</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <p class="task" style="margin-top:1.6rem">
+    f) A área de referência vem das medidas C<sub>R</sub> e L<sub>R</sub>
+    fornecidas pelo docente.
+  </p>
+  <div class="table-wrap">
+    <table class="data-table narrow" id="referencia">
+      <caption>Medidas de referência fornecidas pelo docente</caption>
+      <thead><tr><th></th><th>Valor M</th><th>Incerteza ΔM</th><th>Unidade U</th><th>Escala utilizada</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="fixed">C<sub>R</sub></td>
+          <td><input type="text" id="cRefV" placeholder="241,0" data-save></td>
+          <td><input type="text" id="cRefE" placeholder="0,3" data-save></td>
+          <td>
+            <select id="cRefU" data-save>
+              <option value="m">m</option><option value="dm">dm</option>
+              <option value="cm" selected>cm</option><option value="mm">mm</option>
+            </select>
+          </td>
+          <td><input type="text" id="cRefS" placeholder="milímetro" data-save></td>
+        </tr>
+        <tr>
+          <td class="fixed">L<sub>R</sub></td>
+          <td><input type="text" id="lRefV" placeholder="80,5" data-save></td>
+          <td><input type="text" id="lRefE" placeholder="0,3" data-save></td>
+          <td>
+            <select id="lRefU" data-save>
+              <option value="m">m</option><option value="dm">dm</option>
+              <option value="cm" selected>cm</option><option value="mm">mm</option>
+            </select>
+          </td>
+          <td><input type="text" id="lRefS" placeholder="milímetro" data-save></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <label class="inline-field" style="margin-top:1.2rem">Incerteza a propagar em C̄ e L̄:
+    <select id="criterio" data-save>
+      <option value="maior">a maior entre o erro de escala e o desvio padrão</option>
+      <option value="escala">o erro de escala</option>
+      <option value="padrao">o desvio padrão</option>
+      <option value="medio">o desvio médio</option>
+    </select>
+  </label>
+  <p class="hint">
+    A propagação usada é ΔA = L̄·ΔC + C̄·ΔL, a forma conservadora para o
+    produto. Troque o critério se a convenção da disciplina for outra — as
+    tabelas e o relatório acompanham a escolha, e ela fica registrada no texto.
+  </p>
+
+  <p class="task" style="margin-top:1.4rem">
+    e–j) Área medida, área de referência, erros propagados e erros percentuais.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela3b" class="data-table computed">
+      <caption>Tabela 3 (e–j) — Áreas, erros propagados e erros percentuais <span class="auto">calculada automaticamente</span></caption>
+      <thead>
+        <tr><th></th><th>metro (m²)</th><th>decímetro (dm²)</th><th>centímetro (cm²)</th><th>milímetro (mm²)</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="chart-block">
+    <canvas id="grafico" width="900" height="540"></canvas>
+    <p class="fit-readout" id="graficoReadout">Preencha a Tabela 1a para ver a comparação entre as escalas.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Análise e conclusões</h2>
+  <p class="task">
+    As quatro escalas concordam dentro da própria incerteza? O que muda entre
+    elas: o valor medido ou o erro? A conversão de unidades cria algarismos
+    significativos que a medida não tinha?
+  </p>
+  <label>Análise dos resultados
+    <textarea id="analiseTexto" rows="5" data-save></textarea>
+  </label>
+  <label>Conclusões
+    <textarea id="concTexto" rows="4" data-save></textarea>
+  </label>
+</section>
+
+<section class="card generate">
+  <h2>Gerar relatório</h2>
+  <p class="task">
+    Esta experiência usa um modelo LaTeX próprio, sem seções de linearização e
+    gráfico linear, que ela não tem.
+  </p>
+  <div class="gen-actions">
+    <button type="button" class="button button-primary" id="gerar">Gerar relatório LaTeX</button>
+    <button type="button" class="button button-ghost" id="limpar">Limpar preenchimento</button>
+  </div>
+  <p class="status" id="status"></p>
+</section>
+
+</main>
+
+<footer class="lab-footer">
+  <p>FEX1001 · Física Experimental I · UDESC/CCT Joinville</p>
+</footer>
+
+<script src="../lab.js"></script>
+<script src="lab-experiencia-1.js"></script>
+</body>
+</html>

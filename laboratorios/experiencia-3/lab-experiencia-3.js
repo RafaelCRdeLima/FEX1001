@@ -173,7 +173,7 @@
     const tabela1 = Lab.latexTable({
       caption: "Trabalho $W$ e velocidade $v$ medidos por cada equipe, em função do deslocamento $d$.",
       label: "medidas",
-      align: "r" + "rr".repeat(5),
+      align: "r" + "rr".repeat(5), compact: true,
       columns: ["$d$ (\\si{\\centi\\meter})"].concat(
         [1, 2, 3, 4, 5].flatMap(t => [`$W_${t}$`, `$v_${t}$`])),
       rows: rows1.length ? rows1 : [Array(11).fill("--")],
@@ -192,7 +192,7 @@
     const tabela3 = Lab.latexTable({
       caption: "Média, desvio médio e desvio padrão do trabalho e da velocidade. " +
                "Corresponde às Tabelas 3, 4 e 5 do roteiro.",
-      label: "estatistica", align: "rrrrrrrr",
+      label: "estatistica", align: "rrrrrrrr", compact: true,
       columns: [
         "$d$ (\\si{\\centi\\meter})",
         "$\\bar{W}$ (\\si{\\joule})", "$\\bar{v}$ (\\si{\\meter\\per\\second})",

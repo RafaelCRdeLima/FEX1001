@@ -225,6 +225,158 @@ const Lab = (() => {
     ctx.textAlign = "start";
   }
 
+  /**
+   * Comparação de um mesmo mensurando obtido em escalas diferentes, com barra
+   * de incerteza e linha de referência. É o gráfico da Experiência 1: mostra
+   * de uma vez que todas as escalas concordam dentro da sua própria incerteza,
+   * e que a incerteza é que muda de ordem de grandeza entre elas.
+   *
+   * data: { items:[{label, value, error}], reference, labelY, title, logScale }
+   */
+  function drawScaleComparison(canvas, data) {
+    const { items, reference, labelY, title, logScale } = data;
+    const ctx = canvas.getContext("2d");
+    const W = canvas.width, H = canvas.height;
+    const padL = 104, padR = 40, padT = 54, padB = 78;
+
+    ctx.fillStyle = "#fffdf8";
+    ctx.fillRect(0, 0, W, H);
+
+    const valid = items.filter(i => Number.isFinite(i.value) && i.value > 0);
+    if (!valid.length) {
+      ctx.fillStyle = "#607080";
+      ctx.font = "16px Manrope, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Preencha as medidas para ver a comparação entre as escalas.", W / 2, H / 2);
+      ctx.textAlign = "start";
+      return;
+    }
+
+    // O eixo precisa acomodar valor, barra de erro e a referência.
+    const candidates = [];
+    valid.forEach(i => {
+      const err = Number.isFinite(i.error) ? i.error : 0;
+      candidates.push(i.value + err, Math.max(i.value - err, i.value * 1e-3));
+    });
+    if (Number.isFinite(reference) && reference > 0) candidates.push(reference);
+
+    let lo = Math.min(...candidates), hi = Math.max(...candidates);
+    const useLog = logScale && lo > 0 && hi / lo > 50;
+    if (useLog) {
+      const span = Math.log10(hi / lo) || 1;
+      lo = Math.pow(10, Math.log10(lo) - span * 0.12);
+      hi = Math.pow(10, Math.log10(hi) + span * 0.12);
+    } else {
+      const pad = (hi - lo) * 0.15 || Math.abs(hi) * 0.15 || 1;
+      lo -= pad; hi += pad;
+    }
+
+    const sy = v => {
+      if (useLog) {
+        return H - padB - (Math.log10(v) - Math.log10(lo)) /
+          (Math.log10(hi) - Math.log10(lo)) * (H - padT - padB);
+      }
+      return H - padB - (v - lo) / (hi - lo) * (H - padT - padB);
+    };
+
+    const plotW = W - padL - padR;
+    const slot = plotW / valid.length;
+    const sx = i => padL + slot * (i + 0.5);
+
+    // Malha horizontal e rótulos do eixo.
+    ctx.font = "13px 'DM Mono', monospace";
+    ctx.strokeStyle = "rgba(16,35,51,0.10)";
+    ctx.lineWidth = 1;
+    const ticks = 6;
+    for (let k = 0; k <= ticks; k++) {
+      const v = useLog
+        ? Math.pow(10, Math.log10(lo) + (Math.log10(hi) - Math.log10(lo)) * k / ticks)
+        : lo + (hi - lo) * k / ticks;
+      const py = sy(v);
+      ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(W - padR, py); ctx.stroke();
+      ctx.fillStyle = "#607080";
+      ctx.textAlign = "right";
+      const text = (v !== 0 && (Math.abs(v) < 1e-3 || Math.abs(v) >= 1e5))
+        ? v.toExponential(1).replace(".", ",")
+        : fmt(v, 2);
+      ctx.fillText(text, padL - 10, py + 4);
+    }
+
+    // Linha de referência.
+    if (Number.isFinite(reference) && reference > 0) {
+      const py = sy(reference);
+      ctx.strokeStyle = "#9b2f3a";
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([7, 5]);
+      ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(W - padR, py); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#9b2f3a";
+      ctx.font = "12px 'DM Mono', monospace";
+      ctx.textAlign = "left";
+      ctx.fillText("referência", padL + 6, py - 7);
+    }
+
+    // Eixos.
+    ctx.strokeStyle = "#102333";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT); ctx.lineTo(padL, H - padB); ctx.lineTo(W - padR, H - padB);
+    ctx.stroke();
+
+    // Pontos com barra de incerteza.
+    valid.forEach((item, i) => {
+      const px = sx(i);
+      const py = sy(item.value);
+      const err = Number.isFinite(item.error) ? item.error : 0;
+
+      if (err > 0) {
+        const top = sy(item.value + err);
+        const bottom = sy(Math.max(item.value - err, lo));
+        ctx.strokeStyle = "#1e5c83";
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px - 9, top); ctx.lineTo(px + 9, top); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px - 9, bottom); ctx.lineTo(px + 9, bottom); ctx.stroke();
+      }
+
+      ctx.fillStyle = "#e6b75c";
+      ctx.strokeStyle = "#102333";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(px, py, 6, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+
+      ctx.fillStyle = "#102333";
+      ctx.font = "600 14px Manrope, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(item.label, px, H - padB + 24);
+    });
+
+    // Rótulos.
+    ctx.fillStyle = "#102333";
+    ctx.font = "600 15px Manrope, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("escala da régua utilizada", padL + plotW / 2, H - 22);
+
+    ctx.save();
+    ctx.translate(28, padT + (H - padT - padB) / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText(labelY || "", 0, 0);
+    ctx.restore();
+
+    if (title) {
+      ctx.font = "600 16px Manrope, sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(title, padL, 28);
+    }
+    if (useLog) {
+      ctx.font = "12px 'DM Mono', monospace";
+      ctx.fillStyle = "#607080";
+      ctx.textAlign = "right";
+      ctx.fillText("eixo logarítmico", W - padR, 28);
+    }
+    ctx.textAlign = "start";
+  }
+
   /* -------------------------------------------------------------- LaTeX */
 
   /**
@@ -274,8 +426,15 @@ const Lab = (() => {
     return translateUnicode(paragraphs.join("\n\n"));
   }
 
-  /** Monta um tabular completo dentro de um ambiente table. */
-  function latexTable({ caption, label, columns, rows, align }) {
+  /**
+   * Monta um tabular completo dentro de um ambiente table.
+   *
+   * `compact` aplica \tabelalarga (corpo menor e colunas mais justas), o que
+   * as tabelas de muitas colunas exigem para não estourar a margem. O comando
+   * é definido pelo modelo de relatório; havendo um \providecommand aqui, a
+   * tabela continua válida mesmo em um modelo que não o declare.
+   */
+  function latexTable({ caption, label, columns, rows, align, compact }) {
     const spec = align || "l".repeat(columns.length);
     const head = columns.join(" & ") + " \\\\";
     const body = rows.map(r => r.join(" & ") + " \\\\").join("\n");
@@ -284,6 +443,10 @@ const Lab = (() => {
       "\\centering",
       `\\caption{${caption}}`,
       `\\label{tab:${label}}`,
+      ...(compact
+        ? ["\\providecommand{\\tabelalarga}{\\footnotesize\\setlength{\\tabcolsep}{4pt}}",
+           "\\tabelalarga"]
+        : []),
       `\\begin{tabular}{${spec}}`,
       "\\toprule",
       head,
@@ -425,6 +588,24 @@ const Lab = (() => {
     });
 
     return { save, restore, clear, snapshot };
+  }
+
+  /**
+   * Número para tabela quando a precisão não pode ser fixada de antemão: a
+   * Experiência 1 põe lado a lado valores em m² e em mm², separados por doze
+   * ordens de grandeza. Escolhe notação científica nos extremos e casas
+   * decimais proporcionais no meio, sem inventar precisão.
+   */
+  function numTexAuto(value) {
+    if (!Number.isFinite(value)) return "--";
+    if (value === 0) return "\\num{0}";
+    const abs = Math.abs(value);
+    if (abs < 1e-3 || abs >= 1e6) return `\\num{${value.toExponential(4)}}`;
+    // Cinco algarismos significativos, nunca casas decimais fixas: numa
+    // disciplina sobre algarismos significativos, imprimir 0,223607 para um
+    // desvio padrão seria o exemplo errado. O arredondamento final para o
+    // número correto de algarismos continua sendo tarefa do aluno.
+    return `\\num{${Number(value.toPrecision(5))}}`;
   }
 
   /* ------------------------------------------------- tabela de equipes */
@@ -624,10 +805,10 @@ const Lab = (() => {
   }
 
   return {
-    parseNum, fmt, fmtTex, numTex,
+    parseNum, fmt, fmtTex, numTex, numTexAuto,
     teamTable, bindUploads, optionalFigure, fillTemplate, dateBR, rawCell,
     mean, meanDeviation, stdDev, linearFit, percentError,
-    drawChart,
+    drawChart, drawScaleComparison,
     latexEscape, latexText, latexTable, latexFigure,
     toCsv, textBlob, canvasBlob, fetchText, saveFiles, downloadBlob,
     bindPersistence,
