@@ -34,3 +34,10 @@ Thumbs.db
 .dropbox
 .dropbox.attr
 *.dropbox.attr
+
+# Documentos com dados pessoais de alunos (notas, listagens, diários).
+# Este repositório é público: nada com nome, matrícula ou CPF entra aqui.
+R-P*.pdf
+*notas*.pdf
+*Notas*.pdf
+*LISTAGEM*

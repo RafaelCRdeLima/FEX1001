@@ -1,0 +1,116 @@
+%=========================================================================
+%  FEX1001 -- Física Experimental I -- UDESC/CCT
+%  Modelo de relatório de laboratório.
+%
+%  Este arquivo é preenchido automaticamente pela página do laboratório.
+%  Os comandos marcados abaixo são substituídos na geração; o restante é
+%  seu para editar livremente.
+%
+%  Compila com pdflatex em qualquer distribuição TeX (inclusive Overleaf):
+%  usa apenas a classe article e pacotes padrão.
+%=========================================================================
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\sisetup{output-decimal-marker={,}, group-separator={.}, group-digits=integer}
+% group-digits=integer é essencial: sem isso o siunitx agrupa também as
+% casas decimais e 9.79061 sai impresso como "9,790.61".
+\captionsetup{font=small,labelfont=bf}
+
+%-------------------------------------------------------------------------
+% DADOS DO RELATÓRIO -- preenchidos pela página do laboratório
+%-------------------------------------------------------------------------
+\newcommand{\experimento}{Experiência}
+\newcommand{\subtitulo}{Física Experimental I}
+\newcommand{\equipe}{Bancada}
+\newcommand{\integrantes}{Nomes da equipe}
+\newcommand{\datarelatorio}{\today}
+
+\newcommand{\disciplina}{FEX1001 -- Física Experimental I}
+\newcommand{\professor}{Prof. Dr. Rafael C. R. de Lima}
+\newcommand{\instituicao}{Universidade do Estado de Santa Catarina --
+Centro de Ciências Tecnológicas, Joinville/SC}
+
+%-------------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+  {\large\scshape \instituicao}\\[2pt]
+  {\small \disciplina \quad|\quad \professor}\\[14pt]
+  \rule{\linewidth}{0.5pt}\\[10pt]
+  {\LARGE\bfseries \experimento}\\[4pt]
+  {\large \subtitulo}\\[10pt]
+  \rule{\linewidth}{0.5pt}\\[10pt]
+  {\normalsize Equipe (bancada): \equipe}\\[2pt]
+  {\normalsize \integrantes}\\[2pt]
+  {\small \datarelatorio}
+\end{center}
+
+\vspace{6pt}
+
+%=========================================================================
+\section{Objetivo}
+\input{secoes/objetivo}
+
+%=========================================================================
+\section{Observações}
+\input{secoes/observacoes}
+
+%=========================================================================
+\section{Experimentos}
+\input{secoes/experimentos}
+
+\input{tabelas/tabela1_medidas}
+
+%=========================================================================
+\section{Teoria}
+\input{secoes/teoria}
+
+%=========================================================================
+\section{Identificação das variáveis}
+\input{tabelas/tabela2_variaveis}
+
+%=========================================================================
+\section{Linearização}
+\input{secoes/linearizacao}
+
+%=========================================================================
+\section{Análise estatística}
+\input{tabelas/tabela3_estatistica}
+
+%=========================================================================
+\section{Gráfico linear}
+\input{tabelas/tabela4_linearizada}
+
+\input{secoes/grafico}
+
+%=========================================================================
+\section{Resultados}
+\input{secoes/resultados}
+
+%=========================================================================
+\section{Conclusões}
+\input{secoes/conclusoes}
+
+%=========================================================================
+\begin{thebibliography}{9}
+\bibitem{halliday} HALLIDAY, D.; RESNICK, R.; WALKER, J.
+  \emph{Fundamentos de Física} -- Volume 1: Mecânica.
+  8.~ed. Rio de Janeiro: LTC.
+\bibitem{gravidade} Aceleração da gravidade local em Joinville/SC.
+  Disponível em: \url{https://www.wolframalpha.com}.
+\end{thebibliography}
+
+\end{document}

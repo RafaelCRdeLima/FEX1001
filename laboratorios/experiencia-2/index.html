@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Roteiro/Relatório da Experiência 2 da FEX1001: preencha os dados online e baixe o relatório pronto em LaTeX.">
+<meta name="theme-color" content="#071b2c">
+<title>Experiência 2 · Gráficos na cinemática e dinâmica · FEX1001</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lab.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="lab-header">
+  <a class="brand" href="../../">
+    <span class="brand-mark"><span class="mark-value">11,<b>3</b></span></span>
+    <span>FEX1001</span>
+  </a>
+  <nav>
+    <a href="../../#experiencias">Experiências</a>
+    <a href="../../Apostilas%20e%20Relatorios/Experiencia%202.pdf">Roteiro em PDF ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<section class="lab-hero">
+  <p class="eyebrow">Roteiro/Relatório · Experiência 2</p>
+  <h1>Gráficos na cinemática e dinâmica da partícula</h1>
+  <p class="lead">
+    Determinar e verificar experimentalmente as equações da cinemática e da
+    dinâmica da partícula em um plano inclinado, por meio dos conceitos de
+    construção e linearização de gráficos.
+  </p>
+  <div class="hero-note">
+    <p>
+      Preencha as tabelas e os campos abaixo durante a experiência. As médias,
+      os desvios, o gráfico linearizado e o ajuste da reta são calculados
+      sozinhos. No fim, o botão <b>Gerar relatório</b> entrega o pacote LaTeX
+      completo — <code>main.tex</code>, tabelas, figuras e os dados em CSV —
+      pronto para abrir no Overleaf.
+    </p>
+    <p class="autosave" id="autosaveNote">O preenchimento fica salvo neste navegador.</p>
+  </div>
+</section>
+
+<!-- ============================= IDENTIFICAÇÃO ======================== -->
+<section class="card">
+  <h2><span class="tag">Identificação</span></h2>
+  <div class="grid-2">
+    <label>Equipe (número da bancada)
+      <input type="text" id="equipe" placeholder="Ex.: 3" data-save>
+    </label>
+    <label>Data da experiência
+      <input type="date" id="dataExp" data-save>
+    </label>
+  </div>
+  <label>Nomes dos integrantes
+    <textarea id="integrantes" rows="2" placeholder="Um nome por linha, ou separados por vírgula" data-save></textarea>
+  </label>
+  <label class="inline-field">Sua equipe é a de número
+    <select id="minhaEquipe" data-save>
+      <option value="1">1</option><option value="2">2</option>
+      <option value="3">3</option><option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <span class="hint">— a coluna correspondente fica destacada na Tabela 1.</span>
+  </label>
+</section>
+
+<!-- ============================= 1. OBSERVAÇÕES ======================= -->
+<section class="card">
+  <h2><span class="tag">1</span> Observações <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Na página “1: Position and Velocity”, inicie a coleta, solte o carrinho do
+    repouso na parte alta da pista e pare a coleta logo após o carrinho atingir
+    o amortecedor. Use o ajuste de curva para escrever as equações de
+    <i>x</i>(<i>t</i>) e <i>v</i>(<i>t</i>) apenas durante o movimento na rampa.
+  </p>
+  <div class="grid-2">
+    <label>Equação de <i>x</i>(<i>t</i>)
+      <input type="text" id="eqX" placeholder="Ex.: x(t) = 0,085 t² + 0,02 t + 0,15" data-save>
+    </label>
+    <label>Equação de <i>v</i>(<i>t</i>)
+      <input type="text" id="eqV" placeholder="Ex.: v(t) = 0,170 t + 0,02" data-save>
+    </label>
+  </div>
+  <label>A aceleração é constante? Justifique.
+    <textarea id="obsTexto" rows="3" data-save></textarea>
+  </label>
+  <div class="upload" data-upload="figObs">
+    <label>Esboço dos gráficos <i>x</i>(<i>t</i>) e <i>v</i>(<i>t</i>)
+      <input type="file" accept="image/*" data-file="figObs">
+    </label>
+    <p class="hint">Fotografe o esboço ou capture a tela do SPARKvue. A imagem entra no relatório como figura.</p>
+    <div class="thumb" data-thumb="figObs"></div>
+  </div>
+</section>
+
+<!-- ============================= 2. EXPERIMENTOS ====================== -->
+<section class="card">
+  <h2><span class="tag">2</span> Experimentos <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Para cada ângulo de inclinação θ, determine a aceleração <i>a</i> do
+    carrinho pelo ajuste de curva. Preencha a coluna da sua equipe e complete a
+    tabela com os valores compartilhados pelas demais. Não exceda θ = 15,0°.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela1" class="data-table">
+      <caption>Tabela 1 — Aceleração medida por cada equipe, em função do ângulo de inclinação</caption>
+      <thead>
+        <tr>
+          <th>θ (°)</th>
+          <th data-eq="1">a₁ (m/s²)</th>
+          <th data-eq="2">a₂ (m/s²)</th>
+          <th data-eq="3">a₃ (m/s²)</th>
+          <th data-eq="4">a₄ (m/s²)</th>
+          <th data-eq="5">a₅ (m/s²)</th>
+          <th class="col-action"></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="row-actions">
+    <button type="button" class="button" id="addRow">+ Adicionar ângulo</button>
+    <span class="hint">Erro de escala do indicador de ângulo: Δθ = 0,5°.</span>
+  </div>
+</section>
+
+<!-- ============================= 3. TEORIA ============================ -->
+<section class="card">
+  <h2><span class="tag">3</span> Teoria <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Revise a Segunda Lei de Newton, faça o diagrama de corpo livre (DCL) do
+    carrinho na rampa sem atrito e demonstre que, ao longo da rampa, o
+    movimento tem aceleração constante dada por
+  </p>
+  <p class="eq-display">a = g sen θ <span class="eq-num">(1)</span></p>
+  <p class="task">
+    onde g = 9,79061 m/s² é a aceleração da gravidade local e sen θ a
+    inclinação da pista.
+  </p>
+  <div class="upload" data-upload="figDCL">
+    <label>a) Diagrama de corpo livre do carrinho na rampa
+      <input type="file" accept="image/*" data-file="figDCL">
+    </label>
+    <p class="hint">Desenhe no papel e fotografe — a figura entra no relatório já referenciada.</p>
+    <div class="thumb" data-thumb="figDCL"></div>
+  </div>
+  <label>b) Demonstração da equação (1)
+    <textarea id="teoriaTexto" rows="5" placeholder="Escreva a demonstração. Você pode usar notação LaTeX: $a = g\sin\theta$" data-save></textarea>
+  </label>
+</section>
+
+<!-- ============================= 4. VARIÁVEIS ========================= -->
+<section class="card">
+  <h2><span class="tag">4</span> Identificação das variáveis <span class="pts">[1,0]</span></h2>
+  <div class="table-wrap">
+    <table class="data-table narrow">
+      <caption>Tabela 2 — Quantidades físicas e seu papel no experimento</caption>
+      <thead><tr><th>Quantidade física</th><th>Variável</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="text" id="varIndep" placeholder="Ex.: inclinação da pista, sen θ" data-save></td>
+          <td class="fixed">Independente</td>
+        </tr>
+        <tr>
+          <td><input type="text" id="varDep" placeholder="Ex.: aceleração do carrinho, a" data-save></td>
+          <td class="fixed">Dependente</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================= 5. LINEARIZAÇÃO ====================== -->
+<section class="card">
+  <h2><span class="tag">5</span> Linearização <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) Linearize a equação (1) para a construção do gráfico no papel
+    milimetrado e compare com a equação da reta y′ = a′x′ + b′.
+  </p>
+  <label>Desenvolvimento
+    <textarea id="linTexto" rows="4" data-save></textarea>
+  </label>
+  <p class="task">b) Escreva as relações: <span class="eq-num">(2)</span></p>
+  <div class="grid-4">
+    <label>Variável independente x′ =
+      <input type="text" id="relX" placeholder="sen θ" data-save>
+    </label>
+    <label>Variável dependente y′ =
+      <input type="text" id="relY" placeholder="a" data-save>
+    </label>
+    <label>Coeficiente angular a′ =
+      <input type="text" id="relA" placeholder="g" data-save>
+    </label>
+    <label>Coeficiente linear b′ =
+      <input type="text" id="relB" placeholder="0" data-save>
+    </label>
+  </div>
+</section>
+
+<!-- ============================= 6. ESTATÍSTICA ======================= -->
+<section class="card">
+  <h2><span class="tag">6</span> Análise estatística <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Calculada a partir da Tabela 1: a inclinação sen θ, a média da aceleração
+    ā, o desvio médio Δā e o desvio padrão σ<sub>a</sub>.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela3" class="data-table computed">
+      <caption>Tabela 3 — Estatística das acelerações por ângulo <span class="auto">calculada automaticamente</span></caption>
+      <thead>
+        <tr><th>θ (°)</th><th>sen θ (—)</th><th>ā (m/s²)</th><th>Δā (m/s²)</th><th>σ<sub>a</sub> (m/s²)</th><th>n</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="hint">
+    Desvio médio: Δā = Σ|a<sub>i</sub> − ā| / n. Desvio padrão amostral:
+    σ<sub>a</sub> = √[Σ(a<sub>i</sub> − ā)² / (n − 1)].
+  </p>
+</section>
+
+<!-- ============================= 7. GRÁFICO =========================== -->
+<section class="card">
+  <h2><span class="tag">7</span> Gráfico linear <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) A Tabela 4 traz os pares (x′, y′) segundo as relações (2). Construa o
+    gráfico no papel milimetrado a partir dela; o gráfico abaixo serve de
+    conferência e vai para o relatório.
+  </p>
+  <div class="grid-2">
+    <label>Rótulo e unidade de x′
+      <input type="text" id="labelX" value="sen θ (—)" data-save>
+    </label>
+    <label>Rótulo e unidade de y′
+      <input type="text" id="labelY" value="ā (m/s²)" data-save>
+    </label>
+  </div>
+  <div class="table-wrap">
+    <table id="tabela4" class="data-table computed">
+      <caption>Tabela 4 — Pares linearizados <span class="auto">calculada automaticamente</span></caption>
+      <thead><tr><th id="th4x">x′</th><th id="th4y">y′</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="chart-block">
+    <canvas id="grafico" width="900" height="560"></canvas>
+    <p class="fit-readout" id="fitReadout">Preencha a Tabela 1 para ver o ajuste.</p>
+  </div>
+
+  <p class="task">
+    b) Indique na reta obtida os pontos P₁, P₂ e P₃ com os valores lidos e
+    calcule os coeficientes da equação da reta.
+  </p>
+  <div class="table-wrap">
+    <table class="data-table narrow" id="pontos">
+      <caption>Pontos lidos no papel milimetrado</caption>
+      <thead><tr><th>Ponto</th><th>x′</th><th>y′</th></tr></thead>
+      <tbody>
+        <tr><td class="fixed">P₁</td><td><input type="text" data-p="p1x" data-save></td><td><input type="text" data-p="p1y" data-save></td></tr>
+        <tr><td class="fixed">P₂</td><td><input type="text" data-p="p2x" data-save></td><td><input type="text" data-p="p2y" data-save></td></tr>
+        <tr><td class="fixed">P₃</td><td><input type="text" data-p="p3x" data-save></td><td><input type="text" data-p="p3y" data-save></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="derived" id="pontosReadout">Coeficientes por P₁ e P₂: preencha os pontos.</p>
+  <label>Cálculo dos coeficientes
+    <textarea id="coefTexto" rows="3" data-save></textarea>
+  </label>
+  <label>Equação experimental (papel milimetrado) <span class="eq-num">(3)</span>
+    <input type="text" id="eq3" placeholder="Ex.: a = 9,7 sen θ + 0,03" data-save>
+  </label>
+</section>
+
+<!-- ============================= 8. SPARKVUE ========================== -->
+<section class="card">
+  <h2><span class="tag">8</span> Gráfico linear no SPARKvue <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Na “Entrada Manual”, copie os valores da Tabela 4, ajuste uma curva e
+    escreva a equação experimental obtida.
+  </p>
+  <label>Equação experimental (SPARKvue) <span class="eq-num">(4)</span>
+    <input type="text" id="eq4" data-save>
+  </label>
+  <div class="upload" data-upload="figSpark">
+    <label>Captura do gráfico no SPARKvue
+      <input type="file" accept="image/*" data-file="figSpark">
+    </label>
+    <div class="thumb" data-thumb="figSpark"></div>
+  </div>
+</section>
+
+<!-- ============================= 9. RESULTADOS ======================== -->
+<section class="card">
+  <h2><span class="tag">9</span> Resultados <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) Usando as equações (3) e/ou (4) e as relações (2), determine a
+    aceleração da gravidade local. b) Compare com g = 9,79061 m/s² e
+    determine o erro percentual.
+  </p>
+  <div class="result-grid">
+    <div class="result-tile">
+      <span class="k">g pelo ajuste de mínimos quadrados</span>
+      <span class="n" id="gFit">—</span>
+    </div>
+    <div class="result-tile">
+      <span class="k">Erro percentual</span>
+      <span class="n" id="gErro">—</span>
+    </div>
+    <div class="result-tile ref">
+      <span class="k">Valor de referência</span>
+      <span class="n">9,79061 m/s²</span>
+    </div>
+  </div>
+  <label>Desenvolvimento e discussão dos resultados
+    <textarea id="resTexto" rows="4" data-save></textarea>
+  </label>
+</section>
+
+<!-- ============================= 10. CONCLUSÕES ======================= -->
+<section class="card">
+  <h2><span class="tag">10</span> Conclusões <span class="pts">[1,0]</span></h2>
+  <p class="task">Faça a síntese dos resultados. O objetivo foi alcançado?</p>
+  <label>Conclusões
+    <textarea id="concTexto" rows="5" data-save></textarea>
+  </label>
+</section>
+
+<!-- ============================= GERAR =============================== -->
+<section class="card generate">
+  <h2>Gerar relatório</h2>
+  <p class="task">
+    O pacote traz <code>main.tex</code>, as tabelas e seções em
+    <code>.tex</code>, o gráfico e as suas imagens em <code>figuras/</code> e
+    os dados em <code>dados/*.csv</code>. Abra a pasta no Overleaf e compile.
+  </p>
+  <div class="gen-actions">
+    <button type="button" class="button button-primary" id="gerar">Gerar relatório LaTeX</button>
+    <button type="button" class="button button-ghost" id="limpar">Limpar preenchimento</button>
+  </div>
+  <p class="status" id="status"></p>
+</section>
+
+</main>
+
+<footer class="lab-footer">
+  <p>FEX1001 · Física Experimental I · UDESC/CCT Joinville</p>
+</footer>
+
+<script src="../lab.js"></script>
+<script src="lab-experiencia-2.js"></script>
+</body>
+</html>
