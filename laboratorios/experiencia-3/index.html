@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Roteiro/Relatório da Experiência 3 da FEX1001: Teorema do Trabalho e Energia. Preencha os dados online e baixe o relatório em LaTeX.">
+<meta name="theme-color" content="#071b2c">
+<title>Experiência 3 · Trabalho e energia · FEX1001</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lab.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="lab-header">
+  <a class="brand" href="../../">
+    <span class="brand-mark"><span class="mark-value">11,<b>3</b></span></span>
+    <span>FEX1001</span>
+  </a>
+  <nav>
+    <a href="../../#experiencias">Experiências</a>
+    <a href="../../Apostilas%20e%20Relatorios/Experiencia%203.pdf">Roteiro em PDF ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<section class="lab-hero">
+  <p class="eyebrow">Roteiro/Relatório · Experiência 3</p>
+  <h1>Trabalho e energia, conservação e colisões</h1>
+  <p class="lead">
+    Verificar experimentalmente o Teorema do Trabalho e Energia: um lançador de
+    mola realiza trabalho sobre o carrinho, e a velocidade atingida deve
+    obedecer a W = ½mv².
+  </p>
+  <div class="hero-note">
+    <p>
+      Preencha a Tabela 1 com o trabalho e a velocidade medidos para cada
+      deslocamento. As médias, os desvios, a linearização e o ajuste saem
+      calculados, e o botão <b>Gerar relatório</b> entrega o pacote LaTeX
+      pronto para o Overleaf.
+    </p>
+    <p class="autosave">O preenchimento fica salvo neste navegador.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">Identificação</span></h2>
+  <div class="grid-2">
+    <label>Equipe (número da bancada)
+      <input type="text" id="equipe" placeholder="Ex.: 3" data-save>
+    </label>
+    <label>Data da experiência
+      <input type="date" id="dataExp" data-save>
+    </label>
+  </div>
+  <label>Nomes dos integrantes
+    <textarea id="integrantes" rows="2" placeholder="Um nome por linha, ou separados por vírgula" data-save></textarea>
+  </label>
+  <label class="inline-field">Sua equipe é a de número
+    <select id="minhaEquipe" data-save>
+      <option value="1">1</option><option value="2">2</option>
+      <option value="3">3</option><option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <span class="hint">— as colunas correspondentes ficam destacadas na Tabela 1.</span>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">1</span> Observações <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Puxe o carrinho esticando a mola por cerca de 20 cm, inicie a coleta e solte
+    do repouso. Depois observe o que muda na velocidade e na força em função da
+    posição ao alterar cada condição.
+  </p>
+  <div class="upload" data-upload="figObs">
+    <label>a) Esboço de v(x) e F(x)
+      <input type="file" accept="image/*" data-file="figObs">
+    </label>
+    <div class="thumb" data-thumb="figObs"></div>
+  </div>
+  <label>b) Ao alterar o esticamento da mola
+    <textarea id="obsB" rows="2" data-save></textarea>
+  </label>
+  <label>c) Ao trocar a mola por um elástico
+    <textarea id="obsC" rows="2" data-save></textarea>
+  </label>
+  <label>d) Ao acrescentar massas ao carrinho
+    <textarea id="obsD" rows="2" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">2</span> Experimentos <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Para cada deslocamento d, obtenha o trabalho W pela área do gráfico F(x)
+    entre x = 0 e x = d, e a velocidade v em x = d. Preencha as colunas da sua
+    equipe e complete com os valores compartilhados.
+  </p>
+  <div class="constants">
+    <div class="constant"><span class="k">Mola</span><span class="v">k = 3,4 ± 0,1 N/m</span></div>
+    <div class="constant"><span class="k">Carrinho</span><span class="v">Δx = 0,2 mm · ΔF = 0,1 N</span></div>
+    <div class="constant"><span class="k">Esticamento inicial</span><span class="v">50,00 cm</span></div>
+    <div class="constant"><span class="k">Massa de referência</span><span class="v">m = 250,00 ± 0,01 g</span></div>
+  </div>
+  <div class="table-wrap">
+    <table id="tabela1" class="data-table">
+      <caption>Tabela 1 — Trabalho e velocidade medidos por cada equipe, por deslocamento</caption>
+      <thead>
+        <tr class="group">
+          <th class="spacer"></th>
+          <th colspan="2" data-eq="1">Equipe 1</th>
+          <th colspan="2" data-eq="2">Equipe 2</th>
+          <th colspan="2" data-eq="3">Equipe 3</th>
+          <th colspan="2" data-eq="4">Equipe 4</th>
+          <th colspan="2" data-eq="5">Equipe 5</th>
+          <th class="spacer"></th>
+        </tr>
+        <tr>
+          <th>d (cm)</th>
+          <th data-eq="1">W (J)</th><th data-eq="1">v (m/s)</th>
+          <th data-eq="2">W (J)</th><th data-eq="2">v (m/s)</th>
+          <th data-eq="3">W (J)</th><th data-eq="3">v (m/s)</th>
+          <th data-eq="4">W (J)</th><th data-eq="4">v (m/s)</th>
+          <th data-eq="5">W (J)</th><th data-eq="5">v (m/s)</th>
+          <th class="col-action"></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="row-actions">
+    <button type="button" class="button" id="addRow">+ Adicionar deslocamento</button>
+    <span class="hint">Valores usuais de d entre 5 e 45 cm.</span>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">3</span> Teoria <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    O trabalho de uma força variável é a área sob F(x):
+  </p>
+  <p class="eq-display">W = ∫ F(x) dx <span class="eq-num">(1)</span></p>
+  <label>a) Relação entre o trabalho e o gráfico de F(x) para o deslocamento d
+    <textarea id="teoriaA" rows="3" data-save></textarea>
+  </label>
+  <p class="task">
+    Pelo Teorema do Trabalho e Energia, para a massa m partindo do repouso até a
+    velocidade v:
+  </p>
+  <p class="eq-display">W = ½ m v² <span class="eq-num">(2)</span></p>
+  <label>b) Demonstração da equação (2)
+    <textarea id="teoriaB" rows="5" placeholder="Você pode usar notação LaTeX: $W = \frac{1}{2}mv^2$" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">4</span> Identificação das variáveis <span class="pts">[1,0]</span></h2>
+  <div class="table-wrap">
+    <table class="data-table narrow">
+      <caption>Tabela 2 — Quantidades físicas e seu papel no experimento</caption>
+      <thead><tr><th>Quantidade física</th><th>Variável</th></tr></thead>
+      <tbody>
+        <tr><td><input type="text" id="varIndep" placeholder="Ex.: velocidade do carrinho, v" data-save></td><td class="fixed">Independente</td></tr>
+        <tr><td><input type="text" id="varDep" placeholder="Ex.: trabalho da mola, W" data-save></td><td class="fixed">Dependente</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">5</span> Linearização <span class="pts">[1,0]</span></h2>
+  <p class="task">a) Linearize a equação (2) e compare com y′ = a′x′ + b′.</p>
+  <label>Desenvolvimento
+    <textarea id="linTexto" rows="4" data-save></textarea>
+  </label>
+  <p class="task">b) Escreva as relações: <span class="eq-num">(3)</span></p>
+  <div class="grid-4">
+    <label>x′ = <input type="text" id="relX" placeholder="v²" data-save></label>
+    <label>y′ = <input type="text" id="relY" placeholder="W" data-save></label>
+    <label>a′ = <input type="text" id="relA" placeholder="m/2" data-save></label>
+    <label>b′ = <input type="text" id="relB" placeholder="0" data-save></label>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">6</span> Análise estatística <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Médias, desvios médios e desvios padrão do trabalho e da velocidade,
+    calculados a partir da Tabela 1. No roteiro impresso estas são as Tabelas 3,
+    4 e 5; aqui aparecem juntas, com uma linha por deslocamento.
+  </p>
+  <div class="table-wrap">
+    <table id="tabela3" class="data-table computed">
+      <caption>Tabelas 3, 4 e 5 — Estatística do trabalho e da velocidade <span class="auto">calculadas automaticamente</span></caption>
+      <thead>
+        <tr class="group">
+          <th class="spacer"></th>
+          <th colspan="2">Média</th>
+          <th colspan="2">Desvio médio</th>
+          <th colspan="2">Desvio padrão</th>
+          <th class="spacer"></th>
+        </tr>
+        <tr>
+          <th>d (cm)</th>
+          <th>W̄ (J)</th><th>v̄ (m/s)</th>
+          <th>ΔW̄ (J)</th><th>Δv̄ (m/s)</th>
+          <th>σ<sub>W</sub> (J)</th><th>σ<sub>v</sub> (m/s)</th>
+          <th>n</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">7</span> Gráfico linear <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) A Tabela 6 traz os pares (x′, y′) segundo as relações (3). Construa o
+    gráfico no papel milimetrado a partir dela.
+  </p>
+  <div class="grid-2">
+    <label>Rótulo e unidade de x′ <input type="text" id="labelX" value="v̄² (m²/s²)" data-save></label>
+    <label>Rótulo e unidade de y′ <input type="text" id="labelY" value="W̄ (J)" data-save></label>
+  </div>
+  <div class="table-wrap">
+    <table id="tabela4" class="data-table computed">
+      <caption>Tabela 6 — Pares linearizados <span class="auto">calculada automaticamente</span></caption>
+      <thead><tr><th id="th4x">x′</th><th id="th4y">y′</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="chart-block">
+    <canvas id="grafico" width="900" height="560"></canvas>
+    <p class="fit-readout" id="fitReadout">Preencha a Tabela 1 para ver o ajuste.</p>
+  </div>
+  <p class="task">b) Indique na reta os pontos P₁, P₂ e P₃ com os valores lidos.</p>
+  <div class="table-wrap">
+    <table class="data-table narrow" id="pontos">
+      <caption>Pontos lidos no papel milimetrado</caption>
+      <thead><tr><th>Ponto</th><th>x′</th><th>y′</th></tr></thead>
+      <tbody>
+        <tr><td class="fixed">P₁</td><td><input type="text" data-p="p1x" data-save></td><td><input type="text" data-p="p1y" data-save></td></tr>
+        <tr><td class="fixed">P₂</td><td><input type="text" data-p="p2x" data-save></td><td><input type="text" data-p="p2y" data-save></td></tr>
+        <tr><td class="fixed">P₃</td><td><input type="text" data-p="p3x" data-save></td><td><input type="text" data-p="p3y" data-save></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="derived" id="pontosReadout">Coeficientes por P₁ e P₂: preencha os pontos.</p>
+  <label>Cálculo dos coeficientes
+    <textarea id="coefTexto" rows="3" data-save></textarea>
+  </label>
+  <label>Equação experimental (papel milimetrado) <span class="eq-num">(4)</span>
+    <input type="text" id="eq3" placeholder="Ex.: W = 0,125 v² + 0,002" data-save>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">8</span> Gráfico linear no SPARKvue <span class="pts">[1,0]</span></h2>
+  <label>Equação experimental (SPARKvue) <span class="eq-num">(5)</span>
+    <input type="text" id="eq4" data-save>
+  </label>
+  <div class="upload" data-upload="figSpark">
+    <label>Captura do gráfico no SPARKvue
+      <input type="file" accept="image/*" data-file="figSpark">
+    </label>
+    <div class="thumb" data-thumb="figSpark"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">9</span> Resultados <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) Pelas relações (3), o coeficiente angular vale m/2, de modo que a massa
+    do carrinho é m = 2a′. b) Compare com m = (250,00 ± 0,01) g.
+  </p>
+  <div class="result-grid">
+    <div class="result-tile"><span class="k">Massa pelo ajuste</span><span class="n" id="mFit">—</span></div>
+    <div class="result-tile"><span class="k">Erro percentual</span><span class="n" id="mErro">—</span></div>
+    <div class="result-tile ref"><span class="k">Valor de referência</span><span class="n">250,00 g</span></div>
+  </div>
+  <label>Desenvolvimento e discussão dos resultados
+    <textarea id="resTexto" rows="4" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">10</span> Conclusões <span class="pts">[1,0]</span></h2>
+  <label>Conclusões
+    <textarea id="concTexto" rows="5" data-save></textarea>
+  </label>
+</section>
+
+<section class="card generate">
+  <h2>Gerar relatório</h2>
+  <p class="task">
+    O pacote traz <code>main.tex</code>, as tabelas e seções em <code>.tex</code>,
+    o gráfico e as suas imagens, e os dados em CSV.
+  </p>
+  <div class="gen-actions">
+    <button type="button" class="button button-primary" id="gerar">Gerar relatório LaTeX</button>
+    <button type="button" class="button button-ghost" id="limpar">Limpar preenchimento</button>
+  </div>
+  <p class="status" id="status"></p>
+</section>
+
+</main>
+
+<footer class="lab-footer">
+  <p>FEX1001 · Física Experimental I · UDESC/CCT Joinville</p>
+</footer>
+
+<script src="../lab.js"></script>
+<script src="lab-experiencia-3.js"></script>
+</body>
+</html>

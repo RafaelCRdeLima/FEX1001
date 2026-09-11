@@ -248,3 +248,37 @@ input:focus, textarea:focus, select:focus { background: var(--white); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ------------------------------------------- coluna calculada na Tabela 1 */
+.data-table td.derived-cell {
+  font-family: "DM Mono", monospace; font-size: .86rem;
+  font-variant-numeric: tabular-nums; color: var(--blue);
+  padding: .55rem .6rem; background: rgba(141, 215, 220, .1);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------- painel de constantes */
+.constants {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  margin-bottom: 1.1rem;
+}
+.constant { background: var(--paper); padding: .6rem .8rem; }
+.constant.editable { background: var(--white); }
+.constant .k {
+  display: block; font-family: "DM Mono", monospace; font-size: .7rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: .25rem;
+}
+.constant .v {
+  display: block; font-family: "DM Mono", monospace; font-size: .95rem;
+  font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.constant input { margin-top: 0; padding: .35rem .5rem; font-size: .9rem; }
+
+/* cabeçalho de duas faixas, quando a equipe mede mais de uma grandeza */
+.data-table thead tr.group th {
+  text-align: center; border-bottom: 1px solid var(--line);
+  color: var(--ink); font-weight: 600;
+}
+.data-table thead tr.group th.spacer { border-bottom: none; }

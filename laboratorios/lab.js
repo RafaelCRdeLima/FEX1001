@@ -427,8 +427,205 @@ const Lab = (() => {
     return { save, restore, clear, snapshot };
   }
 
+  /* ------------------------------------------------- tabela de equipes */
+
+  /**
+   * Tabela de medidas partilhada entre as cinco bancadas. Cada equipe pode
+   * contribuir com mais de uma grandeza por linha (a Experiência 3 mede
+   * trabalho e velocidade), por isso `series` é uma lista.
+   *
+   * config: { tbody, teams, series:[{key,label}], lead:[{key,label,derived?}],
+   *           onChange }
+   */
+  function teamTable(config) {
+    const { tbody, teams = [1, 2, 3, 4, 5], series, lead, onChange } = config;
+
+    function makeRow(values = {}) {
+      const tr = document.createElement("tr");
+
+      lead.forEach(col => {
+        const td = document.createElement("td");
+        if (col.derived) {
+          td.className = "derived-cell";
+          td.dataset.derived = col.key;
+          td.textContent = "—";
+        } else {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.dataset.lead = col.key;
+          input.placeholder = col.placeholder || "";
+          input.value = values[col.key] ?? "";
+          td.appendChild(input);
+        }
+        tr.appendChild(td);
+      });
+
+      teams.forEach(team => {
+        series.forEach(serie => {
+          const td = document.createElement("td");
+          td.dataset.eq = String(team);
+          const input = document.createElement("input");
+          input.type = "text";
+          input.dataset.team = String(team);
+          input.dataset.serie = serie.key;
+          input.placeholder = serie.placeholder || "";
+          const cellKey = `${serie.key}${team}`;
+          input.value = values[cellKey] ?? "";
+          td.appendChild(input);
+          tr.appendChild(td);
+        });
+      });
+
+      const tdDel = document.createElement("td");
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "del-row";
+      del.title = "Remover esta linha";
+      del.setAttribute("aria-label", "Remover esta linha");
+      del.textContent = "×";
+      del.addEventListener("click", () => {
+        tr.remove();
+        if (!tbody.children.length) api.addRow();
+        onChange();
+      });
+      tdDel.appendChild(del);
+      tr.appendChild(tdDel);
+
+      return tr;
+    }
+
+    const api = {
+      addRow(values) {
+        tbody.appendChild(makeRow(values));
+        return api;
+      },
+
+      /** Estado da tabela: valores crus (texto) e numéricos, por linha. */
+      read() {
+        return Array.from(tbody.children).map(tr => {
+          const row = { raw: {}, lead: {}, series: {} };
+          lead.forEach(col => {
+            const input = tr.querySelector(`[data-lead="${col.key}"]`);
+            const text = input ? input.value.trim() : "";
+            row.raw[col.key] = text;
+            row.lead[col.key] = parseNum(text);
+          });
+          series.forEach(serie => {
+            row.series[serie.key] = teams.map(team => {
+              const input = tr.querySelector(`[data-team="${team}"][data-serie="${serie.key}"]`);
+              const text = input ? input.value.trim() : "";
+              row.raw[`${serie.key}${team}`] = text;
+              return parseNum(text);
+            });
+          });
+          row.element = tr;
+          return row;
+        });
+      },
+
+      /** Escreve o valor de uma coluna calculada na própria Tabela 1. */
+      setDerived(tr, key, text) {
+        const cell = tr.querySelector(`[data-derived="${key}"]`);
+        if (cell) cell.textContent = text;
+      },
+
+      /** Destaca a coluna da equipe do aluno, para reduzir erro de digitação. */
+      highlight(team) {
+        tbody.closest("table").querySelectorAll("[data-eq]").forEach(cell => {
+          cell.classList.toggle("mine", cell.dataset.eq === String(team));
+        });
+      },
+
+      /** Snapshot para o localStorage. */
+      snapshot() {
+        return api.read().map(row => row.raw);
+      },
+
+      restore(rows) {
+        if (!Array.isArray(rows) || !rows.length) return false;
+        tbody.innerHTML = "";
+        rows.forEach(values => api.addRow(values));
+        return true;
+      },
+    };
+
+    return api;
+  }
+
+  /* ------------------------------------------------------------ imagens */
+
+  /**
+   * Liga os seletores de imagem aos seus previews. Devolve o objeto que
+   * acumula os arquivos, para a montagem do pacote.
+   */
+  function bindUploads() {
+    const uploads = {};
+    document.querySelectorAll("[data-file]").forEach(input => {
+      input.addEventListener("change", () => {
+        const slot = input.dataset.file;
+        const file = input.files && input.files[0];
+        const thumb = document.querySelector(`[data-thumb="${slot}"]`);
+        if (!file) {
+          delete uploads[slot];
+          if (thumb) thumb.innerHTML = "";
+          return;
+        }
+        uploads[slot] = { blob: file, extension: (file.name.split(".").pop() || "png").toLowerCase() };
+        if (!thumb) return;
+        thumb.innerHTML = "";
+        const img = document.createElement("img");
+        img.alt = `Pré-visualização de ${file.name}`;
+        img.src = URL.createObjectURL(file);
+        img.addEventListener("load", () => URL.revokeObjectURL(img.src), { once: true });
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = file.name;
+        thumb.append(img, name);
+      });
+    });
+    return uploads;
+  }
+
+  /** Figura opcional: vira \includegraphics se o aluno enviou, comentário se não. */
+  function optionalFigure(uploads, slot, caption, label, width) {
+    return uploads[slot]
+      ? latexFigure({ file: `figuras/${slot}.${uploads[slot].extension}`, caption, label, width })
+      : `% Nenhuma imagem enviada para: ${caption}\n`;
+  }
+
+  /* --------------------------------------------------- cabeçalho do .tex */
+
+  /** Preenche os \newcommand de identificação do modelo de relatório. */
+  function fillTemplate(template, { titulo, subtitulo, equipe, integrantes, data }) {
+    return template
+      .replace(/\\newcommand\{\\experimento\}\{[^}]*\}/,
+        () => `\\newcommand{\\experimento}{${titulo}}`)
+      .replace(/\\newcommand\{\\subtitulo\}\{[^}]*\}/,
+        () => `\\newcommand{\\subtitulo}{${subtitulo}}`)
+      .replace(/\\newcommand\{\\equipe\}\{[^}]*\}/,
+        () => `\\newcommand{\\equipe}{${latexEscape(equipe)}}`)
+      .replace(/\\newcommand\{\\integrantes\}\{[^}]*\}/,
+        () => `\\newcommand{\\integrantes}{${latexEscape(String(integrantes).replace(/\n+/g, "; "))}}`)
+      .replace(/\\newcommand\{\\datarelatorio\}\{[^}]*\}/,
+        () => `\\newcommand{\\datarelatorio}{${data}}`);
+  }
+
+  /** Data do campo <input type="date"> no formato brasileiro. */
+  function dateBR(isoText) {
+    return isoText ? isoText.split("-").reverse().join("/") : "\\today";
+  }
+
+  /** Célula de tabela que preserva os algarismos digitados pelo aluno. */
+  function rawCell(text) {
+    const value = String(text ?? "").trim();
+    if (!value) return "--";
+    const n = parseNum(value);
+    return Number.isFinite(n) ? `\\num{${value.replace(",", ".")}}` : latexEscape(value);
+  }
+
   return {
     parseNum, fmt, fmtTex, numTex,
+    teamTable, bindUploads, optionalFigure, fillTemplate, dateBR, rawCell,
     mean, meanDeviation, stdDev, linearFit, percentError,
     drawChart,
     latexEscape, latexText, latexTable, latexFigure,

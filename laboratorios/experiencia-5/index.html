@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Roteiro/Relatório da Experiência 5 da FEX1001: equilíbrio de corpos rígidos e o princípio da alavanca. Preencha os dados online e baixe o relatório em LaTeX.">
+<meta name="theme-color" content="#071b2c">
+<title>Experiência 5 · Equilíbrio de corpos rígidos · FEX1001</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lab.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="lab-header">
+  <a class="brand" href="../../">
+    <span class="brand-mark"><span class="mark-value">11,<b>3</b></span></span>
+    <span>FEX1001</span>
+  </a>
+  <nav>
+    <a href="../../#experiencias">Experiências</a>
+    <a href="../../Apostilas%20e%20Relatorios/Experiencia%205.pdf">Roteiro em PDF ↗</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<section class="lab-hero">
+  <p class="eyebrow">Roteiro/Relatório · Experiência 5</p>
+  <h1>Equilíbrio de corpos rígidos e elasticidade</h1>
+  <p class="lead">
+    Verificar experimentalmente o princípio da alavanca de Arquimedes: a que
+    distância do pivô um contrapeso de massa M₁ precisa estar para equilibrar
+    uma régua homogênea na horizontal.
+  </p>
+  <div class="hero-note">
+    <p>
+      A relação d = [(L−2x₁)/2]·M/(M₁+M) é hiperbólica em M₁. A página
+      lineariza por inverso — y′ = 1/d̄ contra x′ = M₁ — e recupera a massa da
+      régua da razão entre os coeficientes, M = b′/a′.
+    </p>
+    <p class="autosave">O preenchimento fica salvo neste navegador.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">Identificação</span></h2>
+  <div class="grid-2">
+    <label>Equipe (número da bancada)
+      <input type="text" id="equipe" placeholder="Ex.: 3" data-save>
+    </label>
+    <label>Data da experiência
+      <input type="date" id="dataExp" data-save>
+    </label>
+  </div>
+  <label>Nomes dos integrantes
+    <textarea id="integrantes" rows="2" placeholder="Um nome por linha, ou separados por vírgula" data-save></textarea>
+  </label>
+  <label class="inline-field">Sua equipe é a de número
+    <select id="minhaEquipe" data-save>
+      <option value="1">1</option><option value="2">2</option>
+      <option value="3">3</option><option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <span class="hint">— a coluna correspondente fica destacada na Tabela 1.</span>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">1</span> Observações <span class="pts">[1,0]</span></h2>
+  <label>a) Ao mover o suporte de massa para a região central, para que lado pende?
+    <textarea id="obsA" rows="2" data-save></textarea>
+  </label>
+  <label>b) Ao pendurar 50 g no suporte, para que lado pende?
+    <textarea id="obsB" rows="2" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">2</span> Experimentos <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Com o suporte na posição x₁, equilibre a alavanca ajustando a distância d
+    entre o contrapeso e o pivô. Acrescente 10,00 g por vez e repita. A massa
+    combinada M₁ = m + m₁ é calculada na própria tabela.
+  </p>
+  <div class="constants">
+    <div class="constant"><span class="k">Régua M</span><span class="v">150,00 g</span></div>
+    <div class="constant"><span class="k">Comprimento L</span><span class="v">100,00 cm</span></div>
+    <div class="constant"><span class="k">Suporte m</span><span class="v">10,00 g</span></div>
+    <div class="constant editable">
+      <span class="k">Posição x₁ (cm)</span>
+      <input type="text" id="posX1" placeholder="Ex.: 10,00" data-save>
+    </div>
+  </div>
+  <p class="hint" style="margin-top:-.4rem">
+    A posição x₁ é definida pelo docente, entre a marca “0 cm” e um quarto da
+    régua. Ela entra no coeficiente linear esperado, b′ = 2/(L − 2x₁).
+  </p>
+  <div class="table-wrap">
+    <table id="tabela1" class="data-table">
+      <caption>Tabela 1 — Distância de equilíbrio medida por cada equipe, por massa do contrapeso</caption>
+      <thead>
+        <tr>
+          <th>m₁ (g)</th>
+          <th>M₁ = m + m₁ (g)</th>
+          <th data-eq="1">d₁ (cm)</th>
+          <th data-eq="2">d₂ (cm)</th>
+          <th data-eq="3">d₃ (cm)</th>
+          <th data-eq="4">d₄ (cm)</th>
+          <th data-eq="5">d₅ (cm)</th>
+          <th class="col-action"></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="row-actions">
+    <button type="button" class="button" id="addRow">+ Adicionar massa</button>
+    <span class="hint">Conjunto disponível: 10,00 g · 2 × 20,00 g · 50,00 g, com Δm = 0,01 g.</span>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">3</span> Teoria <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    Do equilíbrio de torques em torno do pivô, para a régua homogênea de massa M
+    e comprimento L com o contrapeso M₁ na posição x₁:
+  </p>
+  <p class="eq-display">d = [(L − 2x₁)/2] · M/(M₁ + M) <span class="eq-num">(1)</span></p>
+  <div class="upload" data-upload="figDCL">
+    <label>a) Diagrama de corpo livre da alavanca
+      <input type="file" accept="image/*" data-file="figDCL">
+    </label>
+    <div class="thumb" data-thumb="figDCL"></div>
+  </div>
+  <label>b) Demonstração da equação (1)
+    <textarea id="teoriaTexto" rows="5" placeholder="Você pode usar notação LaTeX" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">4</span> Identificação das variáveis <span class="pts">[1,0]</span></h2>
+  <div class="table-wrap">
+    <table class="data-table narrow">
+      <caption>Tabela 2 — Quantidades físicas e seu papel no experimento</caption>
+      <thead><tr><th>Quantidade física</th><th>Variável</th></tr></thead>
+      <tbody>
+        <tr><td><input type="text" id="varIndep" placeholder="Ex.: massa do contrapeso, M₁" data-save></td><td class="fixed">Independente</td></tr>
+        <tr><td><input type="text" id="varDep" placeholder="Ex.: distância de equilíbrio, d" data-save></td><td class="fixed">Dependente</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">5</span> Linearização <span class="pts">[1,0]</span></h2>
+  <p class="task">a) Linearize a equação (1) e compare com y′ = a′x′ + b′.</p>
+  <label>Desenvolvimento
+    <textarea id="linTexto" rows="4" data-save></textarea>
+  </label>
+  <p class="task">b) Escreva as relações: <span class="eq-num">(2)</span></p>
+  <div class="grid-4">
+    <label>x′ = <input type="text" id="relX" placeholder="M₁" data-save></label>
+    <label>y′ = <input type="text" id="relY" placeholder="1/d" data-save></label>
+    <label>a′ = <input type="text" id="relA" placeholder="2/[M(L−2x₁)]" data-save></label>
+    <label>b′ = <input type="text" id="relB" placeholder="2/(L−2x₁)" data-save></label>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">6</span> Análise estatística <span class="pts">[1,0]</span></h2>
+  <div class="table-wrap">
+    <table id="tabela3" class="data-table computed">
+      <caption>Tabela 3 — Estatística da distância de equilíbrio <span class="auto">calculada automaticamente</span></caption>
+      <thead>
+        <tr><th>M₁ (g)</th><th>d̄ (cm)</th><th>Δd̄ (cm)</th><th>σ<sub>d</sub> (cm)</th><th>n</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">7</span> Gráfico linear <span class="pts">[1,0]</span></h2>
+  <div class="grid-2">
+    <label>Rótulo e unidade de x′ <input type="text" id="labelX" value="M₁ (g)" data-save></label>
+    <label>Rótulo e unidade de y′ <input type="text" id="labelY" value="1/d̄ (1/cm)" data-save></label>
+  </div>
+  <div class="table-wrap">
+    <table id="tabela4" class="data-table computed">
+      <caption>Tabela 4 — Pares linearizados <span class="auto">calculada automaticamente</span></caption>
+      <thead><tr><th id="th4x">x′</th><th id="th4y">y′</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="chart-block">
+    <canvas id="grafico" width="900" height="560"></canvas>
+    <p class="fit-readout" id="fitReadout">Preencha a Tabela 1 para ver o ajuste.</p>
+  </div>
+  <p class="task">b) Indique na reta os pontos P₁, P₂ e P₃ com os valores lidos.</p>
+  <div class="table-wrap">
+    <table class="data-table narrow" id="pontos">
+      <caption>Pontos lidos no papel milimetrado</caption>
+      <thead><tr><th>Ponto</th><th>x′</th><th>y′</th></tr></thead>
+      <tbody>
+        <tr><td class="fixed">P₁</td><td><input type="text" data-p="p1x" data-save></td><td><input type="text" data-p="p1y" data-save></td></tr>
+        <tr><td class="fixed">P₂</td><td><input type="text" data-p="p2x" data-save></td><td><input type="text" data-p="p2y" data-save></td></tr>
+        <tr><td class="fixed">P₃</td><td><input type="text" data-p="p3x" data-save></td><td><input type="text" data-p="p3y" data-save></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="derived" id="pontosReadout">Coeficientes por P₁ e P₂: preencha os pontos.</p>
+  <label>Cálculo dos coeficientes
+    <textarea id="coefTexto" rows="3" data-save></textarea>
+  </label>
+  <label>Equação experimental (papel milimetrado) <span class="eq-num">(3)</span>
+    <input type="text" id="eq3" data-save>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">8</span> Gráfico linear no SPARKvue <span class="pts">[1,0]</span></h2>
+  <label>Equação experimental (SPARKvue) <span class="eq-num">(4)</span>
+    <input type="text" id="eq4" data-save>
+  </label>
+  <div class="upload" data-upload="figSpark">
+    <label>Captura do gráfico no SPARKvue
+      <input type="file" accept="image/*" data-file="figSpark">
+    </label>
+    <div class="thumb" data-thumb="figSpark"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="tag">9</span> Resultados <span class="pts">[1,0]</span></h2>
+  <p class="task">
+    a) Pelas relações (2), a razão entre os coeficientes dá a massa da régua:
+    b′/a′ = M. b) Compare com M = (150,00 ± 0,01) g.
+  </p>
+  <div class="result-grid">
+    <div class="result-tile"><span class="k">Massa da régua pelo ajuste</span><span class="n" id="mFit">—</span></div>
+    <div class="result-tile"><span class="k">Erro percentual</span><span class="n" id="mErro">—</span></div>
+    <div class="result-tile"><span class="k">b′ esperado = 2/(L−2x₁)</span><span class="n" id="bEsperado">—</span></div>
+    <div class="result-tile ref"><span class="k">Valor de referência</span><span class="n">150,00 g</span></div>
+  </div>
+  <label>Desenvolvimento e discussão dos resultados
+    <textarea id="resTexto" rows="4" data-save></textarea>
+  </label>
+</section>
+
+<section class="card">
+  <h2><span class="tag">10</span> Conclusões <span class="pts">[1,0]</span></h2>
+  <label>Conclusões
+    <textarea id="concTexto" rows="5" data-save></textarea>
+  </label>
+</section>
+
+<section class="card generate">
+  <h2>Gerar relatório</h2>
+  <div class="gen-actions">
+    <button type="button" class="button button-primary" id="gerar">Gerar relatório LaTeX</button>
+    <button type="button" class="button button-ghost" id="limpar">Limpar preenchimento</button>
+  </div>
+  <p class="status" id="status"></p>
+</section>
+
+</main>
+
+<footer class="lab-footer">
+  <p>FEX1001 · Física Experimental I · UDESC/CCT Joinville</p>
+</footer>
+
+<script src="../lab.js"></script>
+<script src="lab-experiencia-5.js"></script>
+</body>
+</html>

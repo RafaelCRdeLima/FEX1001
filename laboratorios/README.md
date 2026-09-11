@@ -45,9 +45,28 @@ como arquivo solto (`file://`), o navegador bloqueia a leitura do modelo LaTeX.
 O preenchimento fica salvo no `localStorage` do navegador do aluno, por
 experiência. O botão "Limpar preenchimento" apaga.
 
+## As experiências e suas linearizações
+
+Cada página lineariza a relação teórica da sua experiência e extrai do
+coeficiente angular a grandeza física que o roteiro pede.
+
+| Exp. | Relação | x′ | y′ | Grandeza extraída | Referência |
+|---|---|---|---|---|---|
+| 2 | a = g·sen θ | sen θ | ā | g = a′ | 9,79061 m/s² |
+| 3 | W = ½mv² | v̄² | W̄ | m = 2a′ | 250,00 g |
+| 4 | α = (g/R)·[1+I/(MR²)]⁻¹ | 1/M | 1/ᾱ | I = a′gR | M_H L²/12 + 2md² |
+| 5 | d = [(L−2x₁)/2]·M/(M₁+M) | M₁ | 1/d̄ | M = b′/a′ | 150,00 g |
+
+As Experiências 4 e 5 linearizam por inversos, e por isso têm um coeficiente
+linear com significado físico próprio — R/g e 2/(L−2x₁) — que a página mostra
+ao lado do ajuste, como conferência independente.
+
+Na Experiência 5, a massa da régua sai da razão b′/a′, que cancela L e x₁: o
+resultado não depende da geometria medida.
+
 ## Estado
 
-- **Experiência 2** — completa.
-- Experiências 1, 3, 4 e 5 — a fazer. As de 3 a 5 seguem a mesma estrutura de
-  dez tarefas da 2 e devem reaproveitar o motor quase sem mudanças; a 1 é
-  diferente (medidas em quatro escalas, conversões e propagação de erro).
+- **Experiências 2, 3, 4 e 5** — completas.
+- **Experiência 1** — a fazer. É a única que foge da estrutura de dez tarefas:
+  mede em quatro escalas, converte unidades e propaga erro, com tabelas
+  compartilhadas entre as cinco equipes.
